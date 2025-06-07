@@ -1,6 +1,6 @@
 ﻿namespace ClubDeportivo
 {
-    partial class LoginForm
+    partial class FrmLogin
     {
         /// <summary>
         /// Required designer variable.
@@ -90,7 +90,7 @@
             cmbUsuarios.Size = new Size(129, 23);
             cmbUsuarios.TabIndex = 6;
             // 
-            // LoginForm
+            // FrmLogin
             // 
             AcceptButton = btnLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -102,9 +102,9 @@
             Controls.Add(txtPassword);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "LoginForm";
-            Text = "LoginForm";
-            Load += LoginForm_Load;
+            Name = "FrmLogin";
+            Text = "FrmLogin";
+            Load += FrmLogin_Load;
             ResumeLayout(false);
             PerformLayout();
         }

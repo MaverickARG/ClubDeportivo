@@ -1,6 +1,6 @@
 ﻿namespace ClubDeportivo
 {
-    partial class AgregarSocioForm
+    partial class FrmAgregarSocio
     {
         /// <summary>
         /// Required designer variable.
@@ -144,7 +144,7 @@
             chkAptoFisico.TabIndex = 4;
             chkAptoFisico.UseVisualStyleBackColor = true;
             // 
-            // AgregarSocioForm
+            // FormAgregarSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -161,9 +161,9 @@
             Controls.Add(txtNombre);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "AgregarSocioForm";
-            Text = "AgregarSocioForm";
-            Load += AgregarSocioForm_Load;
+            Name = "FormAgregarSocio";
+            Text = "FormAgregarSocio";
+            Load += FrmAgregarSocio_Load;
             ResumeLayout(false);
             PerformLayout();
         }

@@ -10,16 +10,16 @@ using System.Windows.Forms;
 
 namespace ClubDeportivo
 {
-    public partial class MenuForm : Form
+    public partial class FrmMenu : Form
     {
-        public MenuForm()
+        public FrmMenu()
         {
             InitializeComponent();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            LoginForm login = new LoginForm();
+            FrmLogin login = new FrmLogin();
             login.Show();
             this.Close();
         }
@@ -31,7 +31,7 @@ namespace ClubDeportivo
 
         private void agregarUnNuevoSocioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AgregarSocioForm form = new AgregarSocioForm();
+            FrmAgregarSocio form = new FrmAgregarSocio();
             form.ShowDialog(); // Modal
         }
     }

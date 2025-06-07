@@ -1,6 +1,6 @@
 ﻿namespace ClubDeportivo
 {
-    partial class MenuForm
+    partial class FrmMenu
     {
         /// <summary>
         /// Required designer variable.
@@ -114,7 +114,7 @@
             informacionDeSocioToolStripMenuItem.Size = new Size(200, 22);
             informacionDeSocioToolStripMenuItem.Text = "Informacion de socio";
             // 
-            // MenuForm
+            // FrmMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -126,8 +126,8 @@
             Controls.Add(btnCerrar);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "MenuForm";
-            Text = "MenuForm";
+            Name = "FrmMenu";
+            Text = "FrmMenu";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

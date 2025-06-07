@@ -11,14 +11,14 @@ using MySql.Data.MySqlClient;
 
 namespace ClubDeportivo
 {
-    public partial class LoginForm : Form
+    public partial class FrmLogin : Form
     {
-        public LoginForm()
+        public FrmLogin()
         {
             InitializeComponent();
         }
 
-        private void LoginForm_Load(object sender, EventArgs e)
+        private void FrmLogin_Load(object sender, EventArgs e)
         {
             using (MySqlConnection connection = DB.GetConnection())
             {
@@ -72,7 +72,7 @@ namespace ClubDeportivo
 
                     if (reader.HasRows)
                     {
-                        MenuForm main = new MenuForm();
+                        FrmMenu main = new FrmMenu();
                         main.Show();
                         this.Hide();
                     }

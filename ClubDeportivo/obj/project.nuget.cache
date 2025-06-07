@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "x3rq5pw+rIw=",
+  "dgSpecHash": "RiXNXzPD98I=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\2- clases actualizadas con carga de socios\\ClubDeportivo\\ClubDeportivo\\ClubDeportivo.csproj",
+  "projectFilePath": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\ClubDeportivo.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Home\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",
     "C:\\Users\\Home\\.nuget\\packages\\google.protobuf\\3.30.0\\google.protobuf.3.30.0.nupkg.sha512",

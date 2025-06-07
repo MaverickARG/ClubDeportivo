@@ -11,9 +11,9 @@ using MySql.Data.MySqlClient;
 
 namespace ClubDeportivo
 {
-    public partial class AgregarSocioForm : Form
+    public partial class FrmAgregarSocio : Form
     {
-        public AgregarSocioForm()
+        public FrmAgregarSocio()
         {
             InitializeComponent();
         }
@@ -111,7 +111,7 @@ namespace ClubDeportivo
             this.Close();
         }
 
-        private void AgregarSocioForm_Load(object sender, EventArgs e)
+        private void FrmAgregarSocio_Load(object sender, EventArgs e)
         {
 
         }
