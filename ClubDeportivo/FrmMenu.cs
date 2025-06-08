@@ -34,5 +34,23 @@ namespace ClubDeportivo
             FrmAgregarSocio form = new FrmAgregarSocio();
             form.ShowDialog(); // Modal
         }
+
+        private void agregarNoSocioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAgregarNoSocio form = new FrmAgregarNoSocio();
+            form.ShowDialog(); // Modal
+        }
+
+        private void informacionDeSocioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultaPersona form = new FrmConsultaPersona();
+            form.ShowDialog(); // Modal
+        }
+
+        private void informacionNoSociosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmConsultaPersona form = new FrmConsultaPersona();
+            form.ShowDialog(); // Modal
+        }
     }
 }

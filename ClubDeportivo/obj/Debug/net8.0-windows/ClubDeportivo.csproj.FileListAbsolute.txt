@@ -110,3 +110,5 @@ C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDe
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmAgregarSocio.resources
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmLogin.resources
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmMenu.resources
+C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmAgregarNoSocio.resources
+C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmConsultaPersona.resources

@@ -11,9 +11,9 @@ using MySql.Data.MySqlClient;
 
 namespace ClubDeportivo
 {
-    public partial class FrmAgregarSocio : Form
+    public partial class FrmAgregarNoSocio : Form
     {
-        public FrmAgregarSocio()
+        public FrmAgregarNoSocio()
         {
             InitializeComponent();
         }
@@ -23,11 +23,10 @@ namespace ClubDeportivo
             string nombre = txtNombre.Text.Trim();
             string apellido = txtApellido.Text.Trim();
             string dniTexto = txtDni.Text.Trim();
-            string valorTexto = txtValorCuota.Text.Trim().Replace('.', ',');
 
             // Validar campos vacíos
             if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(apellido) ||
-                string.IsNullOrEmpty(dniTexto) || string.IsNullOrEmpty(valorTexto))
+                string.IsNullOrEmpty(dniTexto))
             {
                 MessageBox.Show("Todos los campos son obligatorios.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -43,12 +42,6 @@ namespace ClubDeportivo
             if (dniTexto.Length < 7 || dniTexto.Length > 8)
             {
                 MessageBox.Show("El DNI debe tener entre 7 y 8 dígitos.", "DNI inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (!double.TryParse(valorTexto, out double valorCuota))
-            {
-                MessageBox.Show("El valor de la cuota debe ser un número decimal válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -86,20 +79,20 @@ namespace ClubDeportivo
                     cmdPersona.Parameters.AddWithValue("@apto", aptoFisico);
                     cmdPersona.ExecuteNonQuery();
 
-                    string querySocio = "INSERT INTO Socio (fechaAltaSocio, carnetActivo, valorCuota, dni) VALUES (@fecha, @carnet, @cuota, @dni)";
-                    MySqlCommand cmdSocio = new MySqlCommand(querySocio, connection, transaction);
-                    cmdSocio.Parameters.AddWithValue("@fecha", fechaAlta);
-                    cmdSocio.Parameters.AddWithValue("@carnet", false);
-                    cmdSocio.Parameters.AddWithValue("@cuota", valorCuota);
-                    cmdSocio.Parameters.AddWithValue("@dni", dni);
-                    cmdSocio.ExecuteNonQuery();
+                    string querynoSocio = "INSERT INTO nosocio (fechaActividad, noSocioActivo, dni) VALUES (@fecha, @carnet, @dni)";
+                    MySqlCommand cmdnoSocio = new MySqlCommand(querynoSocio, connection, transaction);
+                    cmdnoSocio.Parameters.AddWithValue("@fecha", fechaAlta);
+                    cmdnoSocio.Parameters.AddWithValue("@carnet", false);
+                    cmdnoSocio.Parameters.AddWithValue("@dni", dni);
+                    cmdnoSocio.ExecuteNonQuery();
 
                     transaction.Commit();
-                    MessageBox.Show("Socio agregado correctamente.");
+                    MessageBox.Show("No Socio agregado correctamente.");
                     this.Close();
                 }
                 catch (Exception ex)
                 {
+                    transaction.Rollback();
                     transaction.Rollback();
                     MessageBox.Show("Error al guardar el socio:\n" + ex.Message);
                 }
@@ -112,11 +105,6 @@ namespace ClubDeportivo
         }
 
         private void FrmAgregarSocio_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkAptoFisico_CheckedChanged(object sender, EventArgs e)
         {
 
         }

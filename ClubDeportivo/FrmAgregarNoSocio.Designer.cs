@@ -1,6 +1,6 @@
 ﻿namespace ClubDeportivo
 {
-    partial class FrmAgregarSocio
+    partial class FrmAgregarNoSocio
     {
         /// <summary>
         /// Required designer variable.
@@ -33,11 +33,9 @@
             txtNombre = new TextBox();
             txtApellido = new TextBox();
             label3 = new Label();
-            lblAptoFisico = new Label();
-            label5 = new Label();
+            label4 = new Label();
             btnGuardar = new Button();
             btnCancelar = new Button();
-            txtValorCuota = new TextBox();
             txtDni = new TextBox();
             chkAptoFisico = new CheckBox();
             SuspendLayout();
@@ -83,23 +81,14 @@
             label3.TabIndex = 4;
             label3.Text = "DNI";
             // 
-            // lblAptoFisico
+            // label4
             // 
-            lblAptoFisico.AutoSize = true;
-            lblAptoFisico.Location = new Point(58, 209);
-            lblAptoFisico.Name = "lblAptoFisico";
-            lblAptoFisico.Size = new Size(66, 15);
-            lblAptoFisico.TabIndex = 5;
-            lblAptoFisico.Text = "Apto Fisico";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(58, 243);
-            label5.Name = "label5";
-            label5.Size = new Size(68, 15);
-            label5.TabIndex = 6;
-            label5.Text = "Valor Cuota";
+            label4.AutoSize = true;
+            label4.Location = new Point(58, 209);
+            label4.Name = "label4";
+            label4.Size = new Size(66, 15);
+            label4.TabIndex = 5;
+            label4.Text = "Apto Fisico";
             // 
             // btnGuardar
             // 
@@ -121,13 +110,6 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnCancelar_Click;
             // 
-            // txtValorCuota
-            // 
-            txtValorCuota.Location = new Point(134, 240);
-            txtValorCuota.Name = "txtValorCuota";
-            txtValorCuota.Size = new Size(100, 23);
-            txtValorCuota.TabIndex = 5;
-            // 
             // txtDni
             // 
             txtDni.Location = new Point(134, 167);
@@ -143,26 +125,23 @@
             chkAptoFisico.Size = new Size(15, 14);
             chkAptoFisico.TabIndex = 4;
             chkAptoFisico.UseVisualStyleBackColor = true;
-            chkAptoFisico.CheckedChanged += chkAptoFisico_CheckedChanged;
             // 
-            // FrmAgregarSocio
+            // FrmAgregarNoSocio
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(chkAptoFisico);
             Controls.Add(txtDni);
-            Controls.Add(txtValorCuota);
             Controls.Add(btnCancelar);
             Controls.Add(btnGuardar);
-            Controls.Add(label5);
-            Controls.Add(lblAptoFisico);
+            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(txtApellido);
             Controls.Add(txtNombre);
             Controls.Add(label2);
             Controls.Add(label1);
-            Name = "FrmAgregarSocio";
+            Name = "FrmAgregarNoSocio";
             Text = "FormAgregarSocio";
             Load += FrmAgregarSocio_Load;
             ResumeLayout(false);
@@ -176,11 +155,9 @@
         private TextBox txtNombre;
         private TextBox txtApellido;
         private Label label3;
-        private Label lblAptoFisico;
-        private Label label5;
+        private Label label4;
         private Button btnGuardar;
         private Button btnCancelar;
-        private TextBox txtValorCuota;
         private TextBox txtDni;
         private CheckBox chkAptoFisico;
     }

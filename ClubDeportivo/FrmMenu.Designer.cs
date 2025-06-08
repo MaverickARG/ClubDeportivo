@@ -37,6 +37,9 @@
             sociosToolStripMenuItem = new ToolStripMenuItem();
             agregarUnNuevoSocioToolStripMenuItem = new ToolStripMenuItem();
             informacionDeSocioToolStripMenuItem = new ToolStripMenuItem();
+            noToolStripMenuItem = new ToolStripMenuItem();
+            agregarNoSocioToolStripMenuItem = new ToolStripMenuItem();
+            informacionNoSociosToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -87,7 +90,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, noToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -113,6 +116,28 @@
             informacionDeSocioToolStripMenuItem.Name = "informacionDeSocioToolStripMenuItem";
             informacionDeSocioToolStripMenuItem.Size = new Size(200, 22);
             informacionDeSocioToolStripMenuItem.Text = "Informacion de socio";
+            informacionDeSocioToolStripMenuItem.Click += informacionDeSocioToolStripMenuItem_Click;
+            // 
+            // noToolStripMenuItem
+            // 
+            noToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarNoSocioToolStripMenuItem, informacionNoSociosToolStripMenuItem });
+            noToolStripMenuItem.Name = "noToolStripMenuItem";
+            noToolStripMenuItem.Size = new Size(72, 20);
+            noToolStripMenuItem.Text = "No Socios";
+            // 
+            // agregarNoSocioToolStripMenuItem
+            // 
+            agregarNoSocioToolStripMenuItem.Name = "agregarNoSocioToolStripMenuItem";
+            agregarNoSocioToolStripMenuItem.Size = new Size(195, 22);
+            agregarNoSocioToolStripMenuItem.Text = "Agregar No Socio";
+            agregarNoSocioToolStripMenuItem.Click += agregarNoSocioToolStripMenuItem_Click;
+            // 
+            // informacionNoSociosToolStripMenuItem
+            // 
+            informacionNoSociosToolStripMenuItem.Name = "informacionNoSociosToolStripMenuItem";
+            informacionNoSociosToolStripMenuItem.Size = new Size(195, 22);
+            informacionNoSociosToolStripMenuItem.Text = "Informacion No Socios";
+            informacionNoSociosToolStripMenuItem.Click += informacionNoSociosToolStripMenuItem_Click;
             // 
             // FrmMenu
             // 
@@ -145,5 +170,8 @@
         private ToolStripMenuItem sociosToolStripMenuItem;
         private ToolStripMenuItem agregarUnNuevoSocioToolStripMenuItem;
         private ToolStripMenuItem informacionDeSocioToolStripMenuItem;
+        private ToolStripMenuItem noToolStripMenuItem;
+        private ToolStripMenuItem agregarNoSocioToolStripMenuItem;
+        private ToolStripMenuItem informacionNoSociosToolStripMenuItem;
     }
 }
