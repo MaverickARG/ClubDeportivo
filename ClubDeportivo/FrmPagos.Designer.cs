@@ -35,6 +35,9 @@
             cboActividad = new ComboBox();
             lblValorActividad = new Label();
             btnPagarNoSocio = new Button();
+            btnSalir = new Button();
+            lblNombre = new Label();
+            lblApellido = new Label();
             grpSocio.SuspendLayout();
             grpNoSocio.SuspendLayout();
             SuspendLayout();
@@ -77,9 +80,9 @@
             grpSocio.Controls.Add(txtValorBase);
             grpSocio.Controls.Add(lblMontoFinalSocio);
             grpSocio.Controls.Add(btnPagarSocio);
-            grpSocio.Location = new Point(30, 100);
+            grpSocio.Location = new Point(210, 103);
             grpSocio.Name = "grpSocio";
-            grpSocio.Size = new Size(500, 150);
+            grpSocio.Size = new Size(340, 132);
             grpSocio.TabIndex = 4;
             grpSocio.TabStop = false;
             grpSocio.Text = "Pago Socio";
@@ -94,7 +97,7 @@
             // 
             // txtValorBase
             // 
-            txtValorBase.Location = new Point(20, 60);
+            txtValorBase.Location = new Point(20, 70);
             txtValorBase.Name = "txtValorBase";
             txtValorBase.PlaceholderText = "Valor base cuota";
             txtValorBase.Size = new Size(100, 23);
@@ -102,7 +105,7 @@
             // 
             // lblMontoFinalSocio
             // 
-            lblMontoFinalSocio.Location = new Point(20, 90);
+            lblMontoFinalSocio.Location = new Point(20, 100);
             lblMontoFinalSocio.Name = "lblMontoFinalSocio";
             lblMontoFinalSocio.Size = new Size(200, 23);
             lblMontoFinalSocio.TabIndex = 2;
@@ -110,9 +113,9 @@
             // 
             // btnPagarSocio
             // 
-            btnPagarSocio.Location = new Point(300, 90);
+            btnPagarSocio.Location = new Point(226, 70);
             btnPagarSocio.Name = "btnPagarSocio";
-            btnPagarSocio.Size = new Size(75, 23);
+            btnPagarSocio.Size = new Size(98, 23);
             btnPagarSocio.TabIndex = 3;
             btnPagarSocio.Text = "Registrar Pago";
             btnPagarSocio.Click += btnPagarSocio_Click;
@@ -122,9 +125,9 @@
             grpNoSocio.Controls.Add(cboActividad);
             grpNoSocio.Controls.Add(lblValorActividad);
             grpNoSocio.Controls.Add(btnPagarNoSocio);
-            grpNoSocio.Location = new Point(30, 270);
+            grpNoSocio.Location = new Point(210, 264);
             grpNoSocio.Name = "grpNoSocio";
-            grpNoSocio.Size = new Size(500, 150);
+            grpNoSocio.Size = new Size(340, 134);
             grpNoSocio.TabIndex = 5;
             grpNoSocio.TabStop = false;
             grpNoSocio.Text = "Pago No Socio";
@@ -139,7 +142,7 @@
             // 
             // lblValorActividad
             // 
-            lblValorActividad.Location = new Point(20, 60);
+            lblValorActividad.Location = new Point(20, 77);
             lblValorActividad.Name = "lblValorActividad";
             lblValorActividad.Size = new Size(200, 23);
             lblValorActividad.TabIndex = 1;
@@ -147,16 +150,45 @@
             // 
             // btnPagarNoSocio
             // 
-            btnPagarNoSocio.Location = new Point(300, 90);
+            btnPagarNoSocio.Location = new Point(226, 77);
             btnPagarNoSocio.Name = "btnPagarNoSocio";
-            btnPagarNoSocio.Size = new Size(75, 23);
+            btnPagarNoSocio.Size = new Size(98, 23);
             btnPagarNoSocio.TabIndex = 2;
-            btnPagarNoSocio.Text = "Registrar Entrada";
+            btnPagarNoSocio.Text = "Registrar Pago";
             btnPagarNoSocio.Click += btnPagarNoSocio_Click;
+            // 
+            // btnSalir
+            // 
+            btnSalir.Location = new Point(455, 404);
+            btnSalir.Name = "btnSalir";
+            btnSalir.Size = new Size(75, 23);
+            btnSalir.TabIndex = 6;
+            btnSalir.Text = "Cerrar";
+            btnSalir.UseVisualStyleBackColor = true;
+            btnSalir.Click += button1_Click;
+            // 
+            // lblNombre
+            // 
+            lblNombre.AutoSize = true;
+            lblNombre.Location = new Point(30, 103);
+            lblNombre.Name = "lblNombre";
+            lblNombre.Size = new Size(0, 15);
+            lblNombre.TabIndex = 7;
+            // 
+            // lblApellido
+            // 
+            lblApellido.AutoSize = true;
+            lblApellido.Location = new Point(30, 141);
+            lblApellido.Name = "lblApellido";
+            lblApellido.Size = new Size(0, 15);
+            lblApellido.TabIndex = 8;
             // 
             // FrmPagos
             // 
             ClientSize = new Size(584, 461);
+            Controls.Add(lblApellido);
+            Controls.Add(lblNombre);
+            Controls.Add(btnSalir);
             Controls.Add(lblDni);
             Controls.Add(txtDni);
             Controls.Add(btnBuscar);
@@ -172,5 +204,8 @@
             ResumeLayout(false);
             PerformLayout();
         }
+        private Button btnSalir;
+        private Label lblNombre;
+        private Label lblApellido;
     }
 }

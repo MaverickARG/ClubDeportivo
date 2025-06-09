@@ -24,7 +24,7 @@ namespace ClubDeportivo
         {
             cboFormaPago.Items.Add("Efectivo");
             cboFormaPago.Items.Add("3 cuotas sin interés");
-            cboFormaPago.Items.Add("6 cuotas sin interés");
+            cboFormaPago.Items.Add("6 cuotas con interés");
             cboFormaPago.Items.Add("12 cuotas con 25% interés");
 
             CargarActividades();
@@ -58,12 +58,32 @@ namespace ClubDeportivo
                 return;
             }
 
-            string querySocio = "SELECT idSocio FROM socio WHERE dni = @dni";
-            MySqlCommand cmd = new MySqlCommand(querySocio, conexion);
-            cmd.Parameters.AddWithValue("@dni", dni);
+            // 🔽 CONSULTA A TABLA PERSONA PARA OBTENER NOMBRE Y APELLIDO
+            string queryPersona = "SELECT nombre, apellido FROM persona WHERE dni = @dni";
+            MySqlCommand cmdPersona = new MySqlCommand(queryPersona, conexion);
+            cmdPersona.Parameters.AddWithValue("@dni", dni);
 
             if (conexion.State != ConnectionState.Open)
                 conexion.Open();
+
+            using (MySqlDataReader reader = cmdPersona.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    lblNombre.Text = reader["nombre"].ToString();
+                    lblApellido.Text = reader["apellido"].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("DNI no encontrado en la tabla persona.");
+                    return;
+                }
+            }
+
+            // 🔽 CONSULTA A TABLA SOCIO
+            string querySocio = "SELECT idSocio FROM socio WHERE dni = @dni";
+            MySqlCommand cmd = new MySqlCommand(querySocio, conexion);
+            cmd.Parameters.AddWithValue("@dni", dni);
 
             var resultado = cmd.ExecuteScalar();
 
@@ -77,6 +97,7 @@ namespace ClubDeportivo
             }
             else
             {
+                // 🔽 CONSULTA A TABLA NOSOCIO
                 string queryNoSocio = "SELECT idNoSocio FROM nosocio WHERE dni = @dni";
                 cmd = new MySqlCommand(queryNoSocio, conexion);
                 cmd.Parameters.AddWithValue("@dni", dni);
@@ -95,9 +116,9 @@ namespace ClubDeportivo
                 {
                     MessageBox.Show("DNI no encontrado en las tablas de socios ni no socios.");
                 }
+            }
+        }
 
-            }
-            }
 
         private void CalcularMontoSocio()
         {
@@ -108,7 +129,7 @@ namespace ClubDeportivo
 
                 if (formaPago == "Efectivo")
                     final *= 0.90m;
-                else if (formaPago == "6 cuotas sin interés")
+                else if (formaPago == "6 cuotas con interés")
                     final *= 1.10m;
 
                 lblMontoFinalSocio.Text = $"Total a pagar: ${final:F2}";
@@ -134,24 +155,47 @@ namespace ClubDeportivo
             int idSocio = int.Parse(grpSocio.Tag.ToString());
             string formaPago = cboFormaPago.SelectedItem?.ToString();
             DateTime hoy = DateTime.Today;
-            decimal monto = decimal.Parse(lblMontoFinalSocio.Text.Replace("Total a pagar: $", "").Trim());
             int numeroCuota = 1;
 
-            string insert = "INSERT INTO cuotasocio (idSocio, fechaPagoSocio, vencimientoPago, formaPago, numeroCuota, monto) " +
-                            "VALUES (@id, @pago, @vto, @forma, @nro, @monto)";
+            // Obtener valor de cuota desde la tabla socio
+            decimal baseValor = 0;
+            string getValor = "SELECT valorCuota FROM socio WHERE idSocio = @id";
+            MySqlCommand getCmd = new MySqlCommand(getValor, conexion);
+            getCmd.Parameters.AddWithValue("@id", idSocio);
+
+            if (conexion.State != ConnectionState.Open)
+                conexion.Open();
+
+            object result = getCmd.ExecuteScalar();
+            if (result != null)
+                baseValor = Convert.ToDecimal(result);
+
+            // Calcular monto según forma de pago
+            decimal montoFinal = baseValor;
+            if (formaPago == "Efectivo")
+                montoFinal *= 0.90m;
+            else if (formaPago == "6 cuotas sin interés")
+                montoFinal *= 1.10m;
+
+            // Insertar cuota (sin guardar monto en la tabla)
+            string insert = "INSERT INTO cuotasocio (idSocio, fechaPagoSocio, vencimientoPago, formaPago, numeroCuota) " +
+                            "VALUES (@id, @pago, @vto, @forma, @nro)";
             MySqlCommand cmd = new MySqlCommand(insert, conexion);
             cmd.Parameters.AddWithValue("@id", idSocio);
             cmd.Parameters.AddWithValue("@pago", hoy);
             cmd.Parameters.AddWithValue("@vto", hoy.AddMonths(1));
             cmd.Parameters.AddWithValue("@forma", formaPago);
             cmd.Parameters.AddWithValue("@nro", numeroCuota);
-            cmd.Parameters.AddWithValue("@valorActividad", monto);
-
-            if (conexion.State != ConnectionState.Open)
-                conexion.Open();
 
             cmd.ExecuteNonQuery();
-            MessageBox.Show("Pago registrado para el socio.");
+
+            // Activar carnet
+            string update = "UPDATE socio SET carnetActivo = 1 WHERE idSocio = @id";
+            MySqlCommand updateCmd = new MySqlCommand(update, conexion);
+            updateCmd.Parameters.AddWithValue("@id", idSocio);
+            updateCmd.ExecuteNonQuery();
+
+            MessageBox.Show("Pago registrado para el socio. Monto calculado: $" + montoFinal.ToString("F2"));
         }
 
         private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
@@ -199,6 +243,11 @@ namespace ClubDeportivo
 
             cmd.ExecuteNonQuery();
             MessageBox.Show("Entrada registrada para el no socio.");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
