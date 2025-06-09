@@ -25,7 +25,6 @@ namespace ClubDeportivo
             cboFormaPago.Items.Add("Efectivo");
             cboFormaPago.Items.Add("3 cuotas sin interés");
             cboFormaPago.Items.Add("6 cuotas con interés");
-            cboFormaPago.Items.Add("12 cuotas con 25% interés");
 
             CargarActividades();
         }
