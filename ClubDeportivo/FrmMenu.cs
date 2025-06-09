@@ -95,7 +95,7 @@ namespace ClubDeportivo
 
         private void pagoDeCuotaSocioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FrmPagosSocios form = new FrmPagosSocios();
+            FrmPagos form = new FrmPagos();
             form.ShowDialog(); // Modal
         }
 

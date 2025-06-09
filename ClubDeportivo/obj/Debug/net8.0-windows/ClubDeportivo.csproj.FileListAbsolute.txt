@@ -157,3 +157,4 @@ C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDe
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.Properties.Resources.resources
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmMenu.es-AR.resources
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\es-AR\ClubDeportivo.resources.dll
+C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmPagos.resources
