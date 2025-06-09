@@ -9,7 +9,7 @@ namespace ClubDeportivo
 {
     public static class DB
     {
-        private static readonly string connectionString = "server=localhost;user=root;password=santi12;database=club_deportivo";
+        private static readonly string connectionString = "server=localhost;user=root;password=Sonita27;database=club_deportivo";
 
         public static MySqlConnection GetConnection()
         {

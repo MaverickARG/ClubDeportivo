@@ -152,3 +152,8 @@ C:\Users\santiago\Desktop\tp dsoo de adrian\ClubDeportivo-master\ClubDeportivo-m
 C:\Users\santiago\Desktop\tp dsoo de adrian\ClubDeportivo-master\ClubDeportivo-master\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.genruntimeconfig.cache
 C:\Users\santiago\Desktop\tp dsoo de adrian\ClubDeportivo-master\ClubDeportivo-master\ClubDeportivo\obj\Debug\net8.0-windows\ref\ClubDeportivo.dll
 C:\Users\santiago\Desktop\tp dsoo de adrian\ClubDeportivo-master\ClubDeportivo-master\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmPagosSocios.resources
+C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmPagosSocios.resources
+C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\bin\Debug\net8.0-windows\es-AR\ClubDeportivo.resources.dll
+C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.Properties.Resources.resources
+C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmMenu.es-AR.resources
+C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\es-AR\ClubDeportivo.resources.dll

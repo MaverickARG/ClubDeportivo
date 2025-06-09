@@ -34,12 +34,14 @@
             btnSalir = new Button();
             txtPassword = new TextBox();
             cmbUsuarios = new ComboBox();
+            ptbLogo = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)ptbLogo).BeginInit();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(126, 99);
+            label1.Location = new Point(215, 33);
             label1.Name = "label1";
             label1.Size = new Size(47, 15);
             label1.TabIndex = 0;
@@ -48,7 +50,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(126, 163);
+            label2.Location = new Point(215, 100);
             label2.Name = "label2";
             label2.Size = new Size(67, 15);
             label2.TabIndex = 1;
@@ -56,7 +58,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(126, 233);
+            btnLogin.Location = new Point(215, 166);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(75, 23);
             btnLogin.TabIndex = 4;
@@ -66,7 +68,7 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(126, 271);
+            btnSalir.Location = new Point(296, 166);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(75, 23);
             btnSalir.TabIndex = 5;
@@ -76,35 +78,49 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(126, 181);
+            txtPassword.Location = new Point(215, 128);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(131, 23);
+            txtPassword.Size = new Size(156, 23);
             txtPassword.TabIndex = 3;
             txtPassword.UseSystemPasswordChar = true;
             // 
             // cmbUsuarios
             // 
             cmbUsuarios.FormattingEnabled = true;
-            cmbUsuarios.Location = new Point(128, 130);
+            cmbUsuarios.Location = new Point(215, 61);
             cmbUsuarios.Name = "cmbUsuarios";
-            cmbUsuarios.Size = new Size(129, 23);
+            cmbUsuarios.Size = new Size(156, 23);
             cmbUsuarios.TabIndex = 6;
+            // 
+            // ptbLogo
+            // 
+            ptbLogo.Image = Properties.Resources.logo;
+            ptbLogo.Location = new Point(27, 33);
+            ptbLogo.Name = "ptbLogo";
+            ptbLogo.Size = new Size(150, 156);
+            ptbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
+            ptbLogo.TabIndex = 7;
+            ptbLogo.TabStop = false;
             // 
             // FrmLogin
             // 
             AcceptButton = btnLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(418, 236);
+            Controls.Add(ptbLogo);
             Controls.Add(cmbUsuarios);
             Controls.Add(btnSalir);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
             Controls.Add(label2);
             Controls.Add(label1);
+            MaximizeBox = false;
             Name = "FrmLogin";
-            Text = "FrmLogin";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Club Deportivo PI";
             Load += FrmLogin_Load;
+            ((System.ComponentModel.ISupportInitialize)ptbLogo).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -119,5 +135,6 @@
         private Button btnSalir;
         private TextBox txtPassword;
         private ComboBox cmbUsuarios;
+        private PictureBox ptbLogo;
     }
 }

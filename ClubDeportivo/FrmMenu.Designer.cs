@@ -28,10 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMenu));
             btnCerrar = new Button();
-            button2 = new Button();
-            label1 = new Label();
-            textBox1 = new TextBox();
+            lblBienvenida = new Label();
             btnSalir = new Button();
             menuStrip1 = new MenuStrip();
             sociosToolStripMenuItem = new ToolStripMenuItem();
@@ -43,141 +42,160 @@
             pagosToolStripMenuItem = new ToolStripMenuItem();
             pagoDeCuotaSocioToolStripMenuItem = new ToolStripMenuItem();
             pagoDiarioNoSocioToolStripMenuItem = new ToolStripMenuItem();
+            ayudaToolStripMenuItem = new ToolStripMenuItem();
+            manualToolStripMenuItem = new ToolStripMenuItem();
+            acercaDeToolStripMenuItem = new ToolStripMenuItem();
+            btnListarVencimientos = new Button();
+            dgvVencimientos = new DataGridView();
+            pictureBox1 = new PictureBox();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvVencimientos).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnCerrar
             // 
-            btnCerrar.Location = new Point(164, 385);
+            resources.ApplyResources(btnCerrar, "btnCerrar");
             btnCerrar.Name = "btnCerrar";
-            btnCerrar.Size = new Size(99, 23);
-            btnCerrar.TabIndex = 0;
-            btnCerrar.Text = "Cerrar Sesion";
             btnCerrar.UseVisualStyleBackColor = true;
             btnCerrar.Click += btnCerrar_Click;
             // 
-            // button2
+            // lblBienvenida
             // 
-            button2.Location = new Point(60, 84);
-            button2.Name = "button2";
-            button2.Size = new Size(75, 23);
-            button2.TabIndex = 1;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(60, 53);
-            label1.Name = "label1";
-            label1.Size = new Size(38, 15);
-            label1.TabIndex = 2;
-            label1.Text = "label1";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(141, 85);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(100, 23);
-            textBox1.TabIndex = 5;
+            resources.ApplyResources(lblBienvenida, "lblBienvenida");
+            lblBienvenida.Name = "lblBienvenida";
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(513, 385);
+            resources.ApplyResources(btnSalir, "btnSalir");
             btnSalir.Name = "btnSalir";
-            btnSalir.Size = new Size(116, 23);
-            btnSalir.TabIndex = 6;
-            btnSalir.Text = "Salir de programa";
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, noToolStripMenuItem, pagosToolStripMenuItem });
-            menuStrip1.Location = new Point(0, 0);
+            resources.ApplyResources(menuStrip1, "menuStrip1");
+            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, noToolStripMenuItem, pagosToolStripMenuItem, ayudaToolStripMenuItem });
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
-            menuStrip1.TabIndex = 7;
-            menuStrip1.Text = "menuStrip1";
             // 
             // sociosToolStripMenuItem
             // 
+            resources.ApplyResources(sociosToolStripMenuItem, "sociosToolStripMenuItem");
             sociosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarUnNuevoSocioToolStripMenuItem, informacionDeSocioToolStripMenuItem });
             sociosToolStripMenuItem.Name = "sociosToolStripMenuItem";
-            sociosToolStripMenuItem.Size = new Size(53, 20);
-            sociosToolStripMenuItem.Text = "Socios";
             // 
             // agregarUnNuevoSocioToolStripMenuItem
             // 
+            resources.ApplyResources(agregarUnNuevoSocioToolStripMenuItem, "agregarUnNuevoSocioToolStripMenuItem");
             agregarUnNuevoSocioToolStripMenuItem.Name = "agregarUnNuevoSocioToolStripMenuItem";
-            agregarUnNuevoSocioToolStripMenuItem.Size = new Size(200, 22);
-            agregarUnNuevoSocioToolStripMenuItem.Text = "Agregar un nuevo socio";
             agregarUnNuevoSocioToolStripMenuItem.Click += agregarUnNuevoSocioToolStripMenuItem_Click;
             // 
             // informacionDeSocioToolStripMenuItem
             // 
+            resources.ApplyResources(informacionDeSocioToolStripMenuItem, "informacionDeSocioToolStripMenuItem");
             informacionDeSocioToolStripMenuItem.Name = "informacionDeSocioToolStripMenuItem";
-            informacionDeSocioToolStripMenuItem.Size = new Size(200, 22);
-            informacionDeSocioToolStripMenuItem.Text = "Informacion de socio";
             informacionDeSocioToolStripMenuItem.Click += informacionDeSocioToolStripMenuItem_Click;
             // 
             // noToolStripMenuItem
             // 
+            resources.ApplyResources(noToolStripMenuItem, "noToolStripMenuItem");
             noToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarNoSocioToolStripMenuItem, informacionNoSociosToolStripMenuItem });
             noToolStripMenuItem.Name = "noToolStripMenuItem";
-            noToolStripMenuItem.Size = new Size(72, 20);
-            noToolStripMenuItem.Text = "No Socios";
             // 
             // agregarNoSocioToolStripMenuItem
             // 
+            resources.ApplyResources(agregarNoSocioToolStripMenuItem, "agregarNoSocioToolStripMenuItem");
             agregarNoSocioToolStripMenuItem.Name = "agregarNoSocioToolStripMenuItem";
-            agregarNoSocioToolStripMenuItem.Size = new Size(195, 22);
-            agregarNoSocioToolStripMenuItem.Text = "Agregar No Socio";
             agregarNoSocioToolStripMenuItem.Click += agregarNoSocioToolStripMenuItem_Click;
             // 
             // informacionNoSociosToolStripMenuItem
             // 
+            resources.ApplyResources(informacionNoSociosToolStripMenuItem, "informacionNoSociosToolStripMenuItem");
             informacionNoSociosToolStripMenuItem.Name = "informacionNoSociosToolStripMenuItem";
-            informacionNoSociosToolStripMenuItem.Size = new Size(195, 22);
-            informacionNoSociosToolStripMenuItem.Text = "Informacion No Socios";
             informacionNoSociosToolStripMenuItem.Click += informacionNoSociosToolStripMenuItem_Click;
             // 
             // pagosToolStripMenuItem
             // 
+            resources.ApplyResources(pagosToolStripMenuItem, "pagosToolStripMenuItem");
             pagosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pagoDeCuotaSocioToolStripMenuItem, pagoDiarioNoSocioToolStripMenuItem });
             pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
-            pagosToolStripMenuItem.Size = new Size(51, 20);
-            pagosToolStripMenuItem.Text = "Pagos";
             // 
             // pagoDeCuotaSocioToolStripMenuItem
             // 
+            resources.ApplyResources(pagoDeCuotaSocioToolStripMenuItem, "pagoDeCuotaSocioToolStripMenuItem");
             pagoDeCuotaSocioToolStripMenuItem.Name = "pagoDeCuotaSocioToolStripMenuItem";
-            pagoDeCuotaSocioToolStripMenuItem.Size = new Size(183, 22);
-            pagoDeCuotaSocioToolStripMenuItem.Text = "Pago de cuota Socio";
             pagoDeCuotaSocioToolStripMenuItem.Click += pagoDeCuotaSocioToolStripMenuItem_Click;
             // 
             // pagoDiarioNoSocioToolStripMenuItem
             // 
+            resources.ApplyResources(pagoDiarioNoSocioToolStripMenuItem, "pagoDiarioNoSocioToolStripMenuItem");
             pagoDiarioNoSocioToolStripMenuItem.Name = "pagoDiarioNoSocioToolStripMenuItem";
-            pagoDiarioNoSocioToolStripMenuItem.Size = new Size(183, 22);
-            pagoDiarioNoSocioToolStripMenuItem.Text = "Pago diario no Socio";
+            // 
+            // ayudaToolStripMenuItem
+            // 
+            resources.ApplyResources(ayudaToolStripMenuItem, "ayudaToolStripMenuItem");
+            ayudaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { manualToolStripMenuItem, acercaDeToolStripMenuItem });
+            ayudaToolStripMenuItem.Name = "ayudaToolStripMenuItem";
+            // 
+            // manualToolStripMenuItem
+            // 
+            resources.ApplyResources(manualToolStripMenuItem, "manualToolStripMenuItem");
+            manualToolStripMenuItem.Name = "manualToolStripMenuItem";
+            // 
+            // acercaDeToolStripMenuItem
+            // 
+            resources.ApplyResources(acercaDeToolStripMenuItem, "acercaDeToolStripMenuItem");
+            acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
+            // 
+            // btnListarVencimientos
+            // 
+            resources.ApplyResources(btnListarVencimientos, "btnListarVencimientos");
+            btnListarVencimientos.Name = "btnListarVencimientos";
+            btnListarVencimientos.UseVisualStyleBackColor = true;
+            btnListarVencimientos.Click += btnListarVencimientos_Click;
+            // 
+            // dgvVencimientos
+            // 
+            resources.ApplyResources(dgvVencimientos, "dgvVencimientos");
+            dgvVencimientos.AllowUserToAddRows = false;
+            dgvVencimientos.AllowUserToDeleteRows = false;
+            dgvVencimientos.AllowUserToResizeColumns = false;
+            dgvVencimientos.AllowUserToResizeRows = false;
+            dgvVencimientos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvVencimientos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVencimientos.MultiSelect = false;
+            dgvVencimientos.Name = "dgvVencimientos";
+            dgvVencimientos.ReadOnly = true;
+            dgvVencimientos.RowHeadersVisible = false;
+            dgvVencimientos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvVencimientos.CellContentClick += dgvVencimientos_CellContentClick;
+            // 
+            // pictureBox1
+            // 
+            resources.ApplyResources(pictureBox1, "pictureBox1");
+            pictureBox1.AccessibleRole = AccessibleRole.Alert;
+            pictureBox1.Image = Properties.Resources.logo;
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.TabStop = false;
             // 
             // FrmMenu
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            Controls.Add(pictureBox1);
+            Controls.Add(dgvVencimientos);
+            Controls.Add(btnListarVencimientos);
             Controls.Add(btnSalir);
-            Controls.Add(textBox1);
-            Controls.Add(label1);
-            Controls.Add(button2);
+            Controls.Add(lblBienvenida);
             Controls.Add(btnCerrar);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             Name = "FrmMenu";
-            Text = "FrmMenu";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvVencimientos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -186,7 +204,7 @@
 
         private Button btnCerrar;
         private Button button2;
-        private Label label1;
+        private Label lblBienvenida;
         private TextBox textBox1;
         private Button btnSalir;
         private MenuStrip menuStrip1;
@@ -199,5 +217,11 @@
         private ToolStripMenuItem pagosToolStripMenuItem;
         private ToolStripMenuItem pagoDeCuotaSocioToolStripMenuItem;
         private ToolStripMenuItem pagoDiarioNoSocioToolStripMenuItem;
+        private Button btnListarVencimientos;
+        private DataGridView dgvVencimientos;
+        private PictureBox pictureBox1;
+        private ToolStripMenuItem ayudaToolStripMenuItem;
+        private ToolStripMenuItem manualToolStripMenuItem;
+        private ToolStripMenuItem acercaDeToolStripMenuItem;
     }
 }

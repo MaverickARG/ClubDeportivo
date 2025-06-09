@@ -12,6 +12,11 @@
         },
         "runtime": {
           "ClubDeportivo.dll": {}
+        },
+        "resources": {
+          "es-AR/ClubDeportivo.resources.dll": {
+            "locale": "es-AR"
+          }
         }
       },
       "BouncyCastle.Cryptography/2.5.1": {
