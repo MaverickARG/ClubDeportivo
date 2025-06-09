@@ -10,10 +10,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
+using System.Drawing.Imaging;
+using System.Drawing.Printing;
+using System.IO;
+
+
 namespace ClubDeportivo
 {
     public partial class FrmConsultaPersona : Form
     {
+
+        private Bitmap carnetImagen;
+
         public FrmConsultaPersona()
         {
             InitializeComponent();
@@ -31,62 +39,112 @@ namespace ClubDeportivo
 
             using (MySqlConnection conn = DB.GetConnection())
             {
-                try
+                conn.Open();
+
+                string query = @"
+                    SELECT 
+                        p.nombre,
+                        p.apellido,
+                        p.dni,
+                        p.aptoFisico,
+                        s.fechaAltaSocio,
+                        s.carnetActivo,
+                        s.valorCuota
+                    FROM persona p
+                    LEFT JOIN socio s ON s.dni = p.dni
+                    WHERE p.dni = @dni";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@dni", dni);
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
                 {
-                    conn.Open();
-
-                    string consulta = "SELECT * FROM VistaDatosPersona WHERE dni = @dni";
-                    MySqlCommand cmd = new MySqlCommand(consulta, conn);
-                    cmd.Parameters.AddWithValue("@dni", dni);
-
-                    MySqlDataAdapter da = new MySqlDataAdapter(cmd);
-                    DataTable dt = new DataTable();
-                    da.Fill(dt);
-
-                    if (dt.Rows.Count == 0)
+                    if (reader.Read())
                     {
-                        MessageBox.Show("No se encontraron datos para ese DNI.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        dgvDatosPersona.DataSource = null;
+                        lblNombre.Text = reader["nombre"].ToString();
+                        lblApellido.Text = reader["apellido"].ToString();
+                        lblDni.Text = reader["dni"].ToString();
+
+                        lblAptoFisico.Text = Convert.ToBoolean(reader["aptoFisico"]) ? "Sí" : "No";
+
+                        lblFechaAlta.Text = reader["fechaAltaSocio"] != DBNull.Value
+                            ? Convert.ToDateTime(reader["fechaAltaSocio"]).ToShortDateString()
+                            : "-";
+
+                        lblCarnetActivo.Text = reader["carnetActivo"] != DBNull.Value
+                            ? (Convert.ToBoolean(reader["carnetActivo"]) ? "Sí" : "No")
+                            : "-";
+
+                        lblValorCuota.Text = reader["valorCuota"] != DBNull.Value
+                            ? "$" + Convert.ToDouble(reader["valorCuota"]).ToString("0.00")
+                            : "-";
                     }
                     else
                     {
-                        dgvDatosPersona.DataSource = dt;
+                        MessageBox.Show("La persona no está registrada.", "Sin resultados", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimpiarLabels();
                     }
-                    // Ocultar columnas donde todos los valores están vacíos o nulos
-                    foreach (DataGridViewColumn col in dgvDatosPersona.Columns)
-                    {
-                        bool columnaVacia = true;
-
-                        foreach (DataGridViewRow row in dgvDatosPersona.Rows)
-                        {
-                            if (row.Cells[col.Index].Value != DBNull.Value &&
-                                !string.IsNullOrWhiteSpace(row.Cells[col.Index].Value?.ToString()))
-                            {
-                                columnaVacia = false;
-                                break;
-                            }
-                        }
-
-                        col.Visible = !columnaVacia;
-                    }
-                    conn.Close();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al consultar:\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+
+                conn.Close();
             }
         }
 
+        private void LimpiarLabels()
+        {
+            lblNombre.Text = "";
+            lblApellido.Text = "";
+            lblDni.Text = "";
+            lblAptoFisico.Text = "";
+            lblFechaAlta.Text = "";
+            lblCarnetActivo.Text = "";
+            lblValorCuota.Text = "";
+        }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-        private void dgvDatosPersona_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void btnImprimirCarnet_Click(object sender, EventArgs e)
         {
+            if (lblCarnetActivo.Text != "Sí")
+            {
+                MessageBox.Show("No se puede imprimir el carnet porque no está activo.", "Carnet Inactivo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            carnetImagen = new Bitmap(400, 200);
+
+            using (Graphics g = Graphics.FromImage(carnetImagen))
+            {
+                g.Clear(Color.White);
+                g.FillRectangle(Brushes.DarkBlue, 0, 0, 400, 40);
+                g.DrawString("CLUB DEPORTIVO", new Font("Arial", 16, FontStyle.Bold), Brushes.White, new PointF(10, 10));
+
+                g.DrawString("Nombre: " + lblNombre.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 60));
+                g.DrawString("Apellido: " + lblApellido.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 80));
+                g.DrawString("DNI: " + lblDni.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 100));
+                g.DrawString("Fecha Alta: " + lblFechaAlta.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 120));
+                g.DrawString("Carnet Activo: " + lblCarnetActivo.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 140));
+                g.DrawString("Valor Cuota: " + lblValorCuota.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 160));
+            }
+
+            PrintDocument printDoc = new PrintDocument();
+            printDoc.PrintPage += PrintDoc_PrintPage;
+
+            PrintDialog dlg = new PrintDialog();
+            dlg.Document = printDoc;
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                printDoc.Print();
+            }
+        }
+
+        private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
+        {
+            e.Graphics.DrawImage(carnetImagen, 50, 50);
         }
     }
 }

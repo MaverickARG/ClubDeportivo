@@ -40,6 +40,9 @@
             noToolStripMenuItem = new ToolStripMenuItem();
             agregarNoSocioToolStripMenuItem = new ToolStripMenuItem();
             informacionNoSociosToolStripMenuItem = new ToolStripMenuItem();
+            pagosToolStripMenuItem = new ToolStripMenuItem();
+            pagoDeCuotaSocioToolStripMenuItem = new ToolStripMenuItem();
+            pagoDiarioNoSocioToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -90,7 +93,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, noToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, noToolStripMenuItem, pagosToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 24);
@@ -139,6 +142,26 @@
             informacionNoSociosToolStripMenuItem.Text = "Informacion No Socios";
             informacionNoSociosToolStripMenuItem.Click += informacionNoSociosToolStripMenuItem_Click;
             // 
+            // pagosToolStripMenuItem
+            // 
+            pagosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pagoDeCuotaSocioToolStripMenuItem, pagoDiarioNoSocioToolStripMenuItem });
+            pagosToolStripMenuItem.Name = "pagosToolStripMenuItem";
+            pagosToolStripMenuItem.Size = new Size(51, 20);
+            pagosToolStripMenuItem.Text = "Pagos";
+            // 
+            // pagoDeCuotaSocioToolStripMenuItem
+            // 
+            pagoDeCuotaSocioToolStripMenuItem.Name = "pagoDeCuotaSocioToolStripMenuItem";
+            pagoDeCuotaSocioToolStripMenuItem.Size = new Size(183, 22);
+            pagoDeCuotaSocioToolStripMenuItem.Text = "Pago de cuota Socio";
+            pagoDeCuotaSocioToolStripMenuItem.Click += pagoDeCuotaSocioToolStripMenuItem_Click;
+            // 
+            // pagoDiarioNoSocioToolStripMenuItem
+            // 
+            pagoDiarioNoSocioToolStripMenuItem.Name = "pagoDiarioNoSocioToolStripMenuItem";
+            pagoDiarioNoSocioToolStripMenuItem.Size = new Size(183, 22);
+            pagoDiarioNoSocioToolStripMenuItem.Text = "Pago diario no Socio";
+            // 
             // FrmMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -173,5 +196,8 @@
         private ToolStripMenuItem noToolStripMenuItem;
         private ToolStripMenuItem agregarNoSocioToolStripMenuItem;
         private ToolStripMenuItem informacionNoSociosToolStripMenuItem;
+        private ToolStripMenuItem pagosToolStripMenuItem;
+        private ToolStripMenuItem pagoDeCuotaSocioToolStripMenuItem;
+        private ToolStripMenuItem pagoDiarioNoSocioToolStripMenuItem;
     }
 }

@@ -52,5 +52,11 @@ namespace ClubDeportivo
             FrmConsultaPersona form = new FrmConsultaPersona();
             form.ShowDialog(); // Modal
         }
+
+        private void pagoDeCuotaSocioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmPagosSocios form = new FrmPagosSocios();
+            form.ShowDialog(); // Modal
+        }
     }
 }

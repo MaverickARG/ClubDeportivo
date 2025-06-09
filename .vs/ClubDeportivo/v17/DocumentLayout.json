@@ -1,9 +1,49 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\",
+  "WorkspaceRootPath": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\home\\desktop\\tecnicatura\\desarrollo sistemas orientado a objetos\\clubdeportivo\\clubdeportivo\\frmagregarsocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\santiago\\desktop\\tp dsoo de adrian\\clubdeportivo-master\\clubdeportivo-master\\clubdeportivo\\frmpagossocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmpagossocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\santiago\\desktop\\tp dsoo de adrian\\clubdeportivo-master\\clubdeportivo-master\\clubdeportivo\\frmpagossocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmpagossocios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\santiago\\desktop\\tp dsoo de adrian\\clubdeportivo-master\\clubdeportivo-master\\clubdeportivo\\frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\santiago\\desktop\\tp dsoo de adrian\\clubdeportivo-master\\clubdeportivo-master\\clubdeportivo\\frmpagossocios.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmpagossocios.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\santiago\\desktop\\tp dsoo de adrian\\clubdeportivo-master\\clubdeportivo-master\\clubdeportivo\\frmconsultapersona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmconsultapersona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\santiago\\desktop\\tp dsoo de adrian\\clubdeportivo-master\\clubdeportivo-master\\clubdeportivo\\db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\db.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\santiago\\desktop\\tp dsoo de adrian\\clubdeportivo-master\\clubdeportivo-master\\clubdeportivo\\frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\santiago\\desktop\\tp dsoo de adrian\\clubdeportivo-master\\clubdeportivo-master\\clubdeportivo\\frmagregarsocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmagregarsocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\santiago\\desktop\\tp dsoo de adrian\\clubdeportivo-master\\clubdeportivo-master\\clubdeportivo\\frmconsultapersona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmconsultapersona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\santiago\\desktop\\tp dsoo de adrian\\clubdeportivo-master\\clubdeportivo-master\\clubdeportivo\\frmconsultapersona.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmconsultapersona.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\santiago\\desktop\\tp dsoo de adrian\\clubdeportivo-master\\clubdeportivo-master\\clubdeportivo\\frmagregarsocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmagregarsocio.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -14,7 +54,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,13 +70,139 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "FrmPagosSocios.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmPagosSocios.Designer.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\FrmPagosSocios.Designer.cs",
+              "ToolTip": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmPagosSocios.Designer.cs",
+              "RelativeToolTip": "ClubDeportivo\\FrmPagosSocios.Designer.cs",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAkwMAAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T23:33:52.981Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FrmAgregarSocio.cs",
-              "DocumentMoniker": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmAgregarSocio.cs",
+              "Title": "FrmPagosSocios.cs",
+              "DocumentMoniker": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmPagosSocios.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\FrmPagosSocios.cs",
+              "ToolTip": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmPagosSocios.cs",
+              "RelativeToolTip": "ClubDeportivo\\FrmPagosSocios.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAYwD0AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T23:23:06.279Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FrmPagosSocios.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmPagosSocios.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\FrmPagosSocios.cs",
+              "ToolTip": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmPagosSocios.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ClubDeportivo\\FrmPagosSocios.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T23:16:43.76Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FrmMenu.cs",
+              "DocumentMoniker": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmMenu.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\FrmMenu.cs",
+              "ToolTip": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmMenu.cs",
+              "RelativeToolTip": "ClubDeportivo\\FrmMenu.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAwDkAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T23:13:30.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "FrmAgregarSocio.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmAgregarSocio.cs",
               "RelativeDocumentMoniker": "ClubDeportivo\\FrmAgregarSocio.cs",
-              "ToolTip": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmAgregarSocio.cs",
+              "ToolTip": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmAgregarSocio.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ClubDeportivo\\FrmAgregarSocio.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T22:24:29.341Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "FrmMenu.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmMenu.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\FrmMenu.cs",
+              "ToolTip": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmMenu.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ClubDeportivo\\FrmMenu.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T22:23:15.081Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "FrmConsultaPersona.cs",
+              "DocumentMoniker": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmConsultaPersona.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\FrmConsultaPersona.cs",
+              "ToolTip": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmConsultaPersona.cs",
+              "RelativeToolTip": "ClubDeportivo\\FrmConsultaPersona.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAWwBgAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T22:21:25.174Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "FrmConsultaPersona.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmConsultaPersona.Designer.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\FrmConsultaPersona.Designer.cs",
+              "ToolTip": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmConsultaPersona.Designer.cs",
+              "RelativeToolTip": "ClubDeportivo\\FrmConsultaPersona.Designer.cs",
+              "ViewState": "AgIAALoAAAAAAAAAAAAUwPoAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T22:19:26.328Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "FrmConsultaPersona.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmConsultaPersona.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\FrmConsultaPersona.cs",
+              "ToolTip": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmConsultaPersona.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ClubDeportivo\\FrmConsultaPersona.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T19:59:32.023Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "db.cs",
+              "DocumentMoniker": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\db.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\db.cs",
+              "ToolTip": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\db.cs",
+              "RelativeToolTip": "ClubDeportivo\\db.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-08T19:50:13.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "FrmAgregarSocio.cs",
+              "DocumentMoniker": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmAgregarSocio.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\FrmAgregarSocio.cs",
+              "ToolTip": "C:\\Users\\santiago\\Desktop\\tp dsoo de adrian\\ClubDeportivo-master\\ClubDeportivo-master\\ClubDeportivo\\FrmAgregarSocio.cs",
               "RelativeToolTip": "ClubDeportivo\\FrmAgregarSocio.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAowAwAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAowAwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-06-08T00:18:10.983Z",
               "EditorCaption": ""
