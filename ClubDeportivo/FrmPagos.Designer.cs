@@ -38,13 +38,15 @@
             btnSalir = new Button();
             lblNombre = new Label();
             lblApellido = new Label();
+            dgvDetalle = new DataGridView();
             grpSocio.SuspendLayout();
             grpNoSocio.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvDetalle).BeginInit();
             SuspendLayout();
             // 
             // lblDni
             // 
-            lblDni.Location = new Point(30, 30);
+            lblDni.Location = new Point(157, 33);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(51, 23);
             lblDni.TabIndex = 0;
@@ -52,7 +54,7 @@
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(112, 30);
+            txtDni.Location = new Point(210, 30);
             txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(118, 23);
@@ -60,7 +62,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(250, 30);
+            btnBuscar.Location = new Point(355, 33);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(75, 23);
             btnBuscar.TabIndex = 2;
@@ -69,9 +71,10 @@
             // 
             // lblResultado
             // 
-            lblResultado.Location = new Point(30, 60);
+            lblResultado.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblResultado.Location = new Point(210, 59);
             lblResultado.Name = "lblResultado";
-            lblResultado.Size = new Size(300, 23);
+            lblResultado.Size = new Size(154, 23);
             lblResultado.TabIndex = 3;
             // 
             // grpSocio
@@ -170,7 +173,7 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(30, 103);
+            lblNombre.Location = new Point(34, 91);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(0, 15);
             lblNombre.TabIndex = 7;
@@ -178,14 +181,29 @@
             // lblApellido
             // 
             lblApellido.AutoSize = true;
-            lblApellido.Location = new Point(30, 141);
+            lblApellido.Location = new Point(34, 124);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(0, 15);
             lblApellido.TabIndex = 8;
             // 
+            // dgvDetalle
+            // 
+            dgvDetalle.AllowUserToAddRows = false;
+            dgvDetalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDetalle.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDetalle.Location = new Point(30, 185);
+            dgvDetalle.Name = "dgvDetalle";
+            dgvDetalle.ReadOnly = true;
+            dgvDetalle.RowHeadersVisible = false;
+            dgvDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvDetalle.Size = new Size(162, 213);
+            dgvDetalle.TabIndex = 9;
+            // 
             // FrmPagos
             // 
+            AcceptButton = btnBuscar;
             ClientSize = new Size(584, 461);
+            Controls.Add(dgvDetalle);
             Controls.Add(lblApellido);
             Controls.Add(lblNombre);
             Controls.Add(btnSalir);
@@ -196,16 +214,19 @@
             Controls.Add(grpSocio);
             Controls.Add(grpNoSocio);
             Name = "FrmPagos";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Pagos";
             Load += FrmPagos_Load;
             grpSocio.ResumeLayout(false);
             grpSocio.PerformLayout();
             grpNoSocio.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvDetalle).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
         private Button btnSalir;
         private Label lblNombre;
         private Label lblApellido;
+        private DataGridView dgvDetalle;
     }
 }

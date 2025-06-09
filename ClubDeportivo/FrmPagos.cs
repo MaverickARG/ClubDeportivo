@@ -20,6 +20,28 @@ namespace ClubDeportivo
             cboActividad.SelectedIndexChanged += cboActividad_SelectedIndexChanged;
         }
 
+        private void DesactivarNoSociosInactivos()
+        {
+            DateTime hoy = DateTime.Today;
+
+            string update = @"
+        UPDATE nosocio 
+        SET noSocioActivo = 0 
+        WHERE idNoSocio NOT IN (
+            SELECT idNoSocio 
+            FROM pagodiario 
+            WHERE fechaPagoDiario = @hoy
+        );";
+
+            MySqlCommand cmd = new MySqlCommand(update, conexion);
+            cmd.Parameters.AddWithValue("@hoy", hoy);
+
+            if (conexion.State != ConnectionState.Open)
+                conexion.Open();
+
+            cmd.ExecuteNonQuery();
+        }
+
         private void FrmPagos_Load(object sender, EventArgs e)
         {
             cboFormaPago.Items.Add("Efectivo");
@@ -27,6 +49,7 @@ namespace ClubDeportivo
             cboFormaPago.Items.Add("6 cuotas con interés");
 
             CargarActividades();
+            DesactivarNoSociosInactivos();
         }
 
         private void CargarActividades()
@@ -86,13 +109,27 @@ namespace ClubDeportivo
 
             var resultado = cmd.ExecuteScalar();
 
+            dgvDetalle.DataSource = null; // limpia el grid
+
             if (resultado != null)
             {
-                lblResultado.Text = "Es Socio";
+                lblResultado.Text = "SOCIO";
                 lblResultado.ForeColor = Color.Green;
                 grpSocio.Visible = true;
                 grpNoSocio.Visible = false;
                 grpSocio.Tag = resultado.ToString();
+
+                // 🔽 MOSTRAR FECHA DE VENCIMIENTO EN EL DATAGRID
+                string queryVencimiento = "SELECT vencimientoPago AS 'Vencimiento' " +
+                                          "FROM cuotasocio WHERE idSocio = @id ORDER BY fechaPagoSocio DESC LIMIT 1";
+                MySqlCommand cmdVto = new MySqlCommand(queryVencimiento, conexion);
+                cmdVto.Parameters.AddWithValue("@id", Convert.ToInt32(grpSocio.Tag));
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmdVto);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dgvDetalle.DataSource = dt;
             }
             else
             {
@@ -105,11 +142,25 @@ namespace ClubDeportivo
 
                 if (resultado != null)
                 {
-                    lblResultado.Text = "Es No Socio";
+                    lblResultado.Text = "NO SOCIO";
                     lblResultado.ForeColor = Color.Blue;
                     grpNoSocio.Visible = true;
                     grpSocio.Visible = false;
                     grpNoSocio.Tag = resultado.ToString();
+
+                    // 🔽 MOSTRAR ACTIVIDADES PAGADAS HOY EN EL DATAGRID
+                    string queryActividades = "SELECT a.nombreActividad AS 'Actividad' " +
+                                              "FROM pagodiario pd " +
+                                              "JOIN actividad a ON pd.idActividad = a.idActividad " +
+                                              "WHERE pd.idNoSocio = @id AND pd.fechaPagoDiario = CURDATE()";
+                    MySqlCommand cmdAct = new MySqlCommand(queryActividades, conexion);
+                    cmdAct.Parameters.AddWithValue("@id", Convert.ToInt32(grpNoSocio.Tag));
+
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmdAct);
+                    DataTable dt = new DataTable();
+                    adapter.Fill(dt);
+
+                    dgvDetalle.DataSource = dt;
                 }
                 else
                 {
@@ -117,6 +168,7 @@ namespace ClubDeportivo
                 }
             }
         }
+
 
 
         private void CalcularMontoSocio()
@@ -156,15 +208,26 @@ namespace ClubDeportivo
             DateTime hoy = DateTime.Today;
             int numeroCuota = 1;
 
+            // Verificar si ya tiene una cuota vigente
+            string queryUltimoVencimiento = "SELECT MAX(vencimientoPago) FROM cuotasocio WHERE idSocio = @id";
+            MySqlCommand cmdVto = new MySqlCommand(queryUltimoVencimiento, conexion);
+            cmdVto.Parameters.AddWithValue("@id", idSocio);
+
+            if (conexion.State != ConnectionState.Open)
+                conexion.Open();
+
+            object fechaVto = cmdVto.ExecuteScalar();
+            if (fechaVto != DBNull.Value && Convert.ToDateTime(fechaVto) >= hoy)
+            {
+                MessageBox.Show("La cuota aún está vigente. No se puede registrar un nuevo pago.");
+                return;
+            }
+
             // Obtener valor de cuota desde la tabla socio
             decimal baseValor = 0;
             string getValor = "SELECT valorCuota FROM socio WHERE idSocio = @id";
             MySqlCommand getCmd = new MySqlCommand(getValor, conexion);
             getCmd.Parameters.AddWithValue("@id", idSocio);
-
-            if (conexion.State != ConnectionState.Open)
-                conexion.Open();
-
             object result = getCmd.ExecuteScalar();
             if (result != null)
                 baseValor = Convert.ToDecimal(result);
@@ -197,6 +260,7 @@ namespace ClubDeportivo
             MessageBox.Show("Pago registrado para el socio. Monto calculado: $" + montoFinal.ToString("F2"));
         }
 
+
         private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboActividad.SelectedItem is DataRowView row)
@@ -222,27 +286,47 @@ namespace ClubDeportivo
         {
             int idNoSocio = int.Parse(grpNoSocio.Tag.ToString());
             DateTime hoy = DateTime.Today;
-            decimal monto = Convert.ToDecimal(lblValorActividad.Text.Replace("Valor actividad: $", "").Trim());
             int idActividad = Convert.ToInt32(cboActividad.SelectedValue);
-            int numeroPago = 1;
 
-            string insert = "INSERT INTO pagodiario (idNoSocio, fechaPagoDiario, formaPago, idActividad, numeroPagoD) " +
-                "VALUES (@id, @fecha, @forma, @actividad, @nroPago)";
-
-            MySqlCommand cmd = new MySqlCommand(insert, conexion);
-            cmd.Parameters.AddWithValue("@id", idNoSocio);
-            cmd.Parameters.AddWithValue("@fecha", hoy);
-            cmd.Parameters.AddWithValue("@forma", "Efectivo"); // o recuperar de otro combo si se requiere
-            cmd.Parameters.AddWithValue("@actividad", idActividad);
-            cmd.Parameters.AddWithValue("@nroPago", numeroPago);
-
+            // Validar cantidad de pagos del día
+            string countQuery = "SELECT COUNT(*) FROM pagodiario WHERE idNoSocio = @id AND fechaPagoDiario = @fecha";
+            MySqlCommand countCmd = new MySqlCommand(countQuery, conexion);
+            countCmd.Parameters.AddWithValue("@id", idNoSocio);
+            countCmd.Parameters.AddWithValue("@fecha", hoy);
 
             if (conexion.State != ConnectionState.Open)
                 conexion.Open();
 
+            int cantidadPagos = Convert.ToInt32(countCmd.ExecuteScalar());
+
+            if (cantidadPagos >= 2)
+            {
+                MessageBox.Show("Limite de actividades diarias alcanzado (2)");
+                return;
+            }
+
+            // Insertar nuevo pago
+            string insert = "INSERT INTO pagodiario (idNoSocio, fechaPagoDiario, formaPago, idActividad, numeroPagoD) " +
+                            "VALUES (@id, @fecha, @forma, @actividad, @nroPago)";
+
+            MySqlCommand cmd = new MySqlCommand(insert, conexion);
+            cmd.Parameters.AddWithValue("@id", idNoSocio);
+            cmd.Parameters.AddWithValue("@fecha", hoy);
+            cmd.Parameters.AddWithValue("@forma", "Efectivo"); // podés hacer combo después
+            cmd.Parameters.AddWithValue("@actividad", idActividad);
+            cmd.Parameters.AddWithValue("@nroPago", cantidadPagos + 1);
+
             cmd.ExecuteNonQuery();
-            MessageBox.Show("Entrada registrada para el no socio.");
+
+            // Activar noSocioActivo = 1 por el día
+            string update = "UPDATE nosocio SET noSocioActivo = 1 WHERE idNoSocio = @id";
+            MySqlCommand updateCmd = new MySqlCommand(update, conexion);
+            updateCmd.Parameters.AddWithValue("@id", idNoSocio);
+            updateCmd.ExecuteNonQuery();
+
+            MessageBox.Show("Pago confirmado - No Socio habilitado");
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
