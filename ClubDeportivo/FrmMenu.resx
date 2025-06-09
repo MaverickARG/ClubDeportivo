@@ -117,340 +117,358 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;agregarUnNuevoSocioToolStripMenuItem.Name" xml:space="preserve">
-    <value>agregarUnNuevoSocioToolStripMenuItem</value>
-  </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="dgvVencimientos.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
-  </data>
-  <data name="btnCerrar.Text" xml:space="preserve">
-    <value>Cerrar Sesion</value>
-  </data>
-  <data name="&gt;&gt;informacionNoSociosToolStripMenuItem.Name" xml:space="preserve">
-    <value>informacionNoSociosToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;btnListarVencimientos.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;sociosToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="menuStrip1.Text" xml:space="preserve">
+    <value>menuStrip1</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="agregarNoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
+  <data name="dgvVencimientos.Location" type="System.Drawing.Point, System.Drawing">
+    <value>354, 80</value>
   </data>
-  <data name="&gt;&gt;sociosToolStripMenuItem.Name" xml:space="preserve">
-    <value>sociosToolStripMenuItem</value>
+  <data name="pibLogo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>37, 90</value>
   </data>
   <data name="&gt;&gt;pagoDiarioNoSocioToolStripMenuItem.Name" xml:space="preserve">
     <value>pagoDiarioNoSocioToolStripMenuItem</value>
   </data>
-  <data name="btnListarVencimientos.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 9pt</value>
-  </data>
-  <data name="pagoDiarioNoSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pago diario no Socio</value>
-  </data>
-  <data name="&gt;&gt;acercaDeToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblBienvenida.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI, 20.25pt, style=Bold</value>
-  </data>
-  <data name="&gt;&gt;btnListarVencimientos.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="lblBienvenida.Location" type="System.Drawing.Point, System.Drawing">
-    <value>35, 80</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnCerrar.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="informacionNoSociosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Informacion No Socios</value>
-  </data>
-  <data name="agregarNoSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Agregar No Socio</value>
-  </data>
-  <data name="&gt;&gt;noToolStripMenuItem.Name" xml:space="preserve">
-    <value>noToolStripMenuItem</value>
-  </data>
-  <data name="agregarUnNuevoSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Agregar un nuevo socio</value>
-  </data>
-  <data name="pagoDeCuotaSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pago de cuota Socio</value>
-  </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>FrmMenu</value>
-  </data>
-  <data name="btnListarVencimientos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>135, 60</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="btnSalir.Size" type="System.Drawing.Size, System.Drawing">
-    <value>116, 23</value>
-  </data>
-  <data name="pagosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pagos</value>
-  </data>
-  <data name="&gt;&gt;btnListarVencimientos.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;pagoDiarioNoSocioToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pagoDeCuotaSocioToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="btnSalir.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
-  </data>
-  <data name="informacionNoSociosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="dgvVencimientos.Size" type="System.Drawing.Size, System.Drawing">
-    <value>392, 259</value>
-  </data>
-  <data name="btnCerrar.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;dgvVencimientos.Type" xml:space="preserve">
-    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnCerrar.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;informacionDeSocioToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;manualToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;manualToolStripMenuItem.Name" xml:space="preserve">
-    <value>manualToolStripMenuItem</value>
-  </data>
   <data name="&gt;&gt;btnCerrar.Parent" xml:space="preserve">
     <value>$this</value>
-  </data>
-  <data name="&gt;&gt;btnSalir.Name" xml:space="preserve">
-    <value>btnSalir</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 450</value>
-  </data>
-  <data name="lblBienvenida.Text" xml:space="preserve">
-    <value>Club Deportivo PI</value>
-  </data>
-  <data name="btnListarVencimientos.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="informacionDeSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="&gt;&gt;dgvVencimientos.Name" xml:space="preserve">
-    <value>dgvVencimientos</value>
-  </data>
-  <data name="&gt;&gt;lblBienvenida.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;btnSalir.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
-    <value>7</value>
-  </data>
-  <data name="noToolStripMenuItem.Text" xml:space="preserve">
-    <value>No Socios</value>
-  </data>
-  <data name="informacionDeSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Informacion de socio</value>
-  </data>
-  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>800, 24</value>
-  </data>
-  <data name="btnCerrar.Size" type="System.Drawing.Size, System.Drawing">
-    <value>99, 23</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
-    <value>menuStrip1</value>
-  </data>
-  <data name="&gt;&gt;btnListarVencimientos.Name" xml:space="preserve">
-    <value>btnListarVencimientos</value>
-  </data>
-  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>0, 0</value>
-  </data>
-  <data name="&gt;&gt;pagosToolStripMenuItem.Name" xml:space="preserve">
-    <value>pagosToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;pictureBox1.Name" xml:space="preserve">
     <value>pictureBox1</value>
   </data>
-  <data name="sociosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnSalir.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
   </data>
-  <data name="&gt;&gt;dgvVencimientos.ZOrder" xml:space="preserve">
-    <value>1</value>
+  <data name="agregarUnNuevoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
   </data>
-  <data name="btnSalir.Text" xml:space="preserve">
-    <value>Salir de programa</value>
+  <data name="btnListarVencimientos.Text" xml:space="preserve">
+    <value>Listar Vencimientos</value>
   </data>
-  <data name="&gt;&gt;btnSalir.ZOrder" xml:space="preserve">
-    <value>3</value>
+  <data name="&gt;&gt;btnListarVencimientos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="lblBienvenida.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
+  <data name="pagoDeCuotaSocioToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pago de cuota Socio</value>
   </data>
-  <data name="lblBienvenida.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="&gt;&gt;pibLogo.Name" xml:space="preserve">
+    <value>pibLogo</value>
   </data>
-  <data name="&gt;&gt;agregarNoSocioToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnSalir.Location" type="System.Drawing.Point, System.Drawing">
+    <value>513, 385</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>800, 450</value>
+  </data>
+  <data name="&gt;&gt;sociosToolStripMenuItem.Name" xml:space="preserve">
+    <value>sociosToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;pibLogo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>0, 0</value>
   </data>
   <data name="&gt;&gt;agregarNoSocioToolStripMenuItem.Name" xml:space="preserve">
     <value>agregarNoSocioToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;ayudaToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="btnCerrar.Size" type="System.Drawing.Size, System.Drawing">
+    <value>99, 23</value>
   </data>
-  <data name="btnCerrar.Location" type="System.Drawing.Point, System.Drawing">
-    <value>164, 385</value>
+  <data name="btnSalir.Size" type="System.Drawing.Size, System.Drawing">
+    <value>116, 23</value>
   </data>
-  <data name="manualToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+  <data name="&gt;&gt;informacionDeSocioToolStripMenuItem.Name" xml:space="preserve">
+    <value>informacionDeSocioToolStripMenuItem</value>
   </data>
-  <data name="&gt;&gt;agregarUnNuevoSocioToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="lblBienvenida.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
   </data>
-  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>74, 134</value>
-  </data>
-  <data name="pagosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 20</value>
-  </data>
-  <data name="btnListarVencimientos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>98, 279</value>
-  </data>
-  <data name="&gt;&gt;lblBienvenida.Name" xml:space="preserve">
-    <value>lblBienvenida</value>
+  <data name="noToolStripMenuItem.Text" xml:space="preserve">
+    <value>No Socios</value>
   </data>
   <data name="acercaDeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>180, 22</value>
   </data>
+  <data name="agregarNoSocioToolStripMenuItem.Text" xml:space="preserve">
+    <value>Agregar No Socio</value>
+  </data>
+  <data name="sociosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Socios</value>
+  </data>
+  <data name="&gt;&gt;btnSalir.Name" xml:space="preserve">
+    <value>btnSalir</value>
+  </data>
+  <data name="&gt;&gt;informacionNoSociosToolStripMenuItem.Name" xml:space="preserve">
+    <value>informacionNoSociosToolStripMenuItem</value>
+  </data>
+  <data name="informacionNoSociosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 22</value>
+  </data>
+  <data name="&gt;&gt;agregarUnNuevoSocioToolStripMenuItem.Name" xml:space="preserve">
+    <value>agregarUnNuevoSocioToolStripMenuItem</value>
+  </data>
+  <data name="sociosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="&gt;&gt;btnListarVencimientos.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="agregarNoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>195, 22</value>
+  </data>
+  <data name="&gt;&gt;noToolStripMenuItem.Name" xml:space="preserve">
+    <value>noToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;lblBienvenida.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="btnListarVencimientos.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 60</value>
+  </data>
+  <data name="noToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 20</value>
+  </data>
+  <data name="btnCerrar.Location" type="System.Drawing.Point, System.Drawing">
+    <value>164, 385</value>
+  </data>
+  <data name="lblBienvenida.Size" type="System.Drawing.Size, System.Drawing">
+    <value>247, 37</value>
+  </data>
+  <data name="btnListarVencimientos.TabIndex" type="System.Int32, mscorlib">
+    <value>8</value>
+  </data>
+  <data name="lblBienvenida.Text" xml:space="preserve">
+    <value>Club Deportivo PI</value>
+  </data>
+  <data name="&gt;&gt;sociosToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;informacionDeSocioToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ayudaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="&gt;&gt;btnCerrar.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="btnCerrar.Text" xml:space="preserve">
+    <value>Cerrar Sesion</value>
+  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>FrmMenu</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
+  <data name="pagosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pagos</value>
   </data>
-  <data name="&gt;&gt;dgvVencimientos.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="dgvVencimientos.Size" type="System.Drawing.Size, System.Drawing">
+    <value>392, 259</value>
   </data>
-  <data name="&gt;&gt;btnCerrar.Name" xml:space="preserve">
-    <value>btnCerrar</value>
+  <data name="dgvVencimientos.TabIndex" type="System.Int32, mscorlib">
+    <value>9</value>
+  </data>
+  <data name="&gt;&gt;agregarNoSocioToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;noToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;lblBienvenida.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="&gt;&gt;lblBienvenida.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="menuStrip1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>800, 24</value>
+  </data>
+  <data name="&gt;&gt;manualToolStripMenuItem.Name" xml:space="preserve">
+    <value>manualToolStripMenuItem</value>
+  </data>
+  <data name="informacionNoSociosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Informacion No Socios</value>
+  </data>
+  <data name="&gt;&gt;pagoDeCuotaSocioToolStripMenuItem.Name" xml:space="preserve">
+    <value>pagoDeCuotaSocioToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;ayudaToolStripMenuItem.Name" xml:space="preserve">
+    <value>ayudaToolStripMenuItem</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>CenterScreen</value>
   </data>
-  <data name="btnSalir.Location" type="System.Drawing.Point, System.Drawing">
-    <value>513, 385</value>
+  <data name="btnListarVencimientos.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 9pt</value>
   </data>
-  <data name="agregarUnNuevoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
-  </data>
-  <data name="ayudaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
-  </data>
-  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="btnListarVencimientos.Text" xml:space="preserve">
-    <value>Listar Vencimientos</value>
-  </data>
-  <data name="&gt;&gt;lblBienvenida.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;informacionNoSociosToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pagosToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="pagoDeCuotaSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="pagoDiarioNoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 22</value>
   </data>
-  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;noToolStripMenuItem.Type" xml:space="preserve">
+  <data name="&gt;&gt;ayudaToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="menuStrip1.Text" xml:space="preserve">
-    <value>menuStrip1</value>
+  <data name="&gt;&gt;pibLogo.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="sociosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Socios</value>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
   </data>
   <data name="&gt;&gt;pictureBox1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;lblBienvenida.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
-    <value>6</value>
+  <data name="lblBienvenida.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
   </data>
   <data name="&gt;&gt;btnSalir.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pagoDiarioNoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="&gt;&gt;informacionNoSociosToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="pagosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 20</value>
+  </data>
+  <data name="&gt;&gt;acercaDeToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="manualToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="informacionDeSocioToolStripMenuItem.Text" xml:space="preserve">
+    <value>Informacion de socio</value>
+  </data>
+  <data name="lblBienvenida.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Segoe UI, 20.25pt, style=Bold</value>
+  </data>
+  <data name="&gt;&gt;pagosToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pagosToolStripMenuItem.Name" xml:space="preserve">
+    <value>pagosToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;pictureBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="pibLogo.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="btnSalir.Text" xml:space="preserve">
+    <value>Salir de programa</value>
+  </data>
+  <data name="&gt;&gt;dgvVencimientos.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="informacionDeSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>200, 22</value>
+  </data>
+  <data name="&gt;&gt;acercaDeToolStripMenuItem.Name" xml:space="preserve">
+    <value>acercaDeToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;dgvVencimientos.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="pictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>74, 134</value>
+  </data>
+  <data name="&gt;&gt;lblBienvenida.Name" xml:space="preserve">
+    <value>lblBienvenida</value>
+  </data>
+  <data name="&gt;&gt;menuStrip1.Name" xml:space="preserve">
+    <value>menuStrip1</value>
+  </data>
+  <data name="&gt;&gt;btnCerrar.Name" xml:space="preserve">
+    <value>btnCerrar</value>
+  </data>
+  <data name="menuStrip1.TabIndex" type="System.Int32, mscorlib">
+    <value>7</value>
+  </data>
+  <data name="&gt;&gt;btnSalir.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>172, 139</value>
+  </data>
+  <data name="&gt;&gt;btnListarVencimientos.Name" xml:space="preserve">
+    <value>btnListarVencimientos</value>
+  </data>
+  <data name="&gt;&gt;btnSalir.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="pagoDeCuotaSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>183, 22</value>
   </data>
   <data name="&gt;&gt;menuStrip1.Type" xml:space="preserve">
     <value>System.Windows.Forms.MenuStrip, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pictureBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>172, 139</value>
+  <data name="lblBienvenida.Location" type="System.Drawing.Point, System.Drawing">
+    <value>35, 80</value>
   </data>
-  <data name="&gt;&gt;acercaDeToolStripMenuItem.Name" xml:space="preserve">
-    <value>acercaDeToolStripMenuItem</value>
+  <data name="&gt;&gt;menuStrip1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="lblBienvenida.Size" type="System.Drawing.Size, System.Drawing">
-    <value>247, 37</value>
+  <data name="&gt;&gt;pictureBox1.Parent" xml:space="preserve">
+    <value>$this</value>
   </data>
-  <data name="&gt;&gt;ayudaToolStripMenuItem.Name" xml:space="preserve">
-    <value>ayudaToolStripMenuItem</value>
+  <data name="&gt;&gt;btnCerrar.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="pictureBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
+  <data name="pagoDiarioNoSocioToolStripMenuItem.Text" xml:space="preserve">
+    <value>Pago diario no Socio</value>
   </data>
-  <data name="dgvVencimientos.Location" type="System.Drawing.Point, System.Drawing">
-    <value>354, 80</value>
+  <data name="btnListarVencimientos.Location" type="System.Drawing.Point, System.Drawing">
+    <value>98, 279</value>
   </data>
-  <data name="noToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 20</value>
+  <data name="&gt;&gt;agregarUnNuevoSocioToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;informacionDeSocioToolStripMenuItem.Name" xml:space="preserve">
-    <value>informacionDeSocioToolStripMenuItem</value>
+  <data name="&gt;&gt;btnListarVencimientos.ZOrder" xml:space="preserve">
+    <value>2</value>
   </data>
-  <data name="&gt;&gt;pagoDeCuotaSocioToolStripMenuItem.Name" xml:space="preserve">
-    <value>pagoDeCuotaSocioToolStripMenuItem</value>
+  <data name="btnCerrar.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
   </data>
-  <metadata name="pictureBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <data name="&gt;&gt;manualToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;dgvVencimientos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.DataGridView, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;pibLogo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="agregarUnNuevoSocioToolStripMenuItem.Text" xml:space="preserve">
+    <value>Agregar un nuevo socio</value>
+  </data>
+  <data name="&gt;&gt;dgvVencimientos.Name" xml:space="preserve">
+    <value>dgvVencimientos</value>
+  </data>
+  <data name="&gt;&gt;pagoDiarioNoSocioToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
+    <value>11, 10</value>
   </metadata>
-  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="pictureBox1.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
   <metadata name="$this.Language" type="System.Globalization.CultureInfo, System.Private.CoreLib, Culture=neutral, PublicKeyToken=7cec85d7bea7798e">

@@ -32,7 +32,9 @@
             btnCerrar = new Button();
             lblBienvenida = new Label();
             btnSalir = new Button();
-            menuStrip1 = new MenuStrip();
+            btnListarVencimientos = new Button();
+            dgvVencimientos = new DataGridView();
+            pibLogo = new PictureBox();
             sociosToolStripMenuItem = new ToolStripMenuItem();
             agregarUnNuevoSocioToolStripMenuItem = new ToolStripMenuItem();
             informacionDeSocioToolStripMenuItem = new ToolStripMenuItem();
@@ -45,12 +47,10 @@
             ayudaToolStripMenuItem = new ToolStripMenuItem();
             manualToolStripMenuItem = new ToolStripMenuItem();
             acercaDeToolStripMenuItem = new ToolStripMenuItem();
-            btnListarVencimientos = new Button();
-            dgvVencimientos = new DataGridView();
-            pictureBox1 = new PictureBox();
-            menuStrip1.SuspendLayout();
+            menuStrip1 = new MenuStrip();
             ((System.ComponentModel.ISupportInitialize)dgvVencimientos).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pibLogo).BeginInit();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // btnCerrar
@@ -72,11 +72,36 @@
             btnSalir.UseVisualStyleBackColor = true;
             btnSalir.Click += btnSalir_Click;
             // 
-            // menuStrip1
+            // btnListarVencimientos
             // 
-            resources.ApplyResources(menuStrip1, "menuStrip1");
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, noToolStripMenuItem, pagosToolStripMenuItem, ayudaToolStripMenuItem });
-            menuStrip1.Name = "menuStrip1";
+            resources.ApplyResources(btnListarVencimientos, "btnListarVencimientos");
+            btnListarVencimientos.Name = "btnListarVencimientos";
+            btnListarVencimientos.UseVisualStyleBackColor = true;
+            btnListarVencimientos.Click += btnListarVencimientos_Click;
+            // 
+            // dgvVencimientos
+            // 
+            resources.ApplyResources(dgvVencimientos, "dgvVencimientos");
+            dgvVencimientos.AllowUserToAddRows = false;
+            dgvVencimientos.AllowUserToDeleteRows = false;
+            dgvVencimientos.AllowUserToResizeColumns = false;
+            dgvVencimientos.AllowUserToResizeRows = false;
+            dgvVencimientos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvVencimientos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvVencimientos.MultiSelect = false;
+            dgvVencimientos.Name = "dgvVencimientos";
+            dgvVencimientos.ReadOnly = true;
+            dgvVencimientos.RowHeadersVisible = false;
+            dgvVencimientos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvVencimientos.CellContentClick += dgvVencimientos_CellContentClick;
+            // 
+            // pibLogo
+            // 
+            resources.ApplyResources(pibLogo, "pibLogo");
+            pibLogo.AccessibleRole = AccessibleRole.Alert;
+            pibLogo.Image = Properties.Resources.logo;
+            pibLogo.Name = "pibLogo";
+            pibLogo.TabStop = false;
             // 
             // sociosToolStripMenuItem
             // 
@@ -147,42 +172,17 @@
             resources.ApplyResources(acercaDeToolStripMenuItem, "acercaDeToolStripMenuItem");
             acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             // 
-            // btnListarVencimientos
+            // menuStrip1
             // 
-            resources.ApplyResources(btnListarVencimientos, "btnListarVencimientos");
-            btnListarVencimientos.Name = "btnListarVencimientos";
-            btnListarVencimientos.UseVisualStyleBackColor = true;
-            btnListarVencimientos.Click += btnListarVencimientos_Click;
-            // 
-            // dgvVencimientos
-            // 
-            resources.ApplyResources(dgvVencimientos, "dgvVencimientos");
-            dgvVencimientos.AllowUserToAddRows = false;
-            dgvVencimientos.AllowUserToDeleteRows = false;
-            dgvVencimientos.AllowUserToResizeColumns = false;
-            dgvVencimientos.AllowUserToResizeRows = false;
-            dgvVencimientos.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvVencimientos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvVencimientos.MultiSelect = false;
-            dgvVencimientos.Name = "dgvVencimientos";
-            dgvVencimientos.ReadOnly = true;
-            dgvVencimientos.RowHeadersVisible = false;
-            dgvVencimientos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvVencimientos.CellContentClick += dgvVencimientos_CellContentClick;
-            // 
-            // pictureBox1
-            // 
-            resources.ApplyResources(pictureBox1, "pictureBox1");
-            pictureBox1.AccessibleRole = AccessibleRole.Alert;
-            pictureBox1.Image = Properties.Resources.logo;
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.TabStop = false;
+            resources.ApplyResources(menuStrip1, "menuStrip1");
+            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, noToolStripMenuItem, pagosToolStripMenuItem, ayudaToolStripMenuItem });
+            menuStrip1.Name = "menuStrip1";
             // 
             // FrmMenu
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(pictureBox1);
+            Controls.Add(pibLogo);
             Controls.Add(dgvVencimientos);
             Controls.Add(btnListarVencimientos);
             Controls.Add(btnSalir);
@@ -192,10 +192,10 @@
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
             Name = "FrmMenu";
+            ((System.ComponentModel.ISupportInitialize)dgvVencimientos).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pibLogo).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvVencimientos).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -203,11 +203,11 @@
         #endregion
 
         private Button btnCerrar;
-        private Button button2;
         private Label lblBienvenida;
-        private TextBox textBox1;
         private Button btnSalir;
-        private MenuStrip menuStrip1;
+        private Button btnListarVencimientos;
+        private DataGridView dgvVencimientos;
+        private PictureBox pibLogo;
         private ToolStripMenuItem sociosToolStripMenuItem;
         private ToolStripMenuItem agregarUnNuevoSocioToolStripMenuItem;
         private ToolStripMenuItem informacionDeSocioToolStripMenuItem;
@@ -217,11 +217,9 @@
         private ToolStripMenuItem pagosToolStripMenuItem;
         private ToolStripMenuItem pagoDeCuotaSocioToolStripMenuItem;
         private ToolStripMenuItem pagoDiarioNoSocioToolStripMenuItem;
-        private Button btnListarVencimientos;
-        private DataGridView dgvVencimientos;
-        private PictureBox pictureBox1;
         private ToolStripMenuItem ayudaToolStripMenuItem;
         private ToolStripMenuItem manualToolStripMenuItem;
         private ToolStripMenuItem acercaDeToolStripMenuItem;
+        private MenuStrip menuStrip1;
     }
 }

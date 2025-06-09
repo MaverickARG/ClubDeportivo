@@ -14,9 +14,7 @@ namespace ClubDeportivo
     public partial class FrmMenu : Form
     {
         public FrmMenu()
-
         {
-
             InitializeComponent();
         }
         private void btnListarVencimientos_Click(object? sender, EventArgs e)
