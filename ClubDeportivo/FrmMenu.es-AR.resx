@@ -124,9 +124,6 @@
   <data name="btnCerrar.Size" type="System.Drawing.Size, System.Drawing">
     <value>121, 60</value>
   </data>
-  <data name="lblBienvenida.Location" type="System.Drawing.Point, System.Drawing">
-    <value>26, 41</value>
-  </data>
   <data name="btnSalir.Location" type="System.Drawing.Point, System.Drawing">
     <value>493, 348</value>
   </data>
