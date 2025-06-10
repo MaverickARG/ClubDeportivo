@@ -80,7 +80,7 @@ namespace ClubDeportivo
                     cmdPersona.Parameters.AddWithValue("@apto", aptoFisico);
                     cmdPersona.ExecuteNonQuery();
 
-                    string querySocio = "INSERT INTO Socio (fechaAltaSocio, carnetActivo, valorCuota, dni) VALUES (@fecha, @carnet, @cuota, @dni)";
+                    string querySocio = "INSERT INTO Socio (fechaAltaSocio, carnetActivo, dni) VALUES (@fecha, @carnet, @dni)";
                     MySqlCommand cmdSocio = new MySqlCommand(querySocio, connection, transaction);
                     cmdSocio.Parameters.AddWithValue("@fecha", fechaAlta);
                     cmdSocio.Parameters.AddWithValue("@carnet", false);

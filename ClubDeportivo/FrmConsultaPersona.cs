@@ -42,17 +42,19 @@ namespace ClubDeportivo
                 conn.Open();
 
                 string query = @"
-                    SELECT 
-                        p.nombre,
-                        p.apellido,
-                        p.dni,
-                        p.aptoFisico,
-                        s.fechaAltaSocio,
-                        s.carnetActivo,
-                        s.valorCuota
-                    FROM persona p
-                    LEFT JOIN socio s ON s.dni = p.dni
-                    WHERE p.dni = @dni";
+            SELECT 
+                p.nombre,
+                p.apellido,
+                p.dni,
+                p.aptoFisico,
+                s.fechaAltaSocio,
+                s.carnetActivo,
+                s.valorCuota,
+                ns.idNoSocio
+            FROM persona p
+            LEFT JOIN socio s ON s.dni = p.dni
+            LEFT JOIN nosocio ns ON ns.dni = p.dni
+            WHERE p.dni = @dni";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@dni", dni);
@@ -64,20 +66,57 @@ namespace ClubDeportivo
                         lblNombre.Text = reader["nombre"].ToString();
                         lblApellido.Text = reader["apellido"].ToString();
                         lblDni.Text = reader["dni"].ToString();
-
                         lblAptoFisico.Text = Convert.ToBoolean(reader["aptoFisico"]) ? "Sí" : "No";
 
-                        lblFechaAlta.Text = reader["fechaAltaSocio"] != DBNull.Value
-                            ? Convert.ToDateTime(reader["fechaAltaSocio"]).ToShortDateString()
-                            : "-";
+                        bool esSocio = reader["fechaAltaSocio"] != DBNull.Value;
+                        bool esNoSocio = reader["idNoSocio"] != DBNull.Value;
 
-                        lblCarnetActivo.Text = reader["carnetActivo"] != DBNull.Value
-                            ? (Convert.ToBoolean(reader["carnetActivo"]) ? "Sí" : "No")
-                            : "-";
+                        if (esSocio)
+                        {
+                            lblEstado.Text = "Socio";
+                            lblEstado.ForeColor = Color.Green;
 
-                        lblValorCuota.Text = reader["valorCuota"] != DBNull.Value
+                            lblFechaAlta.Text = Convert.ToDateTime(reader["fechaAltaSocio"]).ToShortDateString();
+                            lblCarnetActivo.Text = Convert.ToBoolean(reader["carnetActivo"]) ? "Sí" : "No";
+                            lblValorCuota.Text = reader["valorCuota"] != DBNull.Value
                             ? "$" + Convert.ToDouble(reader["valorCuota"]).ToString("0.00")
-                            : "-";
+                            : "Falta gestionar pago en la pestaña 'Pagos'";  
+
+
+
+                            lblFechaAlta.Visible = true;
+                            lblCarnetActivo.Visible = true;
+                            lblValorCuota.Visible = true;
+                        }
+                        else if (esNoSocio)
+                        {
+                            lblEstado.Text = "No Socio";
+                            lblEstado.ForeColor = Color.Blue;
+
+
+                            // Ocultar datos de socio
+                            lblFechaAlta.Text = "-";
+                            lblCarnetActivo.Text = "-";
+                            lblValorCuota.Text = "-";
+
+                            lblFechaAlta.Visible = false;
+                            lblCarnetActivo.Visible = false;
+                            lblValorCuota.Visible = false;
+                        }
+                        else
+                        {
+                            lblEstado.Text = "Registrado sin actividad";
+                            lblEstado.ForeColor = Color.Red;
+
+
+                            lblFechaAlta.Text = "-";
+                            lblCarnetActivo.Text = "-";
+                            lblValorCuota.Text = "-";
+
+                            lblFechaAlta.Visible = false;
+                            lblCarnetActivo.Visible = false;
+                            lblValorCuota.Visible = false;
+                        }
                     }
                     else
                     {
@@ -85,7 +124,6 @@ namespace ClubDeportivo
                         LimpiarLabels();
                     }
                 }
-
                 conn.Close();
             }
         }
@@ -99,6 +137,11 @@ namespace ClubDeportivo
             lblFechaAlta.Text = "";
             lblCarnetActivo.Text = "";
             lblValorCuota.Text = "";
+
+            lblEstado.Text = "";
+            lblFechaAlta.Visible = true;
+            lblCarnetActivo.Visible = true;
+            lblValorCuota.Visible = true;
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
@@ -146,5 +189,7 @@ namespace ClubDeportivo
         {
             e.Graphics.DrawImage(carnetImagen, 50, 50);
         }
+
+
     }
 }

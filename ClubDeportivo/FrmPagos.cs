@@ -246,6 +246,14 @@ namespace ClubDeportivo
         private void txtValorBase_TextChanged(object sender, EventArgs e)
         {
             CalcularMontoSocio();
+
+            if (!decimal.TryParse(txtValorBase.Text, out decimal valor) || valor <= 0)
+            {
+                lblMontoFinalSocio.Text = "Valor inválido";
+                return;
+            }
+
+            CalcularMontoSocio(); // si está todo bien
         }
 
         private void btnPagarSocio_Click(object sender, EventArgs e)
@@ -253,7 +261,6 @@ namespace ClubDeportivo
             int idSocio = int.Parse(grpSocio.Tag.ToString());
             string formaPago = cboFormaPago.SelectedItem?.ToString();
             DateTime hoy = DateTime.Today;
-            int numeroCuota = 1;
 
             // Verificar si ya tiene una cuota vigente
             string queryUltimoVencimiento = "SELECT MAX(vencimientoPago) FROM cuotasocio WHERE idSocio = @id";
@@ -270,32 +277,67 @@ namespace ClubDeportivo
                 return;
             }
 
-            // Obtener valor de cuota desde la tabla socio
+            // Obtener valor actual de cuota desde la tabla socio
             decimal baseValor = 0;
             string getValor = "SELECT valorCuota FROM socio WHERE idSocio = @id";
             MySqlCommand getCmd = new MySqlCommand(getValor, conexion);
             getCmd.Parameters.AddWithValue("@id", idSocio);
             object result = getCmd.ExecuteScalar();
-            if (result != null)
+
+            if (result == DBNull.Value || result == null)
+            {
+                if (!decimal.TryParse(txtValorBase.Text.Trim(), out baseValor) || baseValor <= 0)
+                {
+                    MessageBox.Show("Ingrese un valor de cuota válido (mayor a 0).", "Valor inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Insertar nuevo valor
+                string updateValor = "UPDATE socio SET valorCuota = @valor WHERE idSocio = @id";
+                MySqlCommand updateValorCmd = new MySqlCommand(updateValor, conexion);
+                updateValorCmd.Parameters.AddWithValue("@valor", baseValor);
+                updateValorCmd.Parameters.AddWithValue("@id", idSocio);
+                updateValorCmd.ExecuteNonQuery();
+            }
+            else
+            {
                 baseValor = Convert.ToDecimal(result);
 
-            // Calcular monto según forma de pago
+                if (decimal.TryParse(txtValorBase.Text.Trim(), out decimal nuevoValor) && nuevoValor > 0 && nuevoValor != baseValor)
+                {
+                    baseValor = nuevoValor;
+                    string updateValor = "UPDATE socio SET valorCuota = @valor WHERE idSocio = @id";
+                    MySqlCommand updateValorCmd = new MySqlCommand(updateValor, conexion);
+                    updateValorCmd.Parameters.AddWithValue("@valor", baseValor);
+                    updateValorCmd.Parameters.AddWithValue("@id", idSocio);
+                    updateValorCmd.ExecuteNonQuery();
+                }
+            }
+
+            // Calcular monto final con forma de pago
             decimal montoFinal = baseValor;
             if (formaPago == "Efectivo")
                 montoFinal *= 0.90m;
-            else if (formaPago == "6 cuotas sin interés")
+            else if (formaPago == "6 cuotas con interés")
                 montoFinal *= 1.10m;
 
-            // Insertar cuota
-            string insert = "INSERT INTO cuotasocio (idSocio, fechaPagoSocio, vencimientoPago, formaPago, numeroCuota) " +
-                            "VALUES (@id, @pago, @vto, @forma, @nro)";
+            // Obtener número de cuota nuevo
+            string countQuery = "SELECT COUNT(*) FROM cuotasocio WHERE idSocio = @id";
+            MySqlCommand countCmd = new MySqlCommand(countQuery, conexion);
+            countCmd.Parameters.AddWithValue("@id", idSocio);
+            int numeroCuota = Convert.ToInt32(countCmd.ExecuteScalar()) + 1;
+
+            // Insertar nueva cuota
+            string insert = "INSERT INTO cuotasocio (idSocio, fechaPagoSocio, vencimientoPago, formaPago, numeroCuota, montoCuota, montoFinal) " +
+                            "VALUES (@id, @pago, @vto, @forma, @nro, @montoBase, @montoFinal)";
             MySqlCommand cmd = new MySqlCommand(insert, conexion);
             cmd.Parameters.AddWithValue("@id", idSocio);
             cmd.Parameters.AddWithValue("@pago", hoy);
             cmd.Parameters.AddWithValue("@vto", hoy.AddMonths(1));
             cmd.Parameters.AddWithValue("@forma", formaPago);
             cmd.Parameters.AddWithValue("@nro", numeroCuota);
-
+            cmd.Parameters.AddWithValue("@montoBase", baseValor);
+            cmd.Parameters.AddWithValue("@montoFinal", montoFinal);
             cmd.ExecuteNonQuery();
 
             // Activar carnet
@@ -306,7 +348,7 @@ namespace ClubDeportivo
 
             btnImprimirRecibo.Visible = true;
 
-            MessageBox.Show("Pago registrado para el socio. Monto calculado: $" + montoFinal.ToString("F2"));
+            MessageBox.Show($"Pago registrado para el socio.\nMonto base: ${baseValor:F2}\nMonto final: ${montoFinal:F2}");
             ActualizarDetalle();
         }
 
@@ -402,9 +444,9 @@ namespace ClubDeportivo
             string dni = txtDni.Text.Trim();
             string nombre = lblNombre.Text;
             string apellido = lblApellido.Text;
-            string tipo = lblResultado.Text;
+            string tipoPersona = lblResultado.Text;
 
-            if (tipo == "SOCIO")
+            if (tipoPersona == "SOCIO")
             {
                 string query = "SELECT MAX(vencimientoPago) FROM cuotasocio WHERE idSocio = @id";
                 MySqlCommand cmd = new MySqlCommand(query, conexion);
@@ -414,7 +456,14 @@ namespace ClubDeportivo
                     conexion.Open();
 
                 object resultado = cmd.ExecuteScalar();
-                string vencimiento = resultado != DBNull.Value ? Convert.ToDateTime(resultado).ToShortDateString() : "Sin pagos";
+
+                if (resultado == DBNull.Value || Convert.ToDateTime(resultado) < DateTime.Today)
+                {
+                    MessageBox.Show("No se puede imprimir el carnet: la cuota está vencida. Realice un pago para habilitar la impresión.", "Carnet vencido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                string vencimiento = Convert.ToDateTime(resultado).ToShortDateString();
 
                 Bitmap plantilla = new Bitmap(Properties.Resources.plantilla_socio);
                 string outputPath = Path.Combine(Path.GetTempPath(), $"Carnet_{dni}_{DateTime.Now.Ticks}.png");
@@ -422,9 +471,8 @@ namespace ClubDeportivo
                 GenerarCarnetDesdeBitmap(plantilla, "CARNET", dni, nombre, apellido, vencimiento, null, outputPath);
                 GuardarComoPdf(outputPath, "Carnet");
             }
-            else if (tipo == "NO SOCIO")
+            else if (tipoPersona == "NO SOCIO")
             {
-                // Obtener actividades desde la base
                 int idNoSocio = Convert.ToInt32(grpNoSocio.Tag);
                 string query = @"SELECT a.nombreActividad 
                          FROM pagodiario pd 
@@ -746,4 +794,6 @@ namespace ClubDeportivo
 
 
     }
+
+
 }
