@@ -131,7 +131,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(344, 381);
             Controls.Add(chkAptoFisico);
             Controls.Add(txtDni);
             Controls.Add(btnCancelar);

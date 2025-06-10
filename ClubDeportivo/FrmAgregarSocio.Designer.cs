@@ -176,7 +176,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(344, 380);
+            ClientSize = new Size(344, 381);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(groupBox1);
