@@ -127,7 +127,6 @@ namespace ClubDeportivo
                 grpNoSocio.Visible = false;
                 grpSocio.Tag = resultado.ToString();
                 btnImprimirCarnet.Visible = true;
-                btnImprimirPago.Visible = false;
 
                 // 🔽 MOSTRAR FECHA DE VENCIMIENTO EN EL DATAGRID
                 string queryVencimiento = "SELECT vencimientoPago AS 'Vencimiento' " +
@@ -157,9 +156,8 @@ namespace ClubDeportivo
                     grpNoSocio.Visible = true;
                     grpSocio.Visible = false;
                     grpNoSocio.Tag = resultado.ToString();
-                    btnImprimirCarnet.Visible = false;
-                    btnImprimirPago.Visible = true;
-
+                    btnImprimirCarnet.Visible = true;
+              
 
                     // 🔽 MOSTRAR ACTIVIDADES PAGADAS HOY EN EL DATAGRID
                     string queryActividades = "SELECT a.nombreActividad AS 'Actividad' " +
@@ -404,23 +402,64 @@ namespace ClubDeportivo
             string dni = txtDni.Text.Trim();
             string nombre = lblNombre.Text;
             string apellido = lblApellido.Text;
+            string tipo = lblResultado.Text;
 
-            string query = "SELECT MAX(vencimientoPago) FROM cuotasocio WHERE idSocio = @id";
-            MySqlCommand cmd = new MySqlCommand(query, conexion);
-            cmd.Parameters.AddWithValue("@id", Convert.ToInt32(grpSocio.Tag));
+            if (tipo == "SOCIO")
+            {
+                string query = "SELECT MAX(vencimientoPago) FROM cuotasocio WHERE idSocio = @id";
+                MySqlCommand cmd = new MySqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@id", Convert.ToInt32(grpSocio.Tag));
 
-            if (conexion.State != ConnectionState.Open)
-                conexion.Open();
+                if (conexion.State != ConnectionState.Open)
+                    conexion.Open();
 
-            object resultado = cmd.ExecuteScalar();
-            string vencimiento = resultado != DBNull.Value ? Convert.ToDateTime(resultado).ToShortDateString() : "Sin pagos";
+                object resultado = cmd.ExecuteScalar();
+                string vencimiento = resultado != DBNull.Value ? Convert.ToDateTime(resultado).ToShortDateString() : "Sin pagos";
 
-            Bitmap plantilla = new Bitmap(Properties.Resources.plantilla_socio);
-            string outputPath = Path.Combine(Path.GetTempPath(), $"Carnet_{dni}_{DateTime.Now.Ticks}.png");
+                Bitmap plantilla = new Bitmap(Properties.Resources.plantilla_socio);
+                string outputPath = Path.Combine(Path.GetTempPath(), $"Carnet_{dni}_{DateTime.Now.Ticks}.png");
 
-            GenerarCarnetDesdeBitmap(plantilla, "CARNET", dni, nombre, apellido, vencimiento, null, outputPath);
-            GuardarComoPdf(outputPath, "Carnet");
+                GenerarCarnetDesdeBitmap(plantilla, "CARNET", dni, nombre, apellido, vencimiento, null, outputPath);
+                GuardarComoPdf(outputPath, "Carnet");
+            }
+            else if (tipo == "NO SOCIO")
+            {
+                // Obtener actividades desde la base
+                int idNoSocio = Convert.ToInt32(grpNoSocio.Tag);
+                string query = @"SELECT a.nombreActividad 
+                         FROM pagodiario pd 
+                         JOIN actividad a ON pd.idActividad = a.idActividad 
+                         WHERE pd.idNoSocio = @id AND pd.fechaPagoDiario = CURDATE()";
+
+                MySqlCommand cmd = new MySqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@id", idNoSocio);
+
+                if (conexion.State != ConnectionState.Open)
+                    conexion.Open();
+
+                List<string> actividades = new List<string>();
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        actividades.Add(reader["nombreActividad"].ToString());
+                    }
+                }
+
+                if (actividades.Count == 0)
+                {
+                    MessageBox.Show("No hay actividades registradas hoy para este no socio.");
+                    return;
+                }
+
+                Bitmap plantilla = new Bitmap(Properties.Resources.plantilla_nosocio);
+                string outputPath = Path.Combine(Path.GetTempPath(), $"PagoDiario_{dni}_{DateTime.Now.Ticks}.png");
+
+                GenerarCarnetDesdeBitmap(plantilla, "PAGO DIARIO", dni, nombre, apellido, null, actividades, outputPath);
+                GuardarComoPdf(outputPath, "PagoDiario");
+            }
         }
+
 
 
         private void btnImprimirPago_Click(object sender, EventArgs e)
@@ -450,7 +489,7 @@ namespace ClubDeportivo
 
 
 
-        private void GenerarCarnetDesdeBitmap(Bitmap plantilla, string titulo, string dni, string nombre, string apellido, string? vencimiento, List<string>? actividades, string outputPath)
+            private void GenerarCarnetDesdeBitmap(Bitmap plantilla, string titulo, string dni, string nombre, string apellido, string? vencimiento, List<string>? actividades, string outputPath)
         {
             Bitmap bmp = new Bitmap(plantilla);
             Graphics g = Graphics.FromImage(bmp);

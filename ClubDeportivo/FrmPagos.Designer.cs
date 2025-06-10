@@ -41,7 +41,6 @@
             lblApellido = new Label();
             dgvDetalle = new DataGridView();
             btnImprimirCarnet = new Button();
-            btnImprimirPago = new Button();
             btnImprimirRecibo = new Button();
             grpSocio.SuspendLayout();
             grpNoSocio.SuspendLayout();
@@ -213,25 +212,13 @@
             btnImprimirCarnet.TabIndex = 10;
             btnImprimirCarnet.Text = "Imprimir Carnet";
             btnImprimirCarnet.UseVisualStyleBackColor = true;
-            btnImprimirCarnet.Visible = false;
             btnImprimirCarnet.Click += btnImprimirCarnet_Click;
-            // 
-            // btnImprimirPago
-            // 
-            btnImprimirPago.Location = new Point(210, 404);
-            btnImprimirPago.Name = "btnImprimirPago";
-            btnImprimirPago.Size = new Size(105, 23);
-            btnImprimirPago.TabIndex = 11;
-            btnImprimirPago.Text = "Imprimir Pago";
-            btnImprimirPago.UseVisualStyleBackColor = true;
-            btnImprimirPago.Visible = false;
-            btnImprimirPago.Click += btnImprimirPago_Click;
             // 
             // btnImprimirRecibo
             // 
-            btnImprimirRecibo.Location = new Point(68, 415);
+            btnImprimirRecibo.Location = new Point(210, 404);
             btnImprimirRecibo.Name = "btnImprimirRecibo";
-            btnImprimirRecibo.Size = new Size(75, 23);
+            btnImprimirRecibo.Size = new Size(108, 23);
             btnImprimirRecibo.TabIndex = 13;
             btnImprimirRecibo.Text = "Imprimir recibo";
             btnImprimirRecibo.Click += btnImprimirRecibo_Click;
@@ -241,7 +228,6 @@
             AcceptButton = btnBuscar;
             ClientSize = new Size(584, 461);
             Controls.Add(btnImprimirRecibo);
-            Controls.Add(btnImprimirPago);
             Controls.Add(btnImprimirCarnet);
             Controls.Add(dgvDetalle);
             Controls.Add(lblApellido);
@@ -270,7 +256,6 @@
         private Label lblApellido;
         private DataGridView dgvDetalle;
         private Button btnImprimirCarnet;
-        private Button btnImprimirPago;
         private Button btnImprimirRecibo;
     }
 }
