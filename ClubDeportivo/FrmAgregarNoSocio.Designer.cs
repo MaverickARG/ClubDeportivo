@@ -143,6 +143,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "FrmAgregarNoSocio";
             Text = "Agregar No Socio";
             Load += FrmAgregarSocio_Load;
