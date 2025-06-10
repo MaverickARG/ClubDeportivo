@@ -39,6 +39,8 @@
             lblNombre = new Label();
             lblApellido = new Label();
             dgvDetalle = new DataGridView();
+            btnImprimirCarnet = new Button();
+            btnImprimirPago = new Button();
             grpSocio.SuspendLayout();
             grpNoSocio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDetalle).BeginInit();
@@ -83,7 +85,7 @@
             grpSocio.Controls.Add(txtValorBase);
             grpSocio.Controls.Add(lblMontoFinalSocio);
             grpSocio.Controls.Add(btnPagarSocio);
-            grpSocio.Location = new Point(210, 103);
+            grpSocio.Location = new Point(210, 101);
             grpSocio.Name = "grpSocio";
             grpSocio.Size = new Size(340, 132);
             grpSocio.TabIndex = 4;
@@ -128,7 +130,7 @@
             grpNoSocio.Controls.Add(cboActividad);
             grpNoSocio.Controls.Add(lblValorActividad);
             grpNoSocio.Controls.Add(btnPagarNoSocio);
-            grpNoSocio.Location = new Point(210, 264);
+            grpNoSocio.Location = new Point(210, 250);
             grpNoSocio.Name = "grpNoSocio";
             grpNoSocio.Size = new Size(340, 134);
             grpNoSocio.TabIndex = 5;
@@ -162,7 +164,7 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(455, 404);
+            btnSalir.Location = new Point(475, 404);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(75, 23);
             btnSalir.TabIndex = 6;
@@ -199,10 +201,34 @@
             dgvDetalle.Size = new Size(162, 213);
             dgvDetalle.TabIndex = 9;
             // 
+            // btnImprimirCarnet
+            // 
+            btnImprimirCarnet.Location = new Point(343, 404);
+            btnImprimirCarnet.Name = "btnImprimirCarnet";
+            btnImprimirCarnet.Size = new Size(105, 23);
+            btnImprimirCarnet.TabIndex = 10;
+            btnImprimirCarnet.Text = "Imprimir Carnet";
+            btnImprimirCarnet.UseVisualStyleBackColor = true;
+            btnImprimirCarnet.Visible = false;
+            btnImprimirCarnet.Click += new EventHandler(btnImprimirCarnet_Click);
+            // 
+            // btnImprimirPago
+            // 
+            btnImprimirPago.Location = new Point(210, 404);
+            btnImprimirPago.Name = "btnImprimirPago";
+            btnImprimirPago.Size = new Size(105, 23);
+            btnImprimirPago.TabIndex = 11;
+            btnImprimirPago.Text = "Imprimir Pago";
+            btnImprimirPago.UseVisualStyleBackColor = true;
+            btnImprimirPago.Visible = false;
+            btnImprimirPago.Click += new EventHandler(btnImprimirPago_Click);
+            // 
             // FrmPagos
             // 
             AcceptButton = btnBuscar;
             ClientSize = new Size(584, 461);
+            Controls.Add(btnImprimirPago);
+            Controls.Add(btnImprimirCarnet);
             Controls.Add(dgvDetalle);
             Controls.Add(lblApellido);
             Controls.Add(lblNombre);
@@ -228,5 +254,7 @@
         private Label lblNombre;
         private Label lblApellido;
         private DataGridView dgvDetalle;
+        private Button btnImprimirCarnet;
+        private Button btnImprimirPago;
     }
 }

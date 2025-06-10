@@ -25,13 +25,13 @@ namespace ClubDeportivo
             DateTime hoy = DateTime.Today;
 
             string update = @"
-        UPDATE nosocio 
-        SET noSocioActivo = 0 
-        WHERE idNoSocio NOT IN (
+            UPDATE nosocio 
+            SET noSocioActivo = 0 
+            WHERE idNoSocio NOT IN (
             SELECT idNoSocio 
             FROM pagodiario 
             WHERE fechaPagoDiario = @hoy
-        );";
+                 );";
 
             MySqlCommand cmd = new MySqlCommand(update, conexion);
             cmd.Parameters.AddWithValue("@hoy", hoy);
@@ -118,6 +118,8 @@ namespace ClubDeportivo
                 grpSocio.Visible = true;
                 grpNoSocio.Visible = false;
                 grpSocio.Tag = resultado.ToString();
+                btnImprimirCarnet.Visible = true;
+                btnImprimirPago.Visible = false;
 
                 // 🔽 MOSTRAR FECHA DE VENCIMIENTO EN EL DATAGRID
                 string queryVencimiento = "SELECT vencimientoPago AS 'Vencimiento' " +
@@ -147,6 +149,9 @@ namespace ClubDeportivo
                     grpNoSocio.Visible = true;
                     grpSocio.Visible = false;
                     grpNoSocio.Tag = resultado.ToString();
+                    btnImprimirCarnet.Visible = false;
+                    btnImprimirPago.Visible = true;
+
 
                     // 🔽 MOSTRAR ACTIVIDADES PAGADAS HOY EN EL DATAGRID
                     string queryActividades = "SELECT a.nombreActividad AS 'Actividad' " +
@@ -169,7 +174,43 @@ namespace ClubDeportivo
             }
         }
 
+        private void ActualizarDetalle()
+        {
+            dgvDetalle.DataSource = null;
 
+            if (lblResultado.Text == "SOCIO")
+            {
+                string query = "SELECT vencimientoPago AS 'Vencimiento' " +
+                               "FROM cuotasocio WHERE idSocio = @id ORDER BY fechaPagoSocio DESC LIMIT 1";
+                MySqlCommand cmd = new MySqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@id", Convert.ToInt32(grpSocio.Tag));
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dgvDetalle.DataSource = dt;
+            }
+            else if (lblResultado.Text == "NO SOCIO")
+            {
+                string query = "SELECT a.nombreActividad AS 'Actividad' " +
+                               "FROM pagodiario pd " +
+                               "JOIN actividad a ON pd.idActividad = a.idActividad " +
+                               "WHERE pd.idNoSocio = @id AND pd.fechaPagoDiario = CURDATE()";
+
+                MySqlCommand cmd = new MySqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@id", Convert.ToInt32(grpNoSocio.Tag));
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+
+                dgvDetalle.DataSource = dt;
+            }
+
+            dgvDetalle.RowHeadersVisible = false;
+            dgvDetalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
 
         private void CalcularMontoSocio()
         {
@@ -258,6 +299,7 @@ namespace ClubDeportivo
             updateCmd.ExecuteNonQuery();
 
             MessageBox.Show("Pago registrado para el socio. Monto calculado: $" + montoFinal.ToString("F2"));
+            ActualizarDetalle();
         }
 
 
@@ -325,6 +367,7 @@ namespace ClubDeportivo
             updateCmd.ExecuteNonQuery();
 
             MessageBox.Show("Pago confirmado - No Socio habilitado");
+            ActualizarDetalle();
         }
 
 
@@ -332,5 +375,58 @@ namespace ClubDeportivo
         {
             Close();
         }
+
+        private void btnImprimirCarnet_Click(object sender, EventArgs e)
+        {
+            string dni = txtDni.Text.Trim();
+            string nombre = lblNombre.Text;
+            string apellido = lblApellido.Text;
+
+            string query = "SELECT MAX(vencimientoPago) FROM cuotasocio WHERE idSocio = @id";
+            MySqlCommand cmd = new MySqlCommand(query, conexion);
+            cmd.Parameters.AddWithValue("@id", Convert.ToInt32(grpSocio.Tag));
+
+            if (conexion.State != ConnectionState.Open)
+                conexion.Open();
+
+            object resultado = cmd.ExecuteScalar();
+            string vencimiento = resultado != DBNull.Value ? Convert.ToDateTime(resultado).ToShortDateString() : "Sin pagos";
+
+            MessageBox.Show(
+                $"--- CARNET DE SOCIO ---\n\n" +
+                $"DNI: {dni}\n" +
+                $"Nombre: {nombre}\n" +
+                $"Apellido: {apellido}\n" +
+                $"Vencimiento: {vencimiento}",
+                "Carnet de Socio",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+
+        private void btnImprimirPago_Click(object sender, EventArgs e)
+        {
+            string dni = txtDni.Text.Trim();
+            string nombre = lblNombre.Text;
+            string apellido = lblApellido.Text;
+
+            string actividades = "";
+            foreach (DataGridViewRow row in dgvDetalle.Rows)
+            {
+                actividades += "- " + row.Cells["Actividad"].Value.ToString() + "\n";
+            }
+
+            MessageBox.Show(
+                $"--- COMPROBANTE DE PAGO ---\n\n" +
+                $"DNI: {dni}\n" +
+                $"Nombre: {nombre}\n" +
+                $"Apellido: {apellido}\n\n" +
+                $"Actividades del día:\n{actividades}",
+                "Pago No Socio",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information
+            );
+        }
+
     }
 }
