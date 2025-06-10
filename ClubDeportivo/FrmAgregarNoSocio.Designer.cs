@@ -145,6 +145,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MaximizeBox = false;
             Name = "FrmAgregarNoSocio";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Agregar No Socio";
             Load += FrmAgregarSocio_Load;
             ResumeLayout(false);
