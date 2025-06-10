@@ -3,12 +3,17 @@ using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Drawing.Imaging;
+using System.IO;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace ClubDeportivo
 {
     public partial class FrmPagos : Form
     {
         MySqlConnection conexion = DB.GetConnection();
+
 
         public FrmPagos()
         {
@@ -18,6 +23,7 @@ namespace ClubDeportivo
             cboFormaPago.SelectedIndexChanged += cboFormaPago_SelectedIndexChanged;
             txtValorBase.TextChanged += txtValorBase_TextChanged;
             cboActividad.SelectedIndexChanged += cboActividad_SelectedIndexChanged;
+
         }
 
         private void DesactivarNoSociosInactivos()
@@ -280,7 +286,7 @@ namespace ClubDeportivo
             else if (formaPago == "6 cuotas sin interés")
                 montoFinal *= 1.10m;
 
-            // Insertar cuota (sin guardar monto en la tabla)
+            // Insertar cuota
             string insert = "INSERT INTO cuotasocio (idSocio, fechaPagoSocio, vencimientoPago, formaPago, numeroCuota) " +
                             "VALUES (@id, @pago, @vto, @forma, @nro)";
             MySqlCommand cmd = new MySqlCommand(insert, conexion);
@@ -298,9 +304,12 @@ namespace ClubDeportivo
             updateCmd.Parameters.AddWithValue("@id", idSocio);
             updateCmd.ExecuteNonQuery();
 
+            btnImprimirRecibo.Visible = true;
+
             MessageBox.Show("Pago registrado para el socio. Monto calculado: $" + montoFinal.ToString("F2"));
             ActualizarDetalle();
         }
+
 
 
         private void cboActividad_SelectedIndexChanged(object sender, EventArgs e)
@@ -329,6 +338,7 @@ namespace ClubDeportivo
             int idNoSocio = int.Parse(grpNoSocio.Tag.ToString());
             DateTime hoy = DateTime.Today;
             int idActividad = Convert.ToInt32(cboActividad.SelectedValue);
+            string actividadNombre = cboActividad.Text;
 
             // Validar cantidad de pagos del día
             string countQuery = "SELECT COUNT(*) FROM pagodiario WHERE idNoSocio = @id AND fechaPagoDiario = @fecha";
@@ -354,7 +364,7 @@ namespace ClubDeportivo
             MySqlCommand cmd = new MySqlCommand(insert, conexion);
             cmd.Parameters.AddWithValue("@id", idNoSocio);
             cmd.Parameters.AddWithValue("@fecha", hoy);
-            cmd.Parameters.AddWithValue("@forma", "Efectivo"); // podés hacer combo después
+            cmd.Parameters.AddWithValue("@forma", "Efectivo");
             cmd.Parameters.AddWithValue("@actividad", idActividad);
             cmd.Parameters.AddWithValue("@nroPago", cantidadPagos + 1);
 
@@ -366,9 +376,20 @@ namespace ClubDeportivo
             updateCmd.Parameters.AddWithValue("@id", idNoSocio);
             updateCmd.ExecuteNonQuery();
 
+            // Obtener valor de la actividad
+            string valorQuery = "SELECT valorActividad FROM actividad WHERE idActividad = @id";
+            MySqlCommand valorCmd = new MySqlCommand(valorQuery, conexion);
+            valorCmd.Parameters.AddWithValue("@id", idActividad);
+            object valorObj = valorCmd.ExecuteScalar();
+
+            decimal valorActividad = valorObj != null ? Convert.ToDecimal(valorObj) : 0;
+
+            btnImprimirRecibo.Visible = true;
+
             MessageBox.Show("Pago confirmado - No Socio habilitado");
             ActualizarDetalle();
         }
+
 
 
         private void button1_Click(object sender, EventArgs e)
@@ -392,17 +413,13 @@ namespace ClubDeportivo
             object resultado = cmd.ExecuteScalar();
             string vencimiento = resultado != DBNull.Value ? Convert.ToDateTime(resultado).ToShortDateString() : "Sin pagos";
 
-            MessageBox.Show(
-                $"--- CARNET DE SOCIO ---\n\n" +
-                $"DNI: {dni}\n" +
-                $"Nombre: {nombre}\n" +
-                $"Apellido: {apellido}\n" +
-                $"Vencimiento: {vencimiento}",
-                "Carnet de Socio",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            Bitmap plantilla = new Bitmap(Properties.Resources.plantilla_socio);
+            string outputPath = Path.Combine(Path.GetTempPath(), $"Carnet_{dni}_{DateTime.Now.Ticks}.png");
+
+            GenerarCarnetDesdeBitmap(plantilla, "CARNET", dni, nombre, apellido, vencimiento, null, outputPath);
+            GuardarComoPdf(outputPath, "Carnet");
         }
+
 
         private void btnImprimirPago_Click(object sender, EventArgs e)
         {
@@ -410,23 +427,273 @@ namespace ClubDeportivo
             string nombre = lblNombre.Text;
             string apellido = lblApellido.Text;
 
-            string actividades = "";
+            // Obtener actividades desde el DataGridView
+            List<string> actividades = new List<string>();
             foreach (DataGridViewRow row in dgvDetalle.Rows)
             {
-                actividades += "- " + row.Cells["Actividad"].Value.ToString() + "\n";
+                if (row.Cells["Actividad"].Value != null)
+                    actividades.Add(row.Cells["Actividad"].Value.ToString());
             }
 
-            MessageBox.Show(
-                $"--- COMPROBANTE DE PAGO ---\n\n" +
-                $"DNI: {dni}\n" +
-                $"Nombre: {nombre}\n" +
-                $"Apellido: {apellido}\n\n" +
-                $"Actividades del día:\n{actividades}",
-                "Pago No Socio",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information
-            );
+            // Cargar plantilla desde recursos
+            Bitmap plantilla = new Bitmap(Properties.Resources.plantilla_nosocio);
+            string outputPath = Path.Combine(Path.GetTempPath(), $"PagoDiario_{dni}_{DateTime.Now.Ticks}.png");
+
+            // Generar la imagen personalizada
+            GenerarCarnetDesdeBitmap(plantilla, "PAGO DIARIO", dni, nombre, apellido, null, actividades, outputPath);
+
+            // Convertir a PDF
+            GuardarComoPdf(outputPath, "PagoDiario");
         }
+
+
+
+        private void GenerarCarnetDesdeBitmap(Bitmap plantilla, string titulo, string dni, string nombre, string apellido, string? vencimiento, List<string>? actividades, string outputPath)
+        {
+            Bitmap bmp = new Bitmap(plantilla);
+            Graphics g = Graphics.FromImage(bmp);
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+
+            System.Drawing.Font fontTitulo = new System.Drawing.Font("Segoe UI", 26, FontStyle.Bold);
+            System.Drawing.Font fontCampo = new System.Drawing.Font("Segoe UI", 20, FontStyle.Bold);
+            System.Drawing.Font fontValor = new System.Drawing.Font("Segoe UI", 20, FontStyle.Regular);
+
+            Brush brushTitulo = Brushes.DarkBlue;
+            Brush brushTexto = Brushes.Black;
+
+            float inicioX = 440;
+            float inicioY = 260;
+            float espacio = 50;
+
+            g.DrawString(titulo, fontTitulo, brushTitulo, new PointF(inicioX, inicioY));
+            inicioY += espacio + 10;
+
+            g.DrawString("DNI:", fontCampo, brushTexto, new PointF(inicioX, inicioY));
+            g.DrawString(dni, fontValor, brushTexto, new PointF(inicioX + 180, inicioY));
+            inicioY += espacio;
+
+            g.DrawString("Nombre:", fontCampo, brushTexto, new PointF(inicioX, inicioY));
+            g.DrawString(nombre, fontValor, brushTexto, new PointF(inicioX + 180, inicioY));
+            inicioY += espacio;
+
+            g.DrawString("Apellido:", fontCampo, brushTexto, new PointF(inicioX, inicioY));
+            g.DrawString(apellido, fontValor, brushTexto, new PointF(inicioX + 180, inicioY));
+            inicioY += espacio;
+
+            if (vencimiento != null)
+            {
+                g.DrawString("Vencimiento:", fontCampo, brushTexto, new PointF(inicioX, inicioY));
+                g.DrawString(vencimiento, fontValor, brushTexto, new PointF(inicioX + 180, inicioY));
+                inicioY += espacio;
+            }
+
+            if (actividades != null && actividades.Count > 0)
+            {
+                // Medir ancho de "Actividades:"
+                SizeF sizeActividades = g.MeasureString("Actividades:", fontCampo);
+
+                // Dibujar "Actividades:"
+                g.DrawString("Actividades:", fontCampo, brushTexto, new PointF(inicioX, inicioY));
+
+                // Dibujar la primera actividad justo a continuación
+                g.DrawString("• " + actividades[0], fontValor, brushTexto, new PointF(inicioX + sizeActividades.Width + 10, inicioY));
+                inicioY += espacio - 5;
+
+                // Resto de actividades en línea nueva
+                for (int i = 1; i < actividades.Count; i++)
+                {
+                    g.DrawString("• " + actividades[i], fontValor, brushTexto, new PointF(inicioX + 176, inicioY));
+                    inicioY += espacio - 5;
+                }
+            }
+
+
+
+            bmp.Save(outputPath, ImageFormat.Png);
+            g.Dispose();
+            bmp.Dispose();
+        }
+
+
+
+
+        private void GuardarComoPdf(string imagenPath, string titulo)
+        {
+            string pdfPath = Path.Combine(Path.GetTempPath(), $"{titulo}_{DateTime.Now.Ticks}.pdf");
+
+            using (var doc = new iTextSharp.text.Document(iTextSharp.text.PageSize.A6))
+            {
+                using (var writer = iTextSharp.text.pdf.PdfWriter.GetInstance(doc, new FileStream(pdfPath, FileMode.Create)))
+                {
+                    doc.Open();
+                    iTextSharp.text.Image imagen = iTextSharp.text.Image.GetInstance(imagenPath);
+                    imagen.ScaleToFit(doc.PageSize.Width - 20, doc.PageSize.Height - 20);
+                    imagen.Alignment = iTextSharp.text.Image.ALIGN_CENTER;
+                    doc.Add(imagen);
+                    doc.Close();
+                }
+            }
+
+            System.Diagnostics.Process.Start("explorer", pdfPath);
+        }
+
+        private void GenerarReciboComoImagen(string outputPath, string contenido)
+        {
+            int ancho = 919;
+            int alto = 564;
+            Bitmap bmp = new Bitmap(ancho, alto);
+            Graphics g = Graphics.FromImage(bmp);
+
+            g.Clear(Color.White);
+
+            // Borde negro
+            Pen borde = new Pen(Color.Black, 4);
+            g.DrawRectangle(borde, 0, 0, ancho - 1, alto - 1);
+
+            // Título
+            System.Drawing.Font fontTitulo = new System.Drawing.Font("Segoe UI", 26, FontStyle.Bold);
+            Brush brushTitulo = Brushes.DarkBlue;
+            string titulo = "RECIBO DE PAGO";
+            SizeF sizeTitulo = g.MeasureString(titulo, fontTitulo);
+            g.DrawString(titulo, fontTitulo, brushTitulo, (ancho - sizeTitulo.Width) / 2, 40);
+
+            // Contenido (en bloque)
+            System.Drawing.Font fontTexto = new System.Drawing.Font("Segoe UI", 16, FontStyle.Regular);
+            Brush brushTexto = Brushes.Black;
+            float x = 80;
+            float y = 120;
+
+            string[] lineas = contenido.Split('\n');
+            foreach (string linea in lineas)
+            {
+                g.DrawString(linea, fontTexto, brushTexto, x, y);
+                y += 36;
+            }
+
+            g.Dispose();
+            bmp.Save(outputPath, ImageFormat.Png);
+            bmp.Dispose();
+
+            System.Diagnostics.Process.Start("explorer", outputPath);
+        }
+
+
+        private void btnImprimirRecibo_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtDni.Text))
+            {
+                MessageBox.Show("Debe buscar un DNI antes de imprimir el recibo.");
+                return;
+            }
+
+            string dni = txtDni.Text.Trim();
+            string nombre = lblNombre.Text;
+            string apellido = lblApellido.Text;
+            string tipoPersona = lblResultado.Text;
+            DateTime hoy = DateTime.Today;
+            string contenido = "";
+
+            if (tipoPersona == "SOCIO")
+            {
+                int idSocio = Convert.ToInt32(grpSocio.Tag);
+                string query = @"SELECT fechaPagoSocio, formaPago, 
+                                (SELECT valorCuota FROM socio WHERE idSocio = @id) AS monto
+                         FROM cuotasocio 
+                         WHERE idSocio = @id AND fechaPagoSocio = CURDATE()
+                         ORDER BY fechaPagoSocio DESC LIMIT 1";
+
+                MySqlCommand cmd = new MySqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@id", idSocio);
+
+                if (conexion.State != ConnectionState.Open)
+                    conexion.Open();
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        DateTime fechaPago = Convert.ToDateTime(reader["fechaPagoSocio"]);
+                        string formaPago = reader["formaPago"].ToString();
+                        decimal monto = Convert.ToDecimal(reader["monto"]);
+
+                        // aplicar descuentos/recargos
+                        if (formaPago == "Efectivo")
+                            monto *= 0.90m;
+                        else if (formaPago == "6 cuotas sin interés")
+                            monto *= 1.10m;
+
+                        contenido = $"RECIBO DE PAGO\n\n" +
+                                    $"Fecha: {fechaPago:dd/MM/yyyy}\n" +
+                                    $"DNI: {dni}\n" +
+                                    $"Nombre: {nombre} {apellido}\n" +
+                                    $"Tipo: SOCIO\n" +
+                                    $"Detalle: Cuota mensual\n" +
+                                    $"Forma de pago: {formaPago}\n" +
+                                    $"Monto abonado: ${monto:F2}";
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se encontró un pago de hoy para este socio.");
+                        return;
+                    }
+                }
+            }
+            else if (tipoPersona == "NO SOCIO")
+            {
+                int idNoSocio = Convert.ToInt32(grpNoSocio.Tag);
+                string query = @"SELECT a.nombreActividad, a.valorActividad
+                         FROM pagodiario pd
+                         JOIN actividad a ON pd.idActividad = a.idActividad
+                         WHERE pd.idNoSocio = @id AND pd.fechaPagoDiario = CURDATE()";
+
+                MySqlCommand cmd = new MySqlCommand(query, conexion);
+                cmd.Parameters.AddWithValue("@id", idNoSocio);
+
+                if (conexion.State != ConnectionState.Open)
+                    conexion.Open();
+
+                List<string> actividades = new List<string>();
+                decimal total = 0;
+
+                using (MySqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        string act = reader["nombreActividad"].ToString();
+                        decimal valor = Convert.ToDecimal(reader["valorActividad"]);
+                        actividades.Add($"{act} - ${valor:F2}");
+                        total += valor;
+                    }
+                }
+
+                if (actividades.Count == 0)
+                {
+                    MessageBox.Show("No se encontraron pagos registrados hoy para este no socio.");
+                    return;
+                }
+
+                string listaActividades = string.Join("\n", actividades);
+
+                contenido = $"RECIBO DE PAGO\n\n" +
+                            $"Fecha: {hoy:dd/MM/yyyy}\n" +
+                            $"DNI: {dni}\n" +
+                            $"Nombre: {nombre} {apellido}\n" +
+                            $"Tipo: NO SOCIO\n" +
+                            $"Detalle:\n{listaActividades}\n\n" +
+                            $"Total abonado: ${total:F2}";
+            }
+            else
+            {
+                MessageBox.Show("Debe identificar primero si la persona es socio o no socio.");
+                return;
+            }
+
+            string outputPath = Path.Combine(Path.GetTempPath(), $"Recibo_{dni}_{DateTime.Now.Ticks}.png");
+            GenerarReciboComoImagen(outputPath, contenido);
+            GuardarComoPdf(outputPath, "Recibo");
+        }
+
+
 
     }
 }

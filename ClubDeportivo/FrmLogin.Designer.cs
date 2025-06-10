@@ -95,7 +95,7 @@
             // 
             // ptbLogo
             // 
-            ptbLogo.Image = Properties.Resources.logo;
+            ptbLogo.Image = (Image)resources.GetObject("ptbLogo.Image");
             ptbLogo.Location = new Point(27, 33);
             ptbLogo.Name = "ptbLogo";
             ptbLogo.Size = new Size(150, 156);

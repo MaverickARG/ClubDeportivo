@@ -22,6 +22,7 @@
 
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPagos));
             lblDni = new Label();
             txtDni = new TextBox();
             btnBuscar = new Button();
@@ -41,6 +42,7 @@
             dgvDetalle = new DataGridView();
             btnImprimirCarnet = new Button();
             btnImprimirPago = new Button();
+            btnImprimirRecibo = new Button();
             grpSocio.SuspendLayout();
             grpNoSocio.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvDetalle).BeginInit();
@@ -48,7 +50,7 @@
             // 
             // lblDni
             // 
-            lblDni.Location = new Point(157, 33);
+            lblDni.Location = new Point(31, 56);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(51, 23);
             lblDni.TabIndex = 0;
@@ -56,7 +58,7 @@
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(210, 30);
+            txtDni.Location = new Point(84, 53);
             txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(118, 23);
@@ -64,7 +66,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(355, 33);
+            btnBuscar.Location = new Point(229, 56);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(75, 23);
             btnBuscar.TabIndex = 2;
@@ -73,11 +75,13 @@
             // 
             // lblResultado
             // 
-            lblResultado.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblResultado.Location = new Point(210, 59);
+            lblResultado.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lblResultado.Font = new Font("Segoe UI", 26.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblResultado.Location = new Point(334, 34);
             lblResultado.Name = "lblResultado";
-            lblResultado.Size = new Size(154, 23);
+            lblResultado.Size = new Size(216, 47);
             lblResultado.TabIndex = 3;
+            lblResultado.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // grpSocio
             // 
@@ -175,7 +179,7 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(34, 91);
+            lblNombre.Location = new Point(42, 104);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(0, 15);
             lblNombre.TabIndex = 7;
@@ -183,7 +187,7 @@
             // lblApellido
             // 
             lblApellido.AutoSize = true;
-            lblApellido.Location = new Point(34, 124);
+            lblApellido.Location = new Point(42, 143);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(0, 15);
             lblApellido.TabIndex = 8;
@@ -210,7 +214,7 @@
             btnImprimirCarnet.Text = "Imprimir Carnet";
             btnImprimirCarnet.UseVisualStyleBackColor = true;
             btnImprimirCarnet.Visible = false;
-            btnImprimirCarnet.Click += new EventHandler(btnImprimirCarnet_Click);
+            btnImprimirCarnet.Click += btnImprimirCarnet_Click;
             // 
             // btnImprimirPago
             // 
@@ -221,12 +225,22 @@
             btnImprimirPago.Text = "Imprimir Pago";
             btnImprimirPago.UseVisualStyleBackColor = true;
             btnImprimirPago.Visible = false;
-            btnImprimirPago.Click += new EventHandler(btnImprimirPago_Click);
+            btnImprimirPago.Click += btnImprimirPago_Click;
+            // 
+            // btnImprimirRecibo
+            // 
+            btnImprimirRecibo.Location = new Point(68, 415);
+            btnImprimirRecibo.Name = "btnImprimirRecibo";
+            btnImprimirRecibo.Size = new Size(75, 23);
+            btnImprimirRecibo.TabIndex = 13;
+            btnImprimirRecibo.Text = "Imprimir recibo";
+            btnImprimirRecibo.Click += btnImprimirRecibo_Click;
             // 
             // FrmPagos
             // 
             AcceptButton = btnBuscar;
             ClientSize = new Size(584, 461);
+            Controls.Add(btnImprimirRecibo);
             Controls.Add(btnImprimirPago);
             Controls.Add(btnImprimirCarnet);
             Controls.Add(dgvDetalle);
@@ -239,6 +253,7 @@
             Controls.Add(lblResultado);
             Controls.Add(grpSocio);
             Controls.Add(grpNoSocio);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmPagos";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pagos";
@@ -256,5 +271,6 @@
         private DataGridView dgvDetalle;
         private Button btnImprimirCarnet;
         private Button btnImprimirPago;
+        private Button btnImprimirRecibo;
     }
 }

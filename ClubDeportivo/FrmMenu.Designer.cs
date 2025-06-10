@@ -43,11 +43,11 @@
             pagosToolStripMenuItem = new ToolStripMenuItem();
             pagoDeCuotaSocioToolStripMenuItem = new ToolStripMenuItem();
             pagoDiarioNoSocioToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1 = new MenuStrip();
+            label1 = new Label();
             ayudaToolStripMenuItem = new ToolStripMenuItem();
             manualToolStripMenuItem = new ToolStripMenuItem();
             acercaDeToolStripMenuItem = new ToolStripMenuItem();
-            menuStrip1 = new MenuStrip();
-            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvVencimientos).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pibLogo).BeginInit();
             menuStrip1.SuspendLayout();
@@ -93,7 +93,6 @@
             // pibLogo
             // 
             pibLogo.AccessibleRole = AccessibleRole.Alert;
-            pibLogo.Image = Properties.Resources.logo;
             resources.ApplyResources(pibLogo, "pibLogo");
             pibLogo.Name = "pibLogo";
             pibLogo.TabStop = false;
@@ -151,6 +150,17 @@
             pagoDiarioNoSocioToolStripMenuItem.Name = "pagoDiarioNoSocioToolStripMenuItem";
             resources.ApplyResources(pagoDiarioNoSocioToolStripMenuItem, "pagoDiarioNoSocioToolStripMenuItem");
             // 
+            // menuStrip1
+            // 
+            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, noToolStripMenuItem, pagosToolStripMenuItem, ayudaToolStripMenuItem });
+            resources.ApplyResources(menuStrip1, "menuStrip1");
+            menuStrip1.Name = "menuStrip1";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(label1, "label1");
+            label1.Name = "label1";
+            // 
             // ayudaToolStripMenuItem
             // 
             ayudaToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { manualToolStripMenuItem, acercaDeToolStripMenuItem });
@@ -166,17 +176,6 @@
             // 
             acercaDeToolStripMenuItem.Name = "acercaDeToolStripMenuItem";
             resources.ApplyResources(acercaDeToolStripMenuItem, "acercaDeToolStripMenuItem");
-            // 
-            // menuStrip1
-            // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, noToolStripMenuItem, pagosToolStripMenuItem, ayudaToolStripMenuItem });
-            resources.ApplyResources(menuStrip1, "menuStrip1");
-            menuStrip1.Name = "menuStrip1";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
             // 
             // FrmMenu
             // 
@@ -217,10 +216,10 @@
         private ToolStripMenuItem pagosToolStripMenuItem;
         private ToolStripMenuItem pagoDeCuotaSocioToolStripMenuItem;
         private ToolStripMenuItem pagoDiarioNoSocioToolStripMenuItem;
+        private MenuStrip menuStrip1;
+        private Label label1;
         private ToolStripMenuItem ayudaToolStripMenuItem;
         private ToolStripMenuItem manualToolStripMenuItem;
         private ToolStripMenuItem acercaDeToolStripMenuItem;
-        private MenuStrip menuStrip1;
-        private Label label1;
     }
 }
