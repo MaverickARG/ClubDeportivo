@@ -1,12 +1,14 @@
-﻿using System;
+﻿using iTextSharp.text;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.qrcode;
+using MySql.Data.MySqlClient;
+using System;
 using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using System.Drawing.Imaging;
 using System.IO;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
+using System.Windows.Forms;
+using QRCoder;
 
 namespace ClubDeportivo
 {
@@ -537,7 +539,7 @@ namespace ClubDeportivo
             System.Diagnostics.Process.Start("explorer", pdfPath);
         }
 
-        private void GenerarReciboComoImagen(string outputPath, string contenido)
+        private void GenerarReciboComoImagen(string outputPath, string contenido, string qrTexto)
         {
             int ancho = 919;
             int alto = 564;
@@ -569,6 +571,14 @@ namespace ClubDeportivo
                 g.DrawString(linea, fontTexto, brushTexto, x, y);
                 y += 36;
             }
+
+            // Código QR
+            QRCodeGenerator qrGen = new QRCodeGenerator();
+            QRCodeData qrData = qrGen.CreateQrCode(qrTexto, QRCodeGenerator.ECCLevel.Q);
+            QRCoder.QRCode qr = new QRCoder.QRCode(qrData);
+            Bitmap qrImage = qr.GetGraphic(5);
+            g.DrawImage(qrImage, ancho - 200, 120, 120, 120);
+
 
             g.Dispose();
             bmp.Save(outputPath, ImageFormat.Png);
@@ -622,7 +632,7 @@ namespace ClubDeportivo
                         else if (formaPago == "6 cuotas sin interés")
                             monto *= 1.10m;
 
-                        contenido = $"RECIBO DE PAGO\n\n" +
+                        contenido = $"\n\n" +
                                     $"Fecha: {fechaPago:dd/MM/yyyy}\n" +
                                     $"DNI: {dni}\n" +
                                     $"Nombre: {nombre} {apellido}\n" +
@@ -674,7 +684,7 @@ namespace ClubDeportivo
 
                 string listaActividades = string.Join("\n", actividades);
 
-                contenido = $"RECIBO DE PAGO\n\n" +
+                contenido = $"Datos del CLiente\n\n" +
                             $"Fecha: {hoy:dd/MM/yyyy}\n" +
                             $"DNI: {dni}\n" +
                             $"Nombre: {nombre} {apellido}\n" +
@@ -689,7 +699,8 @@ namespace ClubDeportivo
             }
 
             string outputPath = Path.Combine(Path.GetTempPath(), $"Recibo_{dni}_{DateTime.Now.Ticks}.png");
-            GenerarReciboComoImagen(outputPath, contenido);
+            string qrTexto = $"DNI: {dni} - Fecha: {hoy:dd/MM/yyyy}";
+            GenerarReciboComoImagen(outputPath, contenido, qrTexto);
             GuardarComoPdf(outputPath, "Recibo");
         }
 
