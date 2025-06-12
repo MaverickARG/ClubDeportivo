@@ -193,21 +193,37 @@ namespace ClubDeportivo
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
+            Console.WriteLine(">>> Se llamó a btnModificar_Click");
+
             if (string.IsNullOrWhiteSpace(lblDni.Text))
             {
-                MessageBox.Show("Debe buscar una persona antes de modificar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Debe buscar una persona antes de modificar.");
                 return;
             }
 
-            int dni = int.Parse(lblDni.Text);
+            if (!int.TryParse(lblDni.Text, out int dniActual))
+            {
+                MessageBox.Show("DNI inválido.");
+                return;
+            }
 
-            // Abrimos el formulario de modificación y le pasamos el DNI
-            FrmModificarPersona frm = new FrmModificarPersona(dni);
-            frm.ShowDialog();
+            using (FrmModificarPersona frm = new FrmModificarPersona(dniActual))
+            {
+                var result = frm.ShowDialog();
 
-            // Volvemos a consultar los datos actualizados
-            btnBuscar.PerformClick();
+                Console.WriteLine(">>> DialogResult: " + result);
+
+                if (result == DialogResult.OK)
+                {
+                    txtDni.Text = frm.NuevoDni.ToString();
+                    btnBuscar.PerformClick(); // Esto solo se ejecuta 1 vez si hubo guardado
+                }
+            }
         }
+
+
+
+
 
 
     }

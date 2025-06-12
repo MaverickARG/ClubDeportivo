@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmModificarPersona));
             lblNombre = new Label();
             txtNombre = new TextBox();
             label2 = new Label();
@@ -41,6 +40,8 @@
             groupBox1 = new GroupBox();
             txtDni = new TextBox();
             lblDni = new Label();
+            rbSocio = new RadioButton();
+            rbNoSocio = new RadioButton();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -96,16 +97,17 @@
             // 
             // btnGuardar
             // 
-            btnGuardar.Location = new Point(19, 200);
+            btnGuardar.Location = new Point(19, 218);
             btnGuardar.Name = "btnGuardar";
             btnGuardar.Size = new Size(75, 23);
             btnGuardar.TabIndex = 6;
             btnGuardar.Text = "Guardar";
             btnGuardar.UseVisualStyleBackColor = true;
+            btnGuardar.Click += btnGuardar_Click;
             // 
             // btnCerrar
             // 
-            btnCerrar.Location = new Point(191, 200);
+            btnCerrar.Location = new Point(188, 218);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(75, 23);
             btnCerrar.TabIndex = 7;
@@ -126,6 +128,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(rbNoSocio);
+            groupBox1.Controls.Add(rbSocio);
             groupBox1.Controls.Add(txtDni);
             groupBox1.Controls.Add(lblDni);
             groupBox1.Controls.Add(btnGuardar);
@@ -159,6 +163,28 @@
             lblDni.TabIndex = 8;
             lblDni.Text = "DNI: ";
             // 
+            // rbSocio
+            // 
+            rbSocio.AutoSize = true;
+            rbSocio.Location = new Point(31, 178);
+            rbSocio.Name = "rbSocio";
+            rbSocio.Size = new Size(54, 19);
+            rbSocio.TabIndex = 10;
+            rbSocio.TabStop = true;
+            rbSocio.Text = "Socio";
+            rbSocio.UseVisualStyleBackColor = true;
+            // 
+            // rbNoSocio
+            // 
+            rbNoSocio.AutoSize = true;
+            rbNoSocio.Location = new Point(118, 178);
+            rbNoSocio.Name = "rbNoSocio";
+            rbNoSocio.Size = new Size(73, 19);
+            rbNoSocio.TabIndex = 11;
+            rbNoSocio.TabStop = true;
+            rbNoSocio.Text = "No Socio";
+            rbNoSocio.UseVisualStyleBackColor = true;
+            // 
             // FrmModificarPersona
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -166,16 +192,17 @@
             ClientSize = new Size(344, 381);
             Controls.Add(groupBox1);
             Controls.Add(label5);
-            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FrmModificarPersona";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Modificar Datos";
+            Load += FrmModificarPersona_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
-        }
 
+
+        }
         #endregion
 
         private Label lblNombre;
@@ -190,5 +217,7 @@
         private GroupBox groupBox1;
         private Label lblDni;
         private TextBox txtDni;
+        private RadioButton rbNoSocio;
+        private RadioButton rbSocio;
     }
 }
