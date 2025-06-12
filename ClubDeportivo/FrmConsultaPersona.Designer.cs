@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmConsultaPersona));
             btnBuscar = new Button();
             txtDni = new TextBox();
             label1 = new Label();
@@ -49,11 +50,13 @@
             btnImprimirCarnet = new Button();
             label9 = new Label();
             lblEstado = new Label();
+            grbConsulta = new GroupBox();
+            grbConsulta.SuspendLayout();
             SuspendLayout();
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(241, 67);
+            btnBuscar.Location = new Point(196, 52);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(75, 23);
             btnBuscar.TabIndex = 0;
@@ -63,7 +66,7 @@
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(83, 67);
+            txtDni.Location = new Point(36, 53);
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(100, 23);
             txtDni.TabIndex = 1;
@@ -71,7 +74,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(83, 39);
+            label1.Location = new Point(36, 26);
             label1.Name = "label1";
             label1.Size = new Size(119, 15);
             label1.TabIndex = 6;
@@ -80,7 +83,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(83, 136);
+            label2.Location = new Point(17, 21);
             label2.Name = "label2";
             label2.Size = new Size(51, 15);
             label2.TabIndex = 7;
@@ -89,7 +92,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(83, 160);
+            label3.Location = new Point(17, 45);
             label3.Name = "label3";
             label3.Size = new Size(51, 15);
             label3.TabIndex = 8;
@@ -98,7 +101,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(84, 206);
+            label4.Location = new Point(18, 91);
             label4.Name = "label4";
             label4.Size = new Size(25, 15);
             label4.TabIndex = 9;
@@ -107,7 +110,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(84, 231);
+            label5.Location = new Point(18, 116);
             label5.Name = "label5";
             label5.Size = new Size(96, 15);
             label5.TabIndex = 10;
@@ -116,7 +119,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(83, 258);
+            label6.Location = new Point(17, 143);
             label6.Name = "label6";
             label6.Size = new Size(76, 15);
             label6.TabIndex = 11;
@@ -125,7 +128,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new Point(83, 282);
+            label7.Location = new Point(17, 167);
             label7.Name = "label7";
             label7.Size = new Size(79, 15);
             label7.TabIndex = 12;
@@ -134,7 +137,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(83, 308);
+            label8.Location = new Point(17, 193);
             label8.Name = "label8";
             label8.Size = new Size(68, 15);
             label8.TabIndex = 13;
@@ -143,7 +146,7 @@
             // lblNombre
             // 
             lblNombre.AutoSize = true;
-            lblNombre.Location = new Point(241, 136);
+            lblNombre.Location = new Point(175, 21);
             lblNombre.Name = "lblNombre";
             lblNombre.Size = new Size(49, 15);
             lblNombre.TabIndex = 14;
@@ -152,7 +155,7 @@
             // lblApellido
             // 
             lblApellido.AutoSize = true;
-            lblApellido.Location = new Point(241, 160);
+            lblApellido.Location = new Point(175, 45);
             lblApellido.Name = "lblApellido";
             lblApellido.Size = new Size(49, 15);
             lblApellido.TabIndex = 15;
@@ -161,7 +164,7 @@
             // lblDni
             // 
             lblDni.AutoSize = true;
-            lblDni.Location = new Point(241, 206);
+            lblDni.Location = new Point(175, 91);
             lblDni.Name = "lblDni";
             lblDni.Size = new Size(25, 15);
             lblDni.TabIndex = 16;
@@ -170,7 +173,7 @@
             // lblAptoFisico
             // 
             lblAptoFisico.AutoSize = true;
-            lblAptoFisico.Location = new Point(241, 231);
+            lblAptoFisico.Location = new Point(175, 116);
             lblAptoFisico.Name = "lblAptoFisico";
             lblAptoFisico.Size = new Size(31, 15);
             lblAptoFisico.TabIndex = 17;
@@ -179,7 +182,7 @@
             // lblFechaAlta
             // 
             lblFechaAlta.AutoSize = true;
-            lblFechaAlta.Location = new Point(241, 258);
+            lblFechaAlta.Location = new Point(175, 143);
             lblFechaAlta.Name = "lblFechaAlta";
             lblFechaAlta.Size = new Size(58, 15);
             lblFechaAlta.TabIndex = 18;
@@ -188,7 +191,7 @@
             // lblCarnetActivo
             // 
             lblCarnetActivo.AutoSize = true;
-            lblCarnetActivo.Location = new Point(241, 282);
+            lblCarnetActivo.Location = new Point(175, 167);
             lblCarnetActivo.Name = "lblCarnetActivo";
             lblCarnetActivo.Size = new Size(40, 15);
             lblCarnetActivo.TabIndex = 19;
@@ -197,7 +200,7 @@
             // lblValorCuota
             // 
             lblValorCuota.AutoSize = true;
-            lblValorCuota.Location = new Point(241, 308);
+            lblValorCuota.Location = new Point(175, 193);
             lblValorCuota.Name = "lblValorCuota";
             lblValorCuota.Size = new Size(66, 15);
             lblValorCuota.TabIndex = 20;
@@ -205,7 +208,7 @@
             // 
             // btnCerrar
             // 
-            btnCerrar.Location = new Point(241, 347);
+            btnCerrar.Location = new Point(218, 326);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new Size(75, 23);
             btnCerrar.TabIndex = 21;
@@ -215,7 +218,7 @@
             // 
             // btnImprimirCarnet
             // 
-            btnImprimirCarnet.Location = new Point(79, 347);
+            btnImprimirCarnet.Location = new Point(36, 326);
             btnImprimirCarnet.Name = "btnImprimirCarnet";
             btnImprimirCarnet.Size = new Size(100, 23);
             btnImprimirCarnet.TabIndex = 22;
@@ -226,7 +229,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(84, 182);
+            label9.Location = new Point(18, 67);
             label9.Name = "label9";
             label9.Size = new Size(42, 15);
             label9.TabIndex = 23;
@@ -235,41 +238,55 @@
             // lblEstado
             // 
             lblEstado.AutoSize = true;
-            lblEstado.Location = new Point(241, 182);
+            lblEstado.Location = new Point(175, 67);
             lblEstado.Name = "lblEstado";
             lblEstado.Size = new Size(44, 15);
             lblEstado.TabIndex = 24;
             lblEstado.Text = "label10";
+            // 
+            // grbConsulta
+            // 
+            grbConsulta.Controls.Add(lblEstado);
+            grbConsulta.Controls.Add(label2);
+            grbConsulta.Controls.Add(label9);
+            grbConsulta.Controls.Add(label3);
+            grbConsulta.Controls.Add(label4);
+            grbConsulta.Controls.Add(label5);
+            grbConsulta.Controls.Add(lblValorCuota);
+            grbConsulta.Controls.Add(label6);
+            grbConsulta.Controls.Add(lblCarnetActivo);
+            grbConsulta.Controls.Add(label7);
+            grbConsulta.Controls.Add(lblFechaAlta);
+            grbConsulta.Controls.Add(label8);
+            grbConsulta.Controls.Add(lblAptoFisico);
+            grbConsulta.Controls.Add(lblNombre);
+            grbConsulta.Controls.Add(lblDni);
+            grbConsulta.Controls.Add(lblApellido);
+            grbConsulta.Location = new Point(21, 83);
+            grbConsulta.Name = "grbConsulta";
+            grbConsulta.Size = new Size(297, 226);
+            grbConsulta.TabIndex = 25;
+            grbConsulta.TabStop = false;
             // 
             // FrmConsultaPersona
             // 
             AcceptButton = btnBuscar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(lblEstado);
-            Controls.Add(label9);
-            Controls.Add(btnImprimirCarnet);
-            Controls.Add(btnCerrar);
-            Controls.Add(lblValorCuota);
-            Controls.Add(lblCarnetActivo);
-            Controls.Add(lblFechaAlta);
-            Controls.Add(lblAptoFisico);
-            Controls.Add(lblDni);
-            Controls.Add(lblApellido);
-            Controls.Add(lblNombre);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(label6);
-            Controls.Add(label5);
-            Controls.Add(label4);
-            Controls.Add(label3);
-            Controls.Add(label2);
+            ClientSize = new Size(344, 381);
+            Controls.Add(grbConsulta);
             Controls.Add(label1);
             Controls.Add(txtDni);
             Controls.Add(btnBuscar);
+            Controls.Add(btnImprimirCarnet);
+            Controls.Add(btnCerrar);
+            Icon = (Icon)resources.GetObject("$this.Icon");
+            MaximizeBox = false;
             Name = "FrmConsultaPersona";
-            Text = "FrmConsultaPersona";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Consulta Socio / No Socio";
+            grbConsulta.ResumeLayout(false);
+            grbConsulta.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -297,5 +314,6 @@
         private Button btnImprimirCarnet;
         private Label label9;
         private Label lblEstado;
+        private GroupBox grbConsulta;
     }
 }

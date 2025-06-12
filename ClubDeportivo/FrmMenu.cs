@@ -103,5 +103,11 @@ namespace ClubDeportivo
         {
 
         }
+
+        private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAcercaDe form = new FrmAcercaDe();
+            form.ShowDialog(); // Modal
+        }
     }
 }

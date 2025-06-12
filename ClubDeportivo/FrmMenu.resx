@@ -4820,12 +4820,6 @@
   <data name="&gt;&gt;pibLogo.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="sociosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
-  </data>
-  <data name="sociosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Socios</value>
-  </data>
   <data name="agregarUnNuevoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>200, 22</value>
   </data>
@@ -4838,11 +4832,11 @@
   <data name="informacionDeSocioToolStripMenuItem.Text" xml:space="preserve">
     <value>Informacion de socio</value>
   </data>
-  <data name="noToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 20</value>
+  <data name="sociosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
   </data>
-  <data name="noToolStripMenuItem.Text" xml:space="preserve">
-    <value>No Socios</value>
+  <data name="sociosToolStripMenuItem.Text" xml:space="preserve">
+    <value>Socios</value>
   </data>
   <data name="agregarNoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>195, 22</value>
@@ -4856,27 +4850,45 @@
   <data name="informacionNoSociosToolStripMenuItem.Text" xml:space="preserve">
     <value>Informacion No Socios</value>
   </data>
+  <data name="noToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 20</value>
+  </data>
+  <data name="noToolStripMenuItem.Text" xml:space="preserve">
+    <value>No Socios</value>
+  </data>
+  <data name="pagoDeCuotaSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="pagoDeCuotaSocioToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ingresar Pago</value>
+  </data>
   <data name="pagosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 20</value>
   </data>
   <data name="pagosToolStripMenuItem.Text" xml:space="preserve">
     <value>Pagos</value>
   </data>
-  <data name="pagoDeCuotaSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
-  </data>
-  <data name="pagoDeCuotaSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ingresar Pago</value>
-  </data>
-  <data name="pagoDiarioNoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>183, 22</value>
-  </data>
-  <data name="pagoDiarioNoSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Pago diario no Socio</value>
-  </data>
   <metadata name="menuStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>11, 10</value>
   </metadata>
+  <data name="manualToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="manualToolStripMenuItem.Text" xml:space="preserve">
+    <value>Manual</value>
+  </data>
+  <data name="acercaDeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>180, 22</value>
+  </data>
+  <data name="acercaDeToolStripMenuItem.Text" xml:space="preserve">
+    <value>Acerca De</value>
+  </data>
+  <data name="ayudaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>53, 20</value>
+  </data>
+  <data name="ayudaToolStripMenuItem.Text" xml:space="preserve">
+    <value>Ayuda</value>
+  </data>
   <data name="menuStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 0</value>
   </data>
@@ -4930,24 +4942,6 @@
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="ayudaToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
-  </data>
-  <data name="ayudaToolStripMenuItem.Text" xml:space="preserve">
-    <value>Ayuda</value>
-  </data>
-  <data name="manualToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="manualToolStripMenuItem.Text" xml:space="preserve">
-    <value>Manual</value>
-  </data>
-  <data name="acercaDeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
-  </data>
-  <data name="acercaDeToolStripMenuItem.Text" xml:space="preserve">
-    <value>Acerca De</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -6445,12 +6439,6 @@
     <value>pagoDeCuotaSocioToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;pagoDeCuotaSocioToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;pagoDiarioNoSocioToolStripMenuItem.Name" xml:space="preserve">
-    <value>pagoDiarioNoSocioToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;pagoDiarioNoSocioToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;ayudaToolStripMenuItem.Name" xml:space="preserve">
