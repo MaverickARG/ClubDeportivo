@@ -25,6 +25,7 @@ namespace ClubDeportivo
         public FrmConsultaPersona()
         {
             InitializeComponent();
+            btnModificar.Click += btnModificar_Click;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -80,7 +81,7 @@ namespace ClubDeportivo
                             lblCarnetActivo.Text = Convert.ToBoolean(reader["carnetActivo"]) ? "Sí" : "No";
                             lblValorCuota.Text = reader["valorCuota"] != DBNull.Value
                             ? "$" + Convert.ToDouble(reader["valorCuota"]).ToString("0.00")
-                            : "Falta gestionar pago en la pestaña 'Pagos'";  
+                            : "Falta gestionar pago en la pestaña 'Pagos'";
 
 
 
@@ -188,6 +189,24 @@ namespace ClubDeportivo
         private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
             e.Graphics.DrawImage(carnetImagen, 50, 50);
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(lblDni.Text))
+            {
+                MessageBox.Show("Debe buscar una persona antes de modificar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            int dni = int.Parse(lblDni.Text);
+
+            // Abrimos el formulario de modificación y le pasamos el DNI
+            FrmModificarPersona frm = new FrmModificarPersona(dni);
+            frm.ShowDialog();
+
+            // Volvemos a consultar los datos actualizados
+            btnBuscar.PerformClick();
         }
 
 

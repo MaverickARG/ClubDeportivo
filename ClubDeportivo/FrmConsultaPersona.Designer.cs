@@ -51,6 +51,7 @@
             label9 = new Label();
             lblEstado = new Label();
             grbConsulta = new GroupBox();
+            btnModificar = new Button();
             grbConsulta.SuspendLayout();
             SuspendLayout();
             // 
@@ -218,7 +219,7 @@
             // 
             // btnImprimirCarnet
             // 
-            btnImprimirCarnet.Location = new Point(36, 326);
+            btnImprimirCarnet.Location = new Point(21, 326);
             btnImprimirCarnet.Name = "btnImprimirCarnet";
             btnImprimirCarnet.Size = new Size(100, 23);
             btnImprimirCarnet.TabIndex = 22;
@@ -268,12 +269,23 @@
             grbConsulta.TabIndex = 25;
             grbConsulta.TabStop = false;
             // 
+            // btnModificar
+            // 
+            btnModificar.Location = new Point(130, 326);
+            btnModificar.Name = "btnModificar";
+            btnModificar.Size = new Size(75, 23);
+            btnModificar.TabIndex = 26;
+            btnModificar.Text = "Modificar";
+            btnModificar.UseVisualStyleBackColor = true;
+            btnModificar.Click += btnModificar_Click;
+            // 
             // FrmConsultaPersona
             // 
             AcceptButton = btnBuscar;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(344, 381);
+            Controls.Add(btnModificar);
             Controls.Add(grbConsulta);
             Controls.Add(label1);
             Controls.Add(txtDni);
@@ -315,5 +327,6 @@
         private Label label9;
         private Label lblEstado;
         private GroupBox grbConsulta;
+        private Button btnModificar;
     }
 }

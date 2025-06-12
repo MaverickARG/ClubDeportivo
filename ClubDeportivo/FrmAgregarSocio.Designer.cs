@@ -125,7 +125,7 @@
             // chkAptoFisico
             // 
             chkAptoFisico.AutoSize = true;
-            chkAptoFisico.Location = new Point(118, 116);
+            chkAptoFisico.Location = new Point(115, 116);
             chkAptoFisico.Name = "chkAptoFisico";
             chkAptoFisico.Size = new Size(15, 14);
             chkAptoFisico.TabIndex = 4;
@@ -144,7 +144,7 @@
             groupBox1.Controls.Add(txtApellido);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label3);
-            groupBox1.Location = new Point(21, 119);
+            groupBox1.Location = new Point(21, 135);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(304, 226);
             groupBox1.TabIndex = 8;
