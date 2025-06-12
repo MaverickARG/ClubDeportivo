@@ -537,7 +537,7 @@ namespace ClubDeportivo
 
 
 
-            private void GenerarCarnetDesdeBitmap(Bitmap plantilla, string titulo, string dni, string nombre, string apellido, string? vencimiento, List<string>? actividades, string outputPath)
+            public static void GenerarCarnetDesdeBitmap(Bitmap plantilla, string titulo, string dni, string nombre, string apellido, string? vencimiento, List<string>? actividades, string outputPath)
         {
             Bitmap bmp = new Bitmap(plantilla);
             Graphics g = Graphics.FromImage(bmp);
@@ -606,7 +606,7 @@ namespace ClubDeportivo
 
 
 
-        private void GuardarComoPdf(string imagenPath, string titulo)
+        public static void GuardarComoPdf(string imagenPath, string titulo)
         {
             string pdfPath = Path.Combine(Path.GetTempPath(), $"{titulo}_{DateTime.Now.Ticks}.pdf");
 

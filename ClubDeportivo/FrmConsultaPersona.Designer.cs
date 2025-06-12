@@ -68,6 +68,7 @@
             // txtDni
             // 
             txtDni.Location = new Point(38, 52);
+            txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(100, 23);
             txtDni.TabIndex = 1;

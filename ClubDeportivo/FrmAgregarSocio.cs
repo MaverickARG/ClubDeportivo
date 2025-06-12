@@ -24,16 +24,12 @@ namespace ClubDeportivo
             string apellido = txtApellido.Text.Trim();
             string dniTexto = txtDni.Text.Trim();
 
-
-            // Validar campos vacíos
-            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(apellido) ||
-                string.IsNullOrEmpty(dniTexto))
+            if (string.IsNullOrEmpty(nombre) || string.IsNullOrEmpty(apellido) || string.IsNullOrEmpty(dniTexto))
             {
                 MessageBox.Show("Todos los campos son obligatorios.", "Campos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Validar que DNI (entre 7 y 8 numeros) y Cuota sean números válidos
             if (!int.TryParse(dniTexto, out int dni))
             {
                 MessageBox.Show("El DNI debe ser un número entero válido.", "Error de formato", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -46,8 +42,6 @@ namespace ClubDeportivo
                 return;
             }
 
-            //declaracion de aptofisico y fechaAlta
-
             bool aptoFisico = chkAptoFisico.Checked;
             DateTime fechaAlta = DateTime.Now;
 
@@ -55,7 +49,6 @@ namespace ClubDeportivo
             {
                 connection.Open();
 
-                // Verificar si ya existe ese DNI
                 string verificarQuery = "SELECT COUNT(*) FROM Persona WHERE dni = @dni";
                 MySqlCommand verificarCmd = new MySqlCommand(verificarQuery, connection);
                 verificarCmd.Parameters.AddWithValue("@dni", dni);
@@ -67,7 +60,6 @@ namespace ClubDeportivo
                     return;
                 }
 
-                // Insertar en transacción
                 MySqlTransaction transaction = connection.BeginTransaction();
 
                 try
@@ -113,6 +105,5 @@ namespace ClubDeportivo
         {
 
         }
-
     }
 }

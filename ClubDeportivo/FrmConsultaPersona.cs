@@ -158,33 +158,40 @@ namespace ClubDeportivo
                 return;
             }
 
-            carnetImagen = new Bitmap(400, 200);
+            string dni = lblDni.Text;
+            string nombre = lblNombre.Text;
+            string apellido = lblApellido.Text;
+            string estado = lblEstado.Text;
+            string vencimiento = lblFechaAlta.Text == "-" ? null : lblFechaAlta.Text;
 
-            using (Graphics g = Graphics.FromImage(carnetImagen))
+            Bitmap plantilla;
+            string titulo;
+            List<string>? actividades = null;
+
+            if (estado == "Socio")
             {
-                g.Clear(Color.White);
-                g.FillRectangle(Brushes.DarkBlue, 0, 0, 400, 40);
-                g.DrawString("CLUB DEPORTIVO", new Font("Arial", 16, FontStyle.Bold), Brushes.White, new PointF(10, 10));
+                plantilla = new Bitmap(Properties.Resources.plantilla_socio);
+                titulo = "CARNET";
+            }
+            else if (estado == "No Socio")
+            {
+                plantilla = new Bitmap(Properties.Resources.plantilla_nosocio);
+                titulo = "PAGO DIARIO";
 
-                g.DrawString("Nombre: " + lblNombre.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 60));
-                g.DrawString("Apellido: " + lblApellido.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 80));
-                g.DrawString("DNI: " + lblDni.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 100));
-                g.DrawString("Fecha Alta: " + lblFechaAlta.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 120));
-                g.DrawString("Carnet Activo: " + lblCarnetActivo.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 140));
-                g.DrawString("Valor Cuota: " + lblValorCuota.Text, new Font("Arial", 10), Brushes.Black, new PointF(20, 160));
+                actividades = new List<string> { "Actividad 1", "Actividad 2" }; 
+            }
+            else
+            {
+                MessageBox.Show("No se puede imprimir. Estado no válido.");
+                return;
             }
 
-            PrintDocument printDoc = new PrintDocument();
-            printDoc.PrintPage += PrintDoc_PrintPage;
+            string outputPath = Path.Combine(Path.GetTempPath(), $"Carnet_{dni}_{DateTime.Now.Ticks}.png");
 
-            PrintDialog dlg = new PrintDialog();
-            dlg.Document = printDoc;
-
-            if (dlg.ShowDialog() == DialogResult.OK)
-            {
-                printDoc.Print();
-            }
+            FrmPagos.GenerarCarnetDesdeBitmap(plantilla, titulo, dni, nombre, apellido, vencimiento, actividades, outputPath);
+            FrmPagos.GuardarComoPdf(outputPath, "Carnet");
         }
+
 
         private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
         {

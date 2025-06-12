@@ -66,6 +66,7 @@
             // txtNombre
             // 
             txtNombre.Location = new Point(111, 36);
+            txtNombre.MaxLength = 50;
             txtNombre.Name = "txtNombre";
             txtNombre.Size = new Size(100, 23);
             txtNombre.TabIndex = 1;
@@ -73,6 +74,7 @@
             // txtApellido
             // 
             txtApellido.Location = new Point(111, 65);
+            txtApellido.MaxLength = 50;
             txtApellido.Name = "txtApellido";
             txtApellido.Size = new Size(100, 23);
             txtApellido.TabIndex = 2;
@@ -118,6 +120,7 @@
             // txtDni
             // 
             txtDni.Location = new Point(111, 94);
+            txtDni.MaxLength = 8;
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(100, 23);
             txtDni.TabIndex = 3;
