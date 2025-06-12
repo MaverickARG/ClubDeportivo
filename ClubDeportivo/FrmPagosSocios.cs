@@ -102,7 +102,7 @@ namespace ClubDeportivo
 
             try
             {
-                using (MySqlConnection con = DB.GetConnection())
+                using (MySqlConnection con = Conexion.GetConnection())
                 {
                     string query = "INSERT INTO CuotaSocio (fechaPagoSocio, vencimientoPago, formaPago, numeroCuota, idSocio) " +
                                    "VALUES (@fecha, @vto, @forma, @cuotas, @id)";
@@ -151,7 +151,7 @@ namespace ClubDeportivo
                 return;
             }
 
-            using (MySqlConnection con = DB.GetConnection())
+            using (MySqlConnection con = Conexion.GetConnection())
             {
                 string query = "SELECT s.idSocio, p.nombre, p.apellido FROM Persona p " +
                                "INNER JOIN Socio s ON p.dni = s.dni WHERE p.dni = @dni";

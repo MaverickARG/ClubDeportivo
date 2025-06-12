@@ -98,7 +98,7 @@
             ptbLogo.Image = (Image)resources.GetObject("ptbLogo.Image");
             ptbLogo.Location = new Point(27, 33);
             ptbLogo.Name = "ptbLogo";
-            ptbLogo.Size = new Size(150, 156);
+            ptbLogo.Size = new Size(160, 160);
             ptbLogo.SizeMode = PictureBoxSizeMode.StretchImage;
             ptbLogo.TabIndex = 7;
             ptbLogo.TabStop = false;

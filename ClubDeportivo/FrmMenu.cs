@@ -28,7 +28,7 @@ namespace ClubDeportivo
     ORDER BY c.VencimientoPago ASC;
 ";
 
-            MySqlConnection conn = DB.GetConnection();
+            MySqlConnection conn = Conexion.GetConnection();
             MySqlCommand cmd = new MySqlCommand(query, conn);
 
             try

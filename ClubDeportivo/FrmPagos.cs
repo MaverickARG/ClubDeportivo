@@ -14,7 +14,7 @@ namespace ClubDeportivo
 {
     public partial class FrmPagos : Form
     {
-        MySqlConnection conexion = DB.GetConnection();
+        MySqlConnection conexion = Conexion.GetConnection();
 
 
         public FrmPagos()

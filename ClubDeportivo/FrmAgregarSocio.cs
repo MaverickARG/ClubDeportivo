@@ -45,7 +45,7 @@ namespace ClubDeportivo
             bool aptoFisico = chkAptoFisico.Checked;
             DateTime fechaAlta = DateTime.Now;
 
-            using (MySqlConnection connection = DB.GetConnection())
+            using (MySqlConnection connection = Conexion.GetConnection())
             {
                 connection.Open();
 

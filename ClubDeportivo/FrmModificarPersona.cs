@@ -19,7 +19,7 @@ namespace ClubDeportivo
 
         private void FrmModificarPersona_Load(object sender, EventArgs e)
         {
-            using (MySqlConnection conn = DB.GetConnection())
+            using (MySqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
 
@@ -73,7 +73,7 @@ namespace ClubDeportivo
                 return;
             }
 
-            using (MySqlConnection conn = DB.GetConnection())
+            using (MySqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
 

@@ -8,8 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
-
 using System.Drawing.Imaging;
 using System.Drawing.Printing;
 using System.IO;
@@ -38,7 +36,7 @@ namespace ClubDeportivo
                 return;
             }
 
-            using (MySqlConnection conn = DB.GetConnection())
+            using (MySqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
 

@@ -4799,7 +4799,7 @@
     <value>43, 105</value>
   </data>
   <data name="pibLogo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>232, 234</value>
+    <value>234, 234</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="pibLogo.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
@@ -4857,7 +4857,7 @@
     <value>No Socios</value>
   </data>
   <data name="pagoDeCuotaSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="pagoDeCuotaSocioToolStripMenuItem.Text" xml:space="preserve">
     <value>Ingresar Pago</value>
@@ -4872,13 +4872,13 @@
     <value>11, 10</value>
   </metadata>
   <data name="manualToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>127, 22</value>
   </data>
   <data name="manualToolStripMenuItem.Text" xml:space="preserve">
     <value>Manual</value>
   </data>
   <data name="acercaDeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>127, 22</value>
   </data>
   <data name="acercaDeToolStripMenuItem.Text" xml:space="preserve">
     <value>Acerca De</value>

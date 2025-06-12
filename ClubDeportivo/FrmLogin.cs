@@ -20,7 +20,7 @@ namespace ClubDeportivo
 
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            using (MySqlConnection connection = DB.GetConnection())
+            using (MySqlConnection connection = Conexion.GetConnection())
             {
                 try
                 {

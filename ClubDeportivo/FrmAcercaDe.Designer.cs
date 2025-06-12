@@ -97,7 +97,7 @@
             pictureBox1.InitialImage = Properties.Resources.logo;
             pictureBox1.Location = new Point(12, 80);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(154, 141);
+            pictureBox1.Size = new Size(154, 154);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 5;
             pictureBox1.TabStop = false;
