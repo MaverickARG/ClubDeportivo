@@ -57,7 +57,7 @@
             // 
             // btnBuscar
             // 
-            btnBuscar.Location = new Point(196, 52);
+            btnBuscar.Location = new Point(196, 51);
             btnBuscar.Name = "btnBuscar";
             btnBuscar.Size = new Size(75, 23);
             btnBuscar.TabIndex = 0;
@@ -67,7 +67,7 @@
             // 
             // txtDni
             // 
-            txtDni.Location = new Point(36, 53);
+            txtDni.Location = new Point(38, 52);
             txtDni.Name = "txtDni";
             txtDni.Size = new Size(100, 23);
             txtDni.TabIndex = 1;
@@ -75,7 +75,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(36, 26);
+            label1.Location = new Point(38, 25);
             label1.Name = "label1";
             label1.Size = new Size(119, 15);
             label1.TabIndex = 6;
@@ -149,63 +149,63 @@
             lblNombre.AutoSize = true;
             lblNombre.Location = new Point(175, 21);
             lblNombre.Name = "lblNombre";
-            lblNombre.Size = new Size(49, 15);
+            lblNombre.Size = new Size(12, 15);
             lblNombre.TabIndex = 14;
-            lblNombre.Text = "nombre";
+            lblNombre.Text = "-";
             // 
             // lblApellido
             // 
             lblApellido.AutoSize = true;
             lblApellido.Location = new Point(175, 45);
             lblApellido.Name = "lblApellido";
-            lblApellido.Size = new Size(49, 15);
+            lblApellido.Size = new Size(12, 15);
             lblApellido.TabIndex = 15;
-            lblApellido.Text = "apellido";
+            lblApellido.Text = "-";
             // 
             // lblDni
             // 
             lblDni.AutoSize = true;
             lblDni.Location = new Point(175, 91);
             lblDni.Name = "lblDni";
-            lblDni.Size = new Size(25, 15);
+            lblDni.Size = new Size(12, 15);
             lblDni.TabIndex = 16;
-            lblDni.Text = "Dni";
+            lblDni.Text = "-";
             // 
             // lblAptoFisico
             // 
             lblAptoFisico.AutoSize = true;
             lblAptoFisico.Location = new Point(175, 116);
             lblAptoFisico.Name = "lblAptoFisico";
-            lblAptoFisico.Size = new Size(31, 15);
+            lblAptoFisico.Size = new Size(12, 15);
             lblAptoFisico.TabIndex = 17;
-            lblAptoFisico.Text = "apto";
+            lblAptoFisico.Text = "-";
             // 
             // lblFechaAlta
             // 
             lblFechaAlta.AutoSize = true;
             lblFechaAlta.Location = new Point(175, 143);
             lblFechaAlta.Name = "lblFechaAlta";
-            lblFechaAlta.Size = new Size(58, 15);
+            lblFechaAlta.Size = new Size(12, 15);
             lblFechaAlta.TabIndex = 18;
-            lblFechaAlta.Text = "fecha alta";
+            lblFechaAlta.Text = "-";
             // 
             // lblCarnetActivo
             // 
             lblCarnetActivo.AutoSize = true;
             lblCarnetActivo.Location = new Point(175, 167);
             lblCarnetActivo.Name = "lblCarnetActivo";
-            lblCarnetActivo.Size = new Size(40, 15);
+            lblCarnetActivo.Size = new Size(12, 15);
             lblCarnetActivo.TabIndex = 19;
-            lblCarnetActivo.Text = "carnet";
+            lblCarnetActivo.Text = "-";
             // 
             // lblValorCuota
             // 
             lblValorCuota.AutoSize = true;
             lblValorCuota.Location = new Point(175, 193);
             lblValorCuota.Name = "lblValorCuota";
-            lblValorCuota.Size = new Size(66, 15);
+            lblValorCuota.Size = new Size(12, 15);
             lblValorCuota.TabIndex = 20;
-            lblValorCuota.Text = "valor cuota";
+            lblValorCuota.Text = "-";
             // 
             // btnCerrar
             // 
@@ -241,9 +241,9 @@
             lblEstado.AutoSize = true;
             lblEstado.Location = new Point(175, 67);
             lblEstado.Name = "lblEstado";
-            lblEstado.Size = new Size(44, 15);
+            lblEstado.Size = new Size(12, 15);
             lblEstado.TabIndex = 24;
-            lblEstado.Text = "label10";
+            lblEstado.Text = "-";
             // 
             // grbConsulta
             // 

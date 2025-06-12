@@ -99,8 +99,8 @@ namespace ClubDeportivo
                     cmdSocio.ExecuteNonQuery();
 
                     string deletePagos = @"
-    DELETE FROM pagodiario 
-    WHERE idNoSocio IN (SELECT idNoSocio FROM nosocio WHERE dni = @dni)";
+                    DELETE FROM pagodiario 
+                    WHERE idNoSocio IN (SELECT idNoSocio FROM nosocio WHERE dni = @dni)";
                     MySqlCommand cmdDeletePagos = new MySqlCommand(deletePagos, conn);
                     cmdDeletePagos.Parameters.AddWithValue("@dni", nuevoDni);
                     cmdDeletePagos.ExecuteNonQuery();
