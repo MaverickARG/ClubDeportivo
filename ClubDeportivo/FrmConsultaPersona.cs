@@ -43,19 +43,20 @@ namespace ClubDeportivo
                 conn.Open();
 
                 string query = @"
-            SELECT 
-                p.nombre,
-                p.apellido,
-                p.dni,
-                p.aptoFisico,
-                s.fechaAltaSocio,
-                s.carnetActivo,
-                s.valorCuota,
-                ns.idNoSocio
-            FROM persona p
-            LEFT JOIN socio s ON s.dni = p.dni
-            LEFT JOIN nosocio ns ON ns.dni = p.dni
-            WHERE p.dni = @dni";
+                SELECT 
+                    p.nombre,
+                    p.apellido,
+                    p.dni,
+                    p.aptoFisico,
+                    s.fechaAltaSocio,
+                    s.carnetActivo,
+                    s.valorCuota,
+                    ns.idNoSocio,
+                    ns.noSocioActivo
+                FROM persona p
+                LEFT JOIN socio s ON s.dni = p.dni
+                LEFT JOIN nosocio ns ON ns.dni = p.dni
+                WHERE p.dni = @dni";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@dni", dni);
@@ -94,15 +95,14 @@ namespace ClubDeportivo
                             lblEstado.Text = "No Socio";
                             lblEstado.ForeColor = Color.Blue;
 
+                            lblCarnetActivo.Text = Convert.ToBoolean(reader["noSocioActivo"]) ? "Sí" : "No";
 
-                            // Ocultar datos de socio
                             lblFechaAlta.Text = "-";
-                            lblCarnetActivo.Text = "-";
                             lblValorCuota.Text = "-";
 
-                            lblFechaAlta.Visible = false;
-                            lblCarnetActivo.Visible = false;
-                            lblValorCuota.Visible = false;
+                            lblFechaAlta.Visible = true;
+                            lblValorCuota.Visible = true;
+                            lblCarnetActivo.Visible = true;
                         }
                         else
                         {
