@@ -57,7 +57,7 @@ namespace ClubDeportivo
                 return;
             }
 
-            using (MySqlConnection connection = DB.GetConnection())
+            using (MySqlConnection connection = Conexion.GetConnection())
             {
                 try
                 {

@@ -80,8 +80,7 @@ namespace ClubDeportivo
                             lblCarnetActivo.Text = Convert.ToBoolean(reader["carnetActivo"]) ? "Sí" : "No";
                             lblValorCuota.Text = reader["valorCuota"] != DBNull.Value
                             ? "$" + Convert.ToDouble(reader["valorCuota"]).ToString("0.00")
-                            : "Falta gestionar pago en la pestaña 'Pagos'";
-
+                            : "Sin pago registrado";
 
 
                             lblFechaAlta.Visible = true;
@@ -176,7 +175,7 @@ namespace ClubDeportivo
                 plantilla = new Bitmap(Properties.Resources.plantilla_nosocio);
                 titulo = "PAGO DIARIO";
 
-                actividades = new List<string> { "Actividad 1", "Actividad 2" }; 
+                actividades = new List<string> { "Actividad 1", "Actividad 2" };
             }
             else
             {
@@ -225,7 +224,5 @@ namespace ClubDeportivo
                 }
             }
         }
-
-
     }
 }
