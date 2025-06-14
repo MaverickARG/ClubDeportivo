@@ -36,6 +36,7 @@
             txtPassword = new TextBox();
             cmbUsuarios = new ComboBox();
             ptbLogo = new PictureBox();
+            btnConfigurar = new Button();
             ((System.ComponentModel.ISupportInitialize)ptbLogo).BeginInit();
             SuspendLayout();
             // 
@@ -51,7 +52,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(215, 100);
+            label2.Location = new Point(215, 113);
             label2.Name = "label2";
             label2.Size = new Size(67, 15);
             label2.TabIndex = 1;
@@ -59,7 +60,7 @@
             // 
             // btnLogin
             // 
-            btnLogin.Location = new Point(215, 166);
+            btnLogin.Location = new Point(215, 170);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(75, 23);
             btnLogin.TabIndex = 4;
@@ -69,7 +70,7 @@
             // 
             // btnSalir
             // 
-            btnSalir.Location = new Point(296, 166);
+            btnSalir.Location = new Point(296, 170);
             btnSalir.Name = "btnSalir";
             btnSalir.Size = new Size(75, 23);
             btnSalir.TabIndex = 5;
@@ -79,7 +80,7 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(215, 128);
+            txtPassword.Location = new Point(215, 131);
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(156, 23);
             txtPassword.TabIndex = 3;
@@ -88,7 +89,7 @@
             // cmbUsuarios
             // 
             cmbUsuarios.FormattingEnabled = true;
-            cmbUsuarios.Location = new Point(215, 61);
+            cmbUsuarios.Location = new Point(215, 69);
             cmbUsuarios.Name = "cmbUsuarios";
             cmbUsuarios.Size = new Size(156, 23);
             cmbUsuarios.TabIndex = 6;
@@ -103,12 +104,23 @@
             ptbLogo.TabIndex = 7;
             ptbLogo.TabStop = false;
             // 
+            // btnConfigurar
+            // 
+            btnConfigurar.Location = new Point(331, 12);
+            btnConfigurar.Name = "btnConfigurar";
+            btnConfigurar.Size = new Size(75, 23);
+            btnConfigurar.TabIndex = 8;
+            btnConfigurar.Text = "Configurar";
+            btnConfigurar.UseVisualStyleBackColor = true;
+            btnConfigurar.Click += btnConfigurar_Click;
+            // 
             // FrmLogin
             // 
             AcceptButton = btnLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(418, 236);
+            Controls.Add(btnConfigurar);
             Controls.Add(ptbLogo);
             Controls.Add(cmbUsuarios);
             Controls.Add(btnSalir);
@@ -138,5 +150,6 @@
         private TextBox txtPassword;
         private ComboBox cmbUsuarios;
         private PictureBox ptbLogo;
+        private Button btnConfigurar;
     }
 }

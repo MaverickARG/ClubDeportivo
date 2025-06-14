@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -18,13 +11,22 @@ namespace ClubDeportivo
             InitializeComponent();
         }
 
+        // Se eliminó la conexión automática en Load
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            using (MySqlConnection connection = Conexion.GetConnection())
+            // Espera hasta que se configure conexión manualmente
+        }
+
+        private void CargarUsuarios()
+        {
+            cmbUsuarios.Items.Clear();
+
+            try
             {
-                try
+                using (MySqlConnection connection = Conexion.GetConnection())
                 {
                     connection.Open();
+
                     string query = "SELECT usuario FROM Administrador";
                     MySqlCommand cmd = new MySqlCommand(query, connection);
                     MySqlDataReader reader = cmd.ExecuteReader();
@@ -39,11 +41,29 @@ namespace ClubDeportivo
 
                     reader.Close();
                 }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No estás conectado a la base de datos.\nPor favor configurá la conexión.", "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+
+        private void btnConfigurar_Click(object sender, EventArgs e)
+        {
+            FrmModificarConexion frm = new FrmModificarConexion();
+            frm.FormClosed += (s, args) =>
+            {
+                try
+                {
+                    CargarUsuarios();
+                }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error al cargar usuarios: " + ex.Message);
                 }
-            }
+            };
+            frm.ShowDialog();
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -51,15 +71,9 @@ namespace ClubDeportivo
             string usuario = cmbUsuarios.Text.Trim();
             string contrasena = txtPassword.Text;
 
-            if (string.IsNullOrEmpty(usuario))
+            try
             {
-                MessageBox.Show("No existe el usuario / usuario incorrecto.");
-                return;
-            }
-
-            using (MySqlConnection connection = Conexion.GetConnection())
-            {
-                try
+                using (MySqlConnection connection = Conexion.GetConnection())
                 {
                     connection.Open();
 
@@ -83,12 +97,13 @@ namespace ClubDeportivo
 
                     reader.Close();
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al conectar a la base de datos:\n" + ex.Message);
-                }
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("No estás conectado a la base de datos.\nPor favor configurá la conexión.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
 
         private void btnSalir_Click(object sender, EventArgs e)
         {

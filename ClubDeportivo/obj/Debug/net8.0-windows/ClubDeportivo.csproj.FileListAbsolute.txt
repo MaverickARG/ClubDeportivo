@@ -256,3 +256,4 @@ C:\Users\santiago\Desktop\tp dsoo de adrian\ClubDeportivo-master 14-06-2025\Club
 C:\Users\santiago\Desktop\tp dsoo de adrian\ClubDeportivo-master 14-06-2025\ClubDeportivo-master\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.pdb
 C:\Users\santiago\Desktop\tp dsoo de adrian\ClubDeportivo-master 14-06-2025\ClubDeportivo-master\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.genruntimeconfig.cache
 C:\Users\santiago\Desktop\tp dsoo de adrian\ClubDeportivo-master 14-06-2025\ClubDeportivo-master\ClubDeportivo\obj\Debug\net8.0-windows\ref\ClubDeportivo.dll
+C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmModificarConexion.resources
