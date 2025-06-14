@@ -1,29 +1,20 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Drawing.Imaging;
-using System.Drawing.Printing;
 using System.IO;
-
+using System.Drawing.Printing;
 
 namespace ClubDeportivo
 {
     public partial class FrmConsultaPersona : Form
     {
-
         private Bitmap carnetImagen;
 
         public FrmConsultaPersona()
         {
             InitializeComponent();
-            btnModificar.Click += btnModificar_Click;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -49,11 +40,13 @@ namespace ClubDeportivo
                     s.fechaAltaSocio,
                     s.carnetActivo,
                     s.valorCuota,
+                    s.activo AS socioActivo,
                     ns.idNoSocio,
-                    ns.noSocioActivo
+                    ns.noSocioActivo,
+                    ns.activo AS noSocioActivo
                 FROM persona p
-                LEFT JOIN socio s ON s.dni = p.dni
-                LEFT JOIN nosocio ns ON ns.dni = p.dni
+                LEFT JOIN socio s ON s.dni = p.dni AND s.activo = 1
+                LEFT JOIN nosocio ns ON ns.dni = p.dni AND ns.activo = 1
                 WHERE p.dni = @dni";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
@@ -79,9 +72,8 @@ namespace ClubDeportivo
                             lblFechaAlta.Text = Convert.ToDateTime(reader["fechaAltaSocio"]).ToShortDateString();
                             lblCarnetActivo.Text = Convert.ToBoolean(reader["carnetActivo"]) ? "Sí" : "No";
                             lblValorCuota.Text = reader["valorCuota"] != DBNull.Value
-                            ? "$" + Convert.ToDouble(reader["valorCuota"]).ToString("0.00")
-                            : "Sin pago registrado";
-
+                                ? "$" + Convert.ToDouble(reader["valorCuota"]).ToString("0.00")
+                                : "Sin pago registrado";
 
                             lblFechaAlta.Visible = true;
                             lblCarnetActivo.Visible = true;
@@ -105,7 +97,6 @@ namespace ClubDeportivo
                         {
                             lblEstado.Text = "Registrado sin actividad";
                             lblEstado.ForeColor = Color.Red;
-
 
                             lblFechaAlta.Text = "-";
                             lblCarnetActivo.Text = "-";
@@ -174,8 +165,7 @@ namespace ClubDeportivo
             {
                 plantilla = new Bitmap(Properties.Resources.plantilla_nosocio);
                 titulo = "PAGO DIARIO";
-
-                actividades = new List<string> { "Actividad 1", "Actividad 2" };
+                actividades = new List<string> { "Actividad 1", "Actividad 2" }; // Podés cambiar esto si querés traer las reales
             }
             else
             {
@@ -184,11 +174,9 @@ namespace ClubDeportivo
             }
 
             string outputPath = Path.Combine(Path.GetTempPath(), $"Carnet_{dni}_{DateTime.Now.Ticks}.png");
-
             FrmPagos.GenerarCarnetDesdeBitmap(plantilla, titulo, dni, nombre, apellido, vencimiento, actividades, outputPath);
             FrmPagos.GuardarComoPdf(outputPath, "Carnet");
         }
-
 
         private void PrintDoc_PrintPage(object sender, PrintPageEventArgs e)
         {
@@ -197,8 +185,6 @@ namespace ClubDeportivo
 
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(">>> Se llamó a btnModificar_Click");
-
             if (string.IsNullOrWhiteSpace(lblDni.Text))
             {
                 MessageBox.Show("Debe buscar una persona antes de modificar.");
@@ -214,13 +200,10 @@ namespace ClubDeportivo
             using (FrmModificarPersona frm = new FrmModificarPersona(dniActual))
             {
                 var result = frm.ShowDialog();
-
-                Console.WriteLine(">>> DialogResult: " + result);
-
                 if (result == DialogResult.OK)
                 {
                     txtDni.Text = frm.NuevoDni.ToString();
-                    btnBuscar.PerformClick(); // Esto solo se ejecuta 1 vez si hubo guardado
+                    btnBuscar.PerformClick();
                 }
             }
         }

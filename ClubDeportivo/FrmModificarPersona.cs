@@ -64,7 +64,6 @@ namespace ClubDeportivo
             }
         }
 
-
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtDni.Text.Trim(), out int nuevoDni))
@@ -76,55 +75,125 @@ namespace ClubDeportivo
             using (MySqlConnection conn = Conexion.GetConnection())
             {
                 conn.Open();
+                MySqlTransaction tx = conn.BeginTransaction();
 
-                // Actualizar datos en persona
-                string query = "UPDATE persona SET dni = @nuevoDni, nombre = @nombre, apellido = @apellido, aptoFisico = @apto WHERE dni = @dniOriginal";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@nuevoDni", nuevoDni);
-                cmd.Parameters.AddWithValue("@nombre", txtNombre.Text.Trim());
-                cmd.Parameters.AddWithValue("@apellido", txtApellido.Text.Trim());
-                cmd.Parameters.AddWithValue("@apto", chkAptoFisico.Checked);
-                cmd.Parameters.AddWithValue("@dniOriginal", dniOriginal);
-
-                cmd.ExecuteNonQuery();
-
-                // Actualizar tipo (socio o no socio)
-                if (rbSocio.Checked)
+                try
                 {
-                    // Insertar socio si no existe
-                    string insertSocio = "INSERT IGNORE INTO socio (dni, fechaAltaSocio, carnetActivo, valorCuota) VALUES (@dni, CURDATE(), 0, 0)";
-                    MySqlCommand cmdSocio = new MySqlCommand(insertSocio, conn);
-                    cmdSocio.Parameters.AddWithValue("@dni", nuevoDni);
-                    cmdSocio.ExecuteNonQuery();
+                    // Actualizar datos en persona
+                    string query = @"UPDATE persona 
+                             SET dni = @nuevoDni, nombre = @nombre, apellido = @apellido, aptoFisico = @apto 
+                             WHERE dni = @dniOriginal";
+                    MySqlCommand cmd = new MySqlCommand(query, conn, tx);
+                    cmd.Parameters.AddWithValue("@nuevoDni", nuevoDni);
+                    cmd.Parameters.AddWithValue("@nombre", txtNombre.Text.Trim());
+                    cmd.Parameters.AddWithValue("@apellido", txtApellido.Text.Trim());
+                    cmd.Parameters.AddWithValue("@apto", chkAptoFisico.Checked);
+                    cmd.Parameters.AddWithValue("@dniOriginal", dniOriginal);
+                    cmd.ExecuteNonQuery();
 
-                    string deletePagos = @"
-                    DELETE FROM pagodiario 
-                    WHERE idNoSocio IN (SELECT idNoSocio FROM nosocio WHERE dni = @dni)";
-                    MySqlCommand cmdDeletePagos = new MySqlCommand(deletePagos, conn);
-                    cmdDeletePagos.Parameters.AddWithValue("@dni", nuevoDni);
-                    cmdDeletePagos.ExecuteNonQuery();
+                    if (rbSocio.Checked)
+                    {
+                        // Desactivar No Socio si existiera
+                        string desactivarNoSocio = "UPDATE nosocio SET activo = 0, deletedOn = NOW() WHERE dni = @dni AND activo = 1";
+                        MySqlCommand cmdDesactivar = new MySqlCommand(desactivarNoSocio, conn, tx);
+                        cmdDesactivar.Parameters.AddWithValue("@dni", nuevoDni);
+                        cmdDesactivar.ExecuteNonQuery();
+
+                        // Obtener fecha más antigua de cuota
+                        string obtenerFechaAlta = @"
+                    SELECT MIN(fechaPagoSocio) 
+                    FROM cuotasocio 
+                    WHERE idSocio = (SELECT idSocio FROM socio WHERE dni = @dni)";
+                        MySqlCommand cmdFechaAlta = new MySqlCommand(obtenerFechaAlta, conn, tx);
+                        cmdFechaAlta.Parameters.AddWithValue("@dni", nuevoDni);
+                        object resultadoFecha = cmdFechaAlta.ExecuteScalar();
+                        DateTime fechaAltaSocio = resultadoFecha != DBNull.Value ? Convert.ToDateTime(resultadoFecha) : DateTime.Today;
+
+                        // Insertar o reactivar socio
+                        string upsertSocio = @"
+                    INSERT INTO socio (dni, fechaAltaSocio, carnetActivo, valorCuota, activo) 
+                    VALUES (@dni, @fechaAlta, 0, 0, 1)
+                    ON DUPLICATE KEY UPDATE 
+                        fechaAltaSocio = @fechaAlta, 
+                        carnetActivo = 0, 
+                        activo = 1, 
+                        deletedOn = NULL";
+                        MySqlCommand cmdUpsert = new MySqlCommand(upsertSocio, conn, tx);
+                        cmdUpsert.Parameters.AddWithValue("@dni", nuevoDni);
+                        cmdUpsert.Parameters.AddWithValue("@fechaAlta", fechaAltaSocio);
+                        cmdUpsert.ExecuteNonQuery();
+
+                        // Reactivar TODAS las cuotas desactivadas
+                        string reactivarCuotas = @"
+                    UPDATE cuotasocio 
+                    SET activo = 1, deletedOn = NULL
+                    WHERE idSocio = (SELECT idSocio FROM socio WHERE dni = @dni)
+                    AND activo = 0";
+                        MySqlCommand cmdReactivarCuotas = new MySqlCommand(reactivarCuotas, conn, tx);
+                        cmdReactivarCuotas.Parameters.AddWithValue("@dni", nuevoDni);
+                        cmdReactivarCuotas.ExecuteNonQuery();
+                    }
+                    else if (rbNoSocio.Checked)
+                    {
+                        // Verificar si tiene cuota activa
+                        string checkCuota = @"
+                    SELECT vencimientoPago 
+                    FROM cuotasocio 
+                    WHERE idSocio = (SELECT idSocio FROM socio WHERE dni = @dni AND activo = 1) 
+                    AND activo = 1
+                    ORDER BY vencimientoPago DESC LIMIT 1";
+                        MySqlCommand cmdCheck = new MySqlCommand(checkCuota, conn, tx);
+                        cmdCheck.Parameters.AddWithValue("@dni", nuevoDni);
+                        object result = cmdCheck.ExecuteScalar();
+
+                        if (result != null && Convert.ToDateTime(result) >= DateTime.Today)
+                        {
+                            MessageBox.Show("El socio tiene una cuota activa. No puede pasarse a No Socio hasta que la misma esté vencida.", "Acción no permitida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        // Desactivar Socio
+                        string desactivarSocio = "UPDATE socio SET activo = 0, deletedOn = NOW() WHERE dni = @dni AND activo = 1";
+                        MySqlCommand cmdBajaSocio = new MySqlCommand(desactivarSocio, conn, tx);
+                        cmdBajaSocio.Parameters.AddWithValue("@dni", nuevoDni);
+                        cmdBajaSocio.ExecuteNonQuery();
+
+                        // Desactivar todas las cuotas
+                        string desactivarCuotas = @"
+                    UPDATE cuotasocio 
+                    SET activo = 0, deletedOn = NOW() 
+                    WHERE idSocio = (SELECT idSocio FROM socio WHERE dni = @dni)";
+                        MySqlCommand cmdBajaCuotas = new MySqlCommand(desactivarCuotas, conn, tx);
+                        cmdBajaCuotas.Parameters.AddWithValue("@dni", nuevoDni);
+                        cmdBajaCuotas.ExecuteNonQuery();
+
+                        // Insertar o reactivar No Socio
+                        string upsertNoSocio = @"
+                    INSERT INTO nosocio (dni, fechaActividad, noSocioActivo, activo) 
+                    VALUES (@dni, CURDATE(), 0, 1)
+                    ON DUPLICATE KEY UPDATE 
+                        fechaActividad = CURDATE(), 
+                        activo = 1, 
+                        deletedOn = NULL";
+                        MySqlCommand cmdUpsertNoSocio = new MySqlCommand(upsertNoSocio, conn, tx);
+                        cmdUpsertNoSocio.Parameters.AddWithValue("@dni", nuevoDni);
+                        cmdUpsertNoSocio.ExecuteNonQuery();
+                    }
+
+                    tx.Commit();
+                    NuevoDni = nuevoDni;
+                    MessageBox.Show("Datos modificados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-                else if (rbNoSocio.Checked)
+                catch (Exception ex)
                 {
-                    // Insertar no socio si no existe
-                    string insertNoSocio = "INSERT IGNORE INTO nosocio (dni, noSocioActivo) VALUES (@dni, 0)";
-                    MySqlCommand cmdNoSocio = new MySqlCommand(insertNoSocio, conn);
-                    cmdNoSocio.Parameters.AddWithValue("@dni", nuevoDni);
-                    cmdNoSocio.ExecuteNonQuery();
-
-                    // Eliminar si existía como socio
-                    MySqlCommand cmdDeleteSocio = new MySqlCommand("DELETE FROM socio WHERE dni = @dni", conn);
-                    cmdDeleteSocio.Parameters.AddWithValue("@dni", nuevoDni);
-                    cmdDeleteSocio.ExecuteNonQuery();
+                    tx.Rollback();
+                    MessageBox.Show("Error al modificar:\n" + ex.Message);
                 }
             }
-
-            NuevoDni = nuevoDni;
-            MessageBox.Show("Datos modificados correctamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.DialogResult = DialogResult.OK;
-            this.Close();
         }
+
 
 
 

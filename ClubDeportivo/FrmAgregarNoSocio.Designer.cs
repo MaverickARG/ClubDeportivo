@@ -187,7 +187,7 @@
             Name = "FrmAgregarNoSocio";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Agregar No Socio";
-            Load += FrmAgregarSocio_Load;
+
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);

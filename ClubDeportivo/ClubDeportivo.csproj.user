@@ -7,6 +7,9 @@
     <Compile Update="FrmAcercaDe.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="FrmAgregarNoSocio.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="FrmAgregarSocio.cs">
       <SubType>Form</SubType>
     </Compile>

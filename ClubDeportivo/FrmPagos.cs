@@ -110,25 +110,23 @@ namespace ClubDeportivo
                 }
             }
 
-            // 🔽 CONSULTA A TABLA SOCIO
-            string querySocio = "SELECT idSocio FROM socio WHERE dni = @dni";
-            MySqlCommand cmd = new MySqlCommand(querySocio, conexion);
-            cmd.Parameters.AddWithValue("@dni", dni);
+            dgvDetalle.DataSource = null;
 
-            var resultado = cmd.ExecuteScalar();
+            // 🔽 CONSULTA A SOCIO ACTIVO
+            string querySocio = "SELECT idSocio FROM socio WHERE dni = @dni AND activo = 1";
+            MySqlCommand cmdSocio = new MySqlCommand(querySocio, conexion);
+            cmdSocio.Parameters.AddWithValue("@dni", dni);
+            var resultadoSocio = cmdSocio.ExecuteScalar();
 
-            dgvDetalle.DataSource = null; // limpia el grid
-
-            if (resultado != null)
+            if (resultadoSocio != null)
             {
                 lblResultado.Text = "SOCIO";
                 lblResultado.ForeColor = Color.Green;
                 grpSocio.Visible = true;
                 grpNoSocio.Visible = false;
-                grpSocio.Tag = resultado.ToString();
+                grpSocio.Tag = resultadoSocio.ToString();
                 btnImprimirCarnet.Visible = true;
 
-                // 🔽 MOSTRAR FECHA DE VENCIMIENTO EN EL DATAGRID
                 string queryVencimiento = "SELECT vencimientoPago AS 'Vencimiento' " +
                                           "FROM cuotasocio WHERE idSocio = @id ORDER BY fechaPagoSocio DESC LIMIT 1";
                 MySqlCommand cmdVto = new MySqlCommand(queryVencimiento, conexion);
@@ -137,48 +135,46 @@ namespace ClubDeportivo
                 MySqlDataAdapter adapter = new MySqlDataAdapter(cmdVto);
                 DataTable dt = new DataTable();
                 adapter.Fill(dt);
-
                 dgvDetalle.DataSource = dt;
+
+                return;
             }
-            else
+
+            // 🔽 CONSULTA A NO SOCIO ACTIVO
+            string queryNoSocio = "SELECT idNoSocio FROM nosocio WHERE dni = @dni AND activo = 1";
+            MySqlCommand cmdNoSocio = new MySqlCommand(queryNoSocio, conexion);
+            cmdNoSocio.Parameters.AddWithValue("@dni", dni);
+            var resultadoNoSocio = cmdNoSocio.ExecuteScalar();
+
+            if (resultadoNoSocio != null)
             {
-                // 🔽 CONSULTA A TABLA NOSOCIO
-                string queryNoSocio = "SELECT idNoSocio FROM nosocio WHERE dni = @dni";
-                cmd = new MySqlCommand(queryNoSocio, conexion);
-                cmd.Parameters.AddWithValue("@dni", dni);
+                lblResultado.Text = "NO SOCIO";
+                lblResultado.ForeColor = Color.Blue;
+                grpNoSocio.Visible = true;
+                grpSocio.Visible = false;
+                grpNoSocio.Tag = resultadoNoSocio.ToString();
+                btnImprimirCarnet.Visible = true;
 
-                resultado = cmd.ExecuteScalar();
+                string queryActividades = "SELECT a.nombreActividad AS 'Actividad' " +
+                                          "FROM pagodiario pd " +
+                                          "JOIN actividad a ON pd.idActividad = a.idActividad " +
+                                          "WHERE pd.idNoSocio = @id AND pd.fechaPagoDiario = CURDATE()";
+                MySqlCommand cmdAct = new MySqlCommand(queryActividades, conexion);
+                cmdAct.Parameters.AddWithValue("@id", Convert.ToInt32(grpNoSocio.Tag));
 
-                if (resultado != null)
-                {
-                    lblResultado.Text = "NO SOCIO";
-                    lblResultado.ForeColor = Color.Blue;
-                    grpNoSocio.Visible = true;
-                    grpSocio.Visible = false;
-                    grpNoSocio.Tag = resultado.ToString();
-                    btnImprimirCarnet.Visible = true;
-              
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmdAct);
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dgvDetalle.DataSource = dt;
 
-                    // 🔽 MOSTRAR ACTIVIDADES PAGADAS HOY EN EL DATAGRID
-                    string queryActividades = "SELECT a.nombreActividad AS 'Actividad' " +
-                                              "FROM pagodiario pd " +
-                                              "JOIN actividad a ON pd.idActividad = a.idActividad " +
-                                              "WHERE pd.idNoSocio = @id AND pd.fechaPagoDiario = CURDATE()";
-                    MySqlCommand cmdAct = new MySqlCommand(queryActividades, conexion);
-                    cmdAct.Parameters.AddWithValue("@id", Convert.ToInt32(grpNoSocio.Tag));
-
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmdAct);
-                    DataTable dt = new DataTable();
-                    adapter.Fill(dt);
-
-                    dgvDetalle.DataSource = dt;
-                }
-                else
-                {
-                    MessageBox.Show("DNI no encontrado en las tablas de socios ni no socios.");
-                }
+                return;
             }
+
+            // Si no está en ninguna
+            MessageBox.Show("DNI no encontrado en las tablas de socios activos ni no socios activos.");
         }
+
+
 
         private void ActualizarDetalle()
         {
@@ -448,7 +444,8 @@ namespace ClubDeportivo
 
             if (tipoPersona == "SOCIO")
             {
-                string query = "SELECT MAX(vencimientoPago) FROM cuotasocio WHERE idSocio = @id";
+                // Cambiamos: buscamos la fecha de la PRIMERA cuota pagada (fecha de alta)
+                string query = "SELECT MIN(fechaPagoSocio) FROM cuotasocio WHERE idSocio = @id";
                 MySqlCommand cmd = new MySqlCommand(query, conexion);
                 cmd.Parameters.AddWithValue("@id", Convert.ToInt32(grpSocio.Tag));
 
@@ -457,18 +454,19 @@ namespace ClubDeportivo
 
                 object resultado = cmd.ExecuteScalar();
 
-                if (resultado == DBNull.Value || Convert.ToDateTime(resultado) < DateTime.Today)
+                if (resultado == DBNull.Value)
                 {
-                    MessageBox.Show("No se puede imprimir el carnet: la cuota está vencida. Realice un pago para habilitar la impresión.", "Carnet vencido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("No se encontró una cuota registrada para este socio. No se puede generar el carnet.", "Sin datos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                string vencimiento = Convert.ToDateTime(resultado).ToShortDateString();
+                string fechaAlta = Convert.ToDateTime(resultado).ToShortDateString();
 
                 Bitmap plantilla = new Bitmap(Properties.Resources.plantilla_socio);
                 string outputPath = Path.Combine(Path.GetTempPath(), $"Carnet_{dni}_{DateTime.Now.Ticks}.png");
 
-                GenerarCarnetDesdeBitmap(plantilla, "CARNET", dni, nombre, apellido, vencimiento, null, outputPath);
+                // Se pasa la "fecha de alta" como parámetro en lugar de "vencimiento"
+                GenerarCarnetDesdeBitmap(plantilla, "CARNET", dni, nombre, apellido, fechaAlta, null, outputPath);
                 GuardarComoPdf(outputPath, "Carnet");
             }
             else if (tipoPersona == "NO SOCIO")
@@ -510,6 +508,7 @@ namespace ClubDeportivo
 
 
 
+
         private void btnImprimirPago_Click(object sender, EventArgs e)
         {
             string dni = txtDni.Text.Trim();
@@ -537,7 +536,7 @@ namespace ClubDeportivo
 
 
 
-            public static void GenerarCarnetDesdeBitmap(Bitmap plantilla, string titulo, string dni, string nombre, string apellido, string? vencimiento, List<string>? actividades, string outputPath)
+        public static void GenerarCarnetDesdeBitmap(Bitmap plantilla, string titulo, string dni, string nombre, string apellido, string? fechaAlta, List<string>? actividades, string outputPath)
         {
             Bitmap bmp = new Bitmap(plantilla);
             Graphics g = Graphics.FromImage(bmp);
@@ -569,34 +568,28 @@ namespace ClubDeportivo
             g.DrawString(apellido, fontValor, brushTexto, new PointF(inicioX + 180, inicioY));
             inicioY += espacio;
 
-            if (vencimiento != null)
+            if (fechaAlta != null)
             {
-                g.DrawString("Vencimiento:", fontCampo, brushTexto, new PointF(inicioX, inicioY));
-                g.DrawString(vencimiento, fontValor, brushTexto, new PointF(inicioX + 180, inicioY));
+                g.DrawString("Fecha de alta:", fontCampo, brushTexto, new PointF(inicioX, inicioY));
+                g.DrawString(fechaAlta, fontValor, brushTexto, new PointF(inicioX + 250, inicioY));
                 inicioY += espacio;
             }
 
             if (actividades != null && actividades.Count > 0)
             {
-                // Medir ancho de "Actividades:"
                 SizeF sizeActividades = g.MeasureString("Actividades:", fontCampo);
 
-                // Dibujar "Actividades:"
                 g.DrawString("Actividades:", fontCampo, brushTexto, new PointF(inicioX, inicioY));
 
-                // Dibujar la primera actividad justo a continuación
                 g.DrawString("• " + actividades[0], fontValor, brushTexto, new PointF(inicioX + sizeActividades.Width + 10, inicioY));
                 inicioY += espacio - 5;
 
-                // Resto de actividades en línea nueva
                 for (int i = 1; i < actividades.Count; i++)
                 {
                     g.DrawString("• " + actividades[i], fontValor, brushTexto, new PointF(inicioX + 176, inicioY));
                     inicioY += espacio - 5;
                 }
             }
-
-
 
             bmp.Save(outputPath, ImageFormat.Png);
             g.Dispose();
@@ -621,6 +614,8 @@ namespace ClubDeportivo
                     doc.Add(imagen);
                     doc.Close();
                 }
+
+
             }
 
             System.Diagnostics.Process.Start("explorer", pdfPath);
@@ -671,9 +666,8 @@ namespace ClubDeportivo
             bmp.Save(outputPath, ImageFormat.Png);
             bmp.Dispose();
 
-            System.Diagnostics.Process.Start("explorer", outputPath);
+            //System.Diagnostics.Process.Start("explorer", outputPath);
         }
-
 
         private void btnImprimirRecibo_Click(object sender, EventArgs e)
         {
@@ -789,11 +783,9 @@ namespace ClubDeportivo
             string qrTexto = $"DNI: {dni} - Fecha: {hoy:dd/MM/yyyy}";
             GenerarReciboComoImagen(outputPath, contenido, qrTexto);
             GuardarComoPdf(outputPath, "Recibo");
+
         }
 
-
-
     }
-
 
 }

@@ -42,42 +42,85 @@ namespace ClubDeportivo
                 return;
             }
 
+            if (!chkAptoFisico.Checked)
+            {
+                MessageBox.Show("Debe marcar que el socio tiene Apto Físico para poder registrarlo.", "Apto Físico requerido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             bool aptoFisico = chkAptoFisico.Checked;
             DateTime fechaAlta = DateTime.Now;
 
             using (MySqlConnection connection = Conexion.GetConnection())
             {
                 connection.Open();
-
-                string verificarQuery = "SELECT COUNT(*) FROM Persona WHERE dni = @dni";
-                MySqlCommand verificarCmd = new MySqlCommand(verificarQuery, connection);
-                verificarCmd.Parameters.AddWithValue("@dni", dni);
-                int existe = Convert.ToInt32(verificarCmd.ExecuteScalar());
-
-                if (existe > 0)
-                {
-                    MessageBox.Show("El DNI ingresado ya existe. No se puede cargar el socio.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
                 MySqlTransaction transaction = connection.BeginTransaction();
 
                 try
                 {
-                    string queryPersona = "INSERT INTO Persona (dni, nombre, apellido, aptoFisico) VALUES (@dni, @nombre, @apellido, @apto)";
-                    MySqlCommand cmdPersona = new MySqlCommand(queryPersona, connection, transaction);
-                    cmdPersona.Parameters.AddWithValue("@dni", dni);
-                    cmdPersona.Parameters.AddWithValue("@nombre", nombre);
-                    cmdPersona.Parameters.AddWithValue("@apellido", apellido);
-                    cmdPersona.Parameters.AddWithValue("@apto", aptoFisico);
-                    cmdPersona.ExecuteNonQuery();
+                    // Verificar si la persona existe
+                    string checkPersona = "SELECT COUNT(*) FROM persona WHERE dni = @dni";
+                    MySqlCommand cmdCheckPersona = new MySqlCommand(checkPersona, connection, transaction);
+                    cmdCheckPersona.Parameters.AddWithValue("@dni", dni);
+                    int personaExiste = Convert.ToInt32(cmdCheckPersona.ExecuteScalar());
 
-                    string querySocio = "INSERT INTO Socio (fechaAltaSocio, carnetActivo, dni) VALUES (@fecha, @carnet, @dni)";
-                    MySqlCommand cmdSocio = new MySqlCommand(querySocio, connection, transaction);
-                    cmdSocio.Parameters.AddWithValue("@fecha", fechaAlta);
-                    cmdSocio.Parameters.AddWithValue("@carnet", false);
-                    cmdSocio.Parameters.AddWithValue("@dni", dni);
-                    cmdSocio.ExecuteNonQuery();
+                    if (personaExiste > 0)
+                    {
+                        // Reactivar persona si es necesario
+                        string updatePersona = "UPDATE persona SET nombre = @nombre, apellido = @apellido, aptoFisico = @apto WHERE dni = @dni";
+                        MySqlCommand cmdUpdate = new MySqlCommand(updatePersona, connection, transaction);
+                        cmdUpdate.Parameters.AddWithValue("@nombre", nombre);
+                        cmdUpdate.Parameters.AddWithValue("@apellido", apellido);
+                        cmdUpdate.Parameters.AddWithValue("@apto", aptoFisico);
+                        cmdUpdate.Parameters.AddWithValue("@dni", dni);
+                        cmdUpdate.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        string insertarPersona = "INSERT INTO persona (dni, nombre, apellido, aptoFisico) VALUES (@dni, @nombre, @apellido, @apto)";
+                        MySqlCommand cmdInsert = new MySqlCommand(insertarPersona, connection, transaction);
+                        cmdInsert.Parameters.AddWithValue("@dni", dni);
+                        cmdInsert.Parameters.AddWithValue("@nombre", nombre);
+                        cmdInsert.Parameters.AddWithValue("@apellido", apellido);
+                        cmdInsert.Parameters.AddWithValue("@apto", aptoFisico);
+                        cmdInsert.ExecuteNonQuery();
+                    }
+
+                    // Si existe como No Socio activo → lo damos de baja
+                    string desactivarNoSocio = "UPDATE nosocio SET activo = 0, deletedOn = NOW() WHERE dni = @dni AND activo = 1";
+                    MySqlCommand cmdBajaNoSocio = new MySqlCommand(desactivarNoSocio, connection, transaction);
+                    cmdBajaNoSocio.Parameters.AddWithValue("@dni", dni);
+                    cmdBajaNoSocio.ExecuteNonQuery();
+
+                    // Verificar si ya existe como socio
+                    string checkSocio = "SELECT COUNT(*) FROM socio WHERE dni = @dni";
+                    MySqlCommand cmdCheckSocio = new MySqlCommand(checkSocio, connection, transaction);
+                    cmdCheckSocio.Parameters.AddWithValue("@dni", dni);
+                    int existeSocio = Convert.ToInt32(cmdCheckSocio.ExecuteScalar());
+
+                    if (existeSocio > 0)
+                    {
+                        // Reactivar socio si ya existía
+                        string reactivarSocio = @"
+                    UPDATE socio 
+                    SET fechaAltaSocio = @fecha, carnetActivo = 0, activo = 1, deletedOn = NULL 
+                    WHERE dni = @dni";
+                        MySqlCommand cmdReactivar = new MySqlCommand(reactivarSocio, connection, transaction);
+                        cmdReactivar.Parameters.AddWithValue("@fecha", fechaAlta);
+                        cmdReactivar.Parameters.AddWithValue("@dni", dni);
+                        cmdReactivar.ExecuteNonQuery();
+                    }
+                    else
+                    {
+                        // Insertar nuevo socio
+                        string insertarSocio = @"
+                    INSERT INTO socio (fechaAltaSocio, carnetActivo, dni, activo) 
+                    VALUES (@fecha, 0, @dni, 1)";
+                        MySqlCommand cmdInsert = new MySqlCommand(insertarSocio, connection, transaction);
+                        cmdInsert.Parameters.AddWithValue("@fecha", fechaAlta);
+                        cmdInsert.Parameters.AddWithValue("@dni", dni);
+                        cmdInsert.ExecuteNonQuery();
+                    }
 
                     transaction.Commit();
                     MessageBox.Show("Socio agregado correctamente.");
@@ -90,6 +133,7 @@ namespace ClubDeportivo
                 }
             }
         }
+
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
