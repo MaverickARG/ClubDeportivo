@@ -73,31 +73,31 @@ namespace ClubDeportivo
         private void agregarUnNuevoSocioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmAgregarSocio form = new FrmAgregarSocio();
-            form.ShowDialog(); // Modal
+            form.ShowDialog();
         }
 
         private void agregarNoSocioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmAgregarNoSocio form = new FrmAgregarNoSocio();
-            form.ShowDialog(); // Modal
+            form.ShowDialog();
         }
 
         private void informacionDeSocioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmConsultaPersona form = new FrmConsultaPersona();
-            form.ShowDialog(); // Modal
+            form.ShowDialog();
         }
 
         private void informacionNoSociosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmConsultaPersona form = new FrmConsultaPersona();
-            form.ShowDialog(); // Modal
+            form.ShowDialog();
         }
 
         private void pagoDeCuotaSocioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmPagos form = new FrmPagos();
-            form.ShowDialog(); // Modal
+            form.ShowDialog();
         }
 
         private void dgvVencimientos_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -108,13 +108,13 @@ namespace ClubDeportivo
         private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmAcercaDe form = new FrmAcercaDe();
-            form.ShowDialog(); // Modal
+            form.ShowDialog();
         }
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmAgregarNoSocio form = new FrmAgregarNoSocio();
-            form.ShowDialog(); // Modal
+            form.ShowDialog();
         }
     }
 }

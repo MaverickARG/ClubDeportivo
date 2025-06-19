@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClubDeportivo.Datos;
 using MySql.Data.MySqlClient;
@@ -59,6 +52,19 @@ namespace ClubDeportivo
 
                 try
                 {
+                    // Verificar si ya existe como socio
+                    string checkSocio = "SELECT COUNT(*) FROM socio WHERE dni = @dni";
+                    MySqlCommand cmdCheckSocio = new MySqlCommand(checkSocio, connection, transaction);
+                    cmdCheckSocio.Parameters.AddWithValue("@dni", dni);
+                    int existeSocio = Convert.ToInt32(cmdCheckSocio.ExecuteScalar());
+
+                    if (existeSocio > 0)
+                    {
+                        transaction.Rollback();
+                        MessageBox.Show("El DNI ingresado ya está registrado como socio. No es posible registrarlo nuevamente.", "Socio existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
                     // Verificar si la persona existe
                     string checkPersona = "SELECT COUNT(*) FROM persona WHERE dni = @dni";
                     MySqlCommand cmdCheckPersona = new MySqlCommand(checkPersona, connection, transaction);
@@ -67,7 +73,6 @@ namespace ClubDeportivo
 
                     if (personaExiste > 0)
                     {
-                        // Reactivar persona si es necesario
                         string updatePersona = "UPDATE persona SET nombre = @nombre, apellido = @apellido, aptoFisico = @apto WHERE dni = @dni";
                         MySqlCommand cmdUpdate = new MySqlCommand(updatePersona, connection, transaction);
                         cmdUpdate.Parameters.AddWithValue("@nombre", nombre);
@@ -87,41 +92,19 @@ namespace ClubDeportivo
                         cmdInsert.ExecuteNonQuery();
                     }
 
-                    // Si existe como No Socio activo → lo damos de baja
                     string desactivarNoSocio = "UPDATE nosocio SET activo = 0, deletedOn = NOW() WHERE dni = @dni AND activo = 1";
                     MySqlCommand cmdBajaNoSocio = new MySqlCommand(desactivarNoSocio, connection, transaction);
                     cmdBajaNoSocio.Parameters.AddWithValue("@dni", dni);
                     cmdBajaNoSocio.ExecuteNonQuery();
 
-                    // Verificar si ya existe como socio
-                    string checkSocio = "SELECT COUNT(*) FROM socio WHERE dni = @dni";
-                    MySqlCommand cmdCheckSocio = new MySqlCommand(checkSocio, connection, transaction);
-                    cmdCheckSocio.Parameters.AddWithValue("@dni", dni);
-                    int existeSocio = Convert.ToInt32(cmdCheckSocio.ExecuteScalar());
-
-                    if (existeSocio > 0)
-                    {
-                        // Reactivar socio si ya existía
-                        string reactivarSocio = @"
-                    UPDATE socio 
-                    SET fechaAltaSocio = @fecha, carnetActivo = 0, activo = 1, deletedOn = NULL 
-                    WHERE dni = @dni";
-                        MySqlCommand cmdReactivar = new MySqlCommand(reactivarSocio, connection, transaction);
-                        cmdReactivar.Parameters.AddWithValue("@fecha", fechaAlta);
-                        cmdReactivar.Parameters.AddWithValue("@dni", dni);
-                        cmdReactivar.ExecuteNonQuery();
-                    }
-                    else
-                    {
-                        // Insertar nuevo socio
-                        string insertarSocio = @"
-                    INSERT INTO socio (fechaAltaSocio, carnetActivo, dni, activo) 
-                    VALUES (@fecha, 0, @dni, 1)";
-                        MySqlCommand cmdInsert = new MySqlCommand(insertarSocio, connection, transaction);
-                        cmdInsert.Parameters.AddWithValue("@fecha", fechaAlta);
-                        cmdInsert.Parameters.AddWithValue("@dni", dni);
-                        cmdInsert.ExecuteNonQuery();
-                    }
+                    // Insertar nuevo socio
+                    string insertarSocio = @"
+                        INSERT INTO socio (fechaAltaSocio, carnetActivo, dni, activo) 
+                        VALUES (@fecha, 0, @dni, 1)";
+                    MySqlCommand cmdInsertSocio = new MySqlCommand(insertarSocio, connection, transaction);
+                    cmdInsertSocio.Parameters.AddWithValue("@fecha", fechaAlta);
+                    cmdInsertSocio.Parameters.AddWithValue("@dni", dni);
+                    cmdInsertSocio.ExecuteNonQuery();
 
                     transaction.Commit();
                     MessageBox.Show("Socio agregado correctamente.");
@@ -135,7 +118,6 @@ namespace ClubDeportivo
             }
         }
 
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -143,12 +125,10 @@ namespace ClubDeportivo
 
         private void FrmAgregarSocio_Load(object sender, EventArgs e)
         {
-
         }
 
         private void chkAptoFisico_CheckedChanged(object sender, EventArgs e)
         {
-
         }
     }
 }

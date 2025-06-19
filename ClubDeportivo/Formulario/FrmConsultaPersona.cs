@@ -166,7 +166,7 @@ namespace ClubDeportivo
             {
                 plantilla = new Bitmap(Properties.Resources.plantilla_nosocio);
                 titulo = "PAGO DIARIO";
-                actividades = new List<string> { "Actividad 1", "Actividad 2" }; // Podés cambiar esto si querés traer las reales
+                actividades = new List<string> { "Actividad 1", "Actividad 2" };
             }
             else
             {

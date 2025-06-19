@@ -28,10 +28,8 @@ namespace ClubDeportivo
 
             try
             {
-                // Guardar configuración en memoria
                 Conexion.Configurar(servidor, puerto, usuario, clave, baseDatos);
 
-                // Probar conexión
                 using (var conn = Conexion.GetConnection())
                 {
                     conn.Open();

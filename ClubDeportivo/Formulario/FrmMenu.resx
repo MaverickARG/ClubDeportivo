@@ -4821,22 +4821,22 @@
     <value>1</value>
   </data>
   <data name="agregarUnNuevoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 22</value>
+    <value>182, 22</value>
   </data>
   <data name="agregarUnNuevoSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Agregar nuevo Socio</value>
+    <value>Agregar Socio</value>
   </data>
   <data name="agregarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 22</value>
+    <value>182, 22</value>
   </data>
   <data name="agregarToolStripMenuItem.Text" xml:space="preserve">
-    <value>Agregar nuevo No Socio</value>
+    <value>Agregar No Socio</value>
   </data>
   <data name="informacionDeSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>203, 22</value>
+    <value>182, 22</value>
   </data>
   <data name="informacionDeSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Informacion de Cliente</value>
+    <value>Consulta de Clientes</value>
   </data>
   <data name="sociosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
     <value>61, 20</value>

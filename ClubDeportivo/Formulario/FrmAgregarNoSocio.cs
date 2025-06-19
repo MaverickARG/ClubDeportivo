@@ -54,7 +54,7 @@ namespace ClubDeportivo
 
                 try
                 {
-                    // ⚠️ Verificar que NO esté como Socio activo con cuota activa
+                    // Verificar que esté como Socio con cuota activa
                     string checkSocioActivo = @"
                         SELECT COUNT(*) FROM socio 
                         WHERE dni = @dni AND activo = 1 
@@ -82,7 +82,6 @@ namespace ClubDeportivo
 
                     if (personaExiste > 0)
                     {
-                        // Reactivar o actualizar persona existente
                         string actualizarPersona = @"
                             UPDATE persona 
                             SET nombre = @nombre, apellido = @apellido, aptoFisico = @apto 
@@ -120,27 +119,21 @@ namespace ClubDeportivo
 
                     if (noSocioExiste > 0)
                     {
-                        // Reactivar no socio
-                        string reactivarNoSocio = @"
-                            UPDATE nosocio 
-                            SET fechaActividad = @fecha, noSocioActivo = 0, activo = 1, deletedOn = NULL 
-                            WHERE dni = @dni";
-                        MySqlCommand cmdUpdate = new MySqlCommand(reactivarNoSocio, connection, transaction);
-                        cmdUpdate.Parameters.AddWithValue("@fecha", fechaAlta);
-                        cmdUpdate.Parameters.AddWithValue("@dni", dni);
-                        cmdUpdate.ExecuteNonQuery();
+                        transaction.Rollback();
+                        MessageBox.Show("El DNI ingresado ya está registrado como No Socio. No es posible registrarlo nuevamente.", "No Socio existente", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
                     else
                     {
                         // Insertar nuevo no socio
                         string insertarNoSocio = @"
-                            INSERT INTO nosocio (fechaActividad, noSocioActivo, dni, activo) 
-                            VALUES (@fecha, 0, @dni, 1)";
+                        INSERT INTO nosocio (fechaActividad, noSocioActivo, dni, activo) VALUES (@fecha, 0, @dni, 1)";
                         MySqlCommand cmdInsert = new MySqlCommand(insertarNoSocio, connection, transaction);
                         cmdInsert.Parameters.AddWithValue("@fecha", fechaAlta);
                         cmdInsert.Parameters.AddWithValue("@dni", dni);
                         cmdInsert.ExecuteNonQuery();
                     }
+
 
                     transaction.Commit();
                     MessageBox.Show("No Socio agregado correctamente.");

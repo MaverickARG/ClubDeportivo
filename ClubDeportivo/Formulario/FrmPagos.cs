@@ -89,7 +89,6 @@ namespace ClubDeportivo
                 return;
             }
 
-            // 🔽 CONSULTA A TABLA PERSONA PARA OBTENER NOMBRE Y APELLIDO
             string queryPersona = "SELECT nombre, apellido FROM persona WHERE dni = @dni";
             MySqlCommand cmdPersona = new MySqlCommand(queryPersona, conexion);
             cmdPersona.Parameters.AddWithValue("@dni", dni);
@@ -113,7 +112,6 @@ namespace ClubDeportivo
 
             dgvDetalle.DataSource = null;
 
-            // 🔽 CONSULTA A SOCIO ACTIVO
             string querySocio = "SELECT idSocio FROM socio WHERE dni = @dni AND activo = 1";
             MySqlCommand cmdSocio = new MySqlCommand(querySocio, conexion);
             cmdSocio.Parameters.AddWithValue("@dni", dni);
@@ -141,7 +139,6 @@ namespace ClubDeportivo
                 return;
             }
 
-            // 🔽 CONSULTA A NO SOCIO ACTIVO
             string queryNoSocio = "SELECT idNoSocio FROM nosocio WHERE dni = @dni AND activo = 1";
             MySqlCommand cmdNoSocio = new MySqlCommand(queryNoSocio, conexion);
             cmdNoSocio.Parameters.AddWithValue("@dni", dni);
@@ -171,8 +168,8 @@ namespace ClubDeportivo
                 return;
             }
 
-            // Si no está en ninguna
-            MessageBox.Show("DNI no encontrado en las tablas de socios activos ni no socios activos.");
+            // si no existe ni socio ni no socio
+            MessageBox.Show("DNI no encontrado en la base de datos.");
         }
 
 
@@ -250,7 +247,7 @@ namespace ClubDeportivo
                 return;
             }
 
-            CalcularMontoSocio(); // si está todo bien
+            CalcularMontoSocio();
         }
 
         private void btnPagarSocio_Click(object sender, EventArgs e)
@@ -259,7 +256,7 @@ namespace ClubDeportivo
             string formaPago = cboFormaPago.SelectedItem?.ToString();
             DateTime hoy = DateTime.Today;
 
-            // Verificar si ya tiene una cuota vigente
+            // Reviar si hay cuota
             string queryUltimoVencimiento = "SELECT MAX(vencimientoPago) FROM cuotasocio WHERE idSocio = @id";
             MySqlCommand cmdVto = new MySqlCommand(queryUltimoVencimiento, conexion);
             cmdVto.Parameters.AddWithValue("@id", idSocio);
@@ -274,7 +271,7 @@ namespace ClubDeportivo
                 return;
             }
 
-            // Obtener valor actual de cuota desde la tabla socio
+            // Obtener valor actual
             decimal baseValor = 0;
             string getValor = "SELECT valorCuota FROM socio WHERE idSocio = @id";
             MySqlCommand getCmd = new MySqlCommand(getValor, conexion);
@@ -318,13 +315,13 @@ namespace ClubDeportivo
             else if (formaPago == "6 cuotas con interés")
                 montoFinal *= 1.10m;
 
-            // Obtener número de cuota nuevo
+            // número de cuota nuevo
             string countQuery = "SELECT COUNT(*) FROM cuotasocio WHERE idSocio = @id";
             MySqlCommand countCmd = new MySqlCommand(countQuery, conexion);
             countCmd.Parameters.AddWithValue("@id", idSocio);
             int numeroCuota = Convert.ToInt32(countCmd.ExecuteScalar()) + 1;
 
-            // Insertar nueva cuota
+            // cuota nueva
             string insert = "INSERT INTO cuotasocio (idSocio, fechaPagoSocio, vencimientoPago, formaPago, numeroCuota, montoCuota, montoFinal) " +
                             "VALUES (@id, @pago, @vto, @forma, @nro, @montoBase, @montoFinal)";
             MySqlCommand cmd = new MySqlCommand(insert, conexion);
@@ -337,7 +334,7 @@ namespace ClubDeportivo
             cmd.Parameters.AddWithValue("@montoFinal", montoFinal);
             cmd.ExecuteNonQuery();
 
-            // Activar carnet
+            // activar el carnet
             string update = "UPDATE socio SET carnetActivo = 1 WHERE idSocio = @id";
             MySqlCommand updateCmd = new MySqlCommand(update, conexion);
             updateCmd.Parameters.AddWithValue("@id", idSocio);
@@ -379,7 +376,7 @@ namespace ClubDeportivo
             int idActividad = Convert.ToInt32(cboActividad.SelectedValue);
             string actividadNombre = cboActividad.Text;
 
-            // Validar cantidad de pagos del día
+            // Validar los pagos diarios
             string countQuery = "SELECT COUNT(*) FROM pagodiario WHERE idNoSocio = @id AND fechaPagoDiario = @fecha";
             MySqlCommand countCmd = new MySqlCommand(countQuery, conexion);
             countCmd.Parameters.AddWithValue("@id", idNoSocio);
@@ -409,13 +406,12 @@ namespace ClubDeportivo
 
             cmd.ExecuteNonQuery();
 
-            // Activar noSocioActivo = 1 por el día
+            // Activar noSocioActivo x 1 dia
             string update = "UPDATE nosocio SET noSocioActivo = 1 WHERE idNoSocio = @id";
             MySqlCommand updateCmd = new MySqlCommand(update, conexion);
             updateCmd.Parameters.AddWithValue("@id", idNoSocio);
             updateCmd.ExecuteNonQuery();
 
-            // Obtener valor de la actividad
             string valorQuery = "SELECT valorActividad FROM actividad WHERE idActividad = @id";
             MySqlCommand valorCmd = new MySqlCommand(valorQuery, conexion);
             valorCmd.Parameters.AddWithValue("@id", idActividad);
@@ -445,7 +441,6 @@ namespace ClubDeportivo
 
             if (tipoPersona == "SOCIO")
             {
-                // Cambiamos: buscamos la fecha de la PRIMERA cuota pagada (fecha de alta)
                 string query = "SELECT MIN(fechaPagoSocio) FROM cuotasocio WHERE idSocio = @id";
                 MySqlCommand cmd = new MySqlCommand(query, conexion);
                 cmd.Parameters.AddWithValue("@id", Convert.ToInt32(grpSocio.Tag));
@@ -466,7 +461,6 @@ namespace ClubDeportivo
                 Bitmap plantilla = new Bitmap(Properties.Resources.plantilla_socio);
                 string outputPath = Path.Combine(Path.GetTempPath(), $"Carnet_{dni}_{DateTime.Now.Ticks}.png");
 
-                // Se pasa la "fecha de alta" como parámetro en lugar de "vencimiento"
                 GenerarCarnetDesdeBitmap(plantilla, "CARNET", dni, nombre, apellido, fechaAlta, null, outputPath);
                 GuardarComoPdf(outputPath, "Carnet");
             }
@@ -516,7 +510,6 @@ namespace ClubDeportivo
             string nombre = lblNombre.Text;
             string apellido = lblApellido.Text;
 
-            // Obtener actividades desde el DataGridView
             List<string> actividades = new List<string>();
             foreach (DataGridViewRow row in dgvDetalle.Rows)
             {
@@ -524,14 +517,11 @@ namespace ClubDeportivo
                     actividades.Add(row.Cells["Actividad"].Value.ToString());
             }
 
-            // Cargar plantilla desde recursos
             Bitmap plantilla = new Bitmap(Properties.Resources.plantilla_nosocio);
             string outputPath = Path.Combine(Path.GetTempPath(), $"PagoDiario_{dni}_{DateTime.Now.Ticks}.png");
 
-            // Generar la imagen personalizada
             GenerarCarnetDesdeBitmap(plantilla, "PAGO DIARIO", dni, nombre, apellido, null, actividades, outputPath);
 
-            // Convertir a PDF
             GuardarComoPdf(outputPath, "PagoDiario");
         }
 
@@ -631,18 +621,16 @@ namespace ClubDeportivo
 
             g.Clear(Color.White);
 
-            // Borde negro
             Pen borde = new Pen(Color.Black, 4);
             g.DrawRectangle(borde, 0, 0, ancho - 1, alto - 1);
 
-            // Título
             System.Drawing.Font fontTitulo = new System.Drawing.Font("Segoe UI", 26, FontStyle.Bold);
             Brush brushTitulo = Brushes.DarkBlue;
             string titulo = "RECIBO DE PAGO";
             SizeF sizeTitulo = g.MeasureString(titulo, fontTitulo);
             g.DrawString(titulo, fontTitulo, brushTitulo, (ancho - sizeTitulo.Width) / 2, 40);
 
-            // Contenido (en bloque)
+
             System.Drawing.Font fontTexto = new System.Drawing.Font("Segoe UI", 16, FontStyle.Regular);
             Brush brushTexto = Brushes.Black;
             float x = 80;
@@ -655,7 +643,7 @@ namespace ClubDeportivo
                 y += 36;
             }
 
-            // Código QR
+
             QRCodeGenerator qrGen = new QRCodeGenerator();
             QRCodeData qrData = qrGen.CreateQrCode(qrTexto, QRCodeGenerator.ECCLevel.Q);
             QRCoder.QRCode qr = new QRCoder.QRCode(qrData);
@@ -708,7 +696,7 @@ namespace ClubDeportivo
                         string formaPago = reader["formaPago"].ToString();
                         decimal monto = Convert.ToDecimal(reader["monto"]);
 
-                        // aplicar descuentos/recargos
+
                         if (formaPago == "Efectivo")
                             monto *= 0.90m;
                         else if (formaPago == "6 cuotas sin interés")

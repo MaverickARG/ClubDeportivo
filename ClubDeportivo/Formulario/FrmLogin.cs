@@ -12,10 +12,9 @@ namespace ClubDeportivo
             InitializeComponent();
         }
 
-        // Se eliminó la conexión automática en Load
         private void FrmLogin_Load(object sender, EventArgs e)
         {
-            // Espera hasta que se configure conexión manualmente
+
         }
 
         private void CargarUsuarios()
