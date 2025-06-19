@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ClubDeportivo.Datos;
 using MySql.Data.MySqlClient;
+using System.Diagnostics;
 
 namespace ClubDeportivo
 {
@@ -115,6 +116,24 @@ namespace ClubDeportivo
         {
             FrmAgregarNoSocio form = new FrmAgregarNoSocio();
             form.ShowDialog();
+        }
+
+   
+        private void manualToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string ruta = Application.StartupPath + @"\Recursos\manual_usuario.pdf";
+                Process.Start(new ProcessStartInfo()
+                {
+                    FileName = ruta,
+                    UseShellExecute = true // necesario para abrir PDF con visor predeterminado
+                });
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo abrir el manual de usuario.\n" + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

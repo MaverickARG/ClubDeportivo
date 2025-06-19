@@ -146,6 +146,7 @@
             // 
             manualToolStripMenuItem.Name = "manualToolStripMenuItem";
             resources.ApplyResources(manualToolStripMenuItem, "manualToolStripMenuItem");
+            manualToolStripMenuItem.Click += manualToolStripMenuItem_Click;
             // 
             // acercaDeToolStripMenuItem
             // 

@@ -4845,7 +4845,7 @@
     <value>Clientes</value>
   </data>
   <data name="pagoDeCuotaSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 22</value>
+    <value>146, 22</value>
   </data>
   <data name="pagoDeCuotaSocioToolStripMenuItem.Text" xml:space="preserve">
     <value>Ingresar Pago</value>
@@ -4860,13 +4860,13 @@
     <value>11, 10</value>
   </metadata>
   <data name="manualToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="manualToolStripMenuItem.Text" xml:space="preserve">
     <value>Manual</value>
   </data>
   <data name="acercaDeToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>127, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="acercaDeToolStripMenuItem.Text" xml:space="preserve">
     <value>Acerca De</value>

@@ -10,7 +10,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Recursos\Manual_usuario.pdf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Include="Recursos\logo.ico" />
+    <Content Include="Recursos\Manual_usuario.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>
