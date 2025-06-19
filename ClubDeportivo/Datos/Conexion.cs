@@ -1,6 +1,6 @@
 ﻿using MySql.Data.MySqlClient;
 
-namespace ClubDeportivo
+namespace ClubDeportivo.Datos
 {
     public class Conexion
     {

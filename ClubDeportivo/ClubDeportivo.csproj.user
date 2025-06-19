@@ -4,34 +4,34 @@
     <_LastSelectedProfileId>C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\Properties\PublishProfiles\FolderProfile.pubxml</_LastSelectedProfileId>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Update="FrmAcercaDe.cs">
+    <Compile Update="Formulario\FrmAcercaDe.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmAgregarNoSocio.cs">
+    <Compile Update="Formulario\FrmAgregarNoSocio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmAgregarSocio.cs">
+    <Compile Update="Formulario\FrmAgregarSocio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmConsultaPersona.cs">
+    <Compile Update="Formulario\FrmConsultaPersona.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmLogin.cs">
+    <Compile Update="Formulario\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmMenu.cs">
+    <Compile Update="Formulario\FrmMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmModificarConexion.cs">
+    <Compile Update="Formulario\FrmModificarConexion.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmModificarPersona.cs">
+    <Compile Update="Formulario\FrmModificarPersona.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmPagos.cs">
+    <Compile Update="Formulario\FrmPagos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="FrmPagosSocios.cs">
+    <Compile Update="Formulario\FrmPagosSocios.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

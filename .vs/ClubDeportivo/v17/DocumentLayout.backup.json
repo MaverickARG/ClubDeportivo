@@ -3,36 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\home\\desktop\\tecnicatura\\desarrollo sistemas orientado a objetos\\clubdeportivo\\clubdeportivo\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\home\\desktop\\tecnicatura\\desarrollo sistemas orientado a objetos\\clubdeportivo\\clubdeportivo\\formulario\\frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\formulario\\frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\home\\desktop\\tecnicatura\\desarrollo sistemas orientado a objetos\\clubdeportivo\\clubdeportivo\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\home\\desktop\\tecnicatura\\desarrollo sistemas orientado a objetos\\clubdeportivo\\clubdeportivo\\frmconsultapersona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmconsultapersona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\home\\desktop\\tecnicatura\\desarrollo sistemas orientado a objetos\\clubdeportivo\\clubdeportivo\\frmpagos.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmpagos.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\home\\desktop\\tecnicatura\\desarrollo sistemas orientado a objetos\\clubdeportivo\\clubdeportivo\\frmmodificarconexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmmodificarconexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\home\\desktop\\tecnicatura\\desarrollo sistemas orientado a objetos\\clubdeportivo\\clubdeportivo\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\conexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\home\\desktop\\tecnicatura\\desarrollo sistemas orientado a objetos\\clubdeportivo\\clubdeportivo\\frmmodificarconexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmmodificarconexion.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\clubdeportivo\\frmconsultapersona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\frmconsultapersona.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|c:\\users\\home\\desktop\\tecnicatura\\desarrollo sistemas orientado a objetos\\clubdeportivo\\clubdeportivo\\formulario\\frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EEDFE7CA-18AE-4B12-A221-6E6C416F5FD7}|ClubDeportivo\\ClubDeportivo.csproj|solutionrelative:clubdeportivo\\formulario\\frmmenu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,103 +46,27 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "FrmConsultaPersona.cs",
-              "DocumentMoniker": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmConsultaPersona.cs",
-              "RelativeDocumentMoniker": "ClubDeportivo\\FrmConsultaPersona.cs",
-              "ToolTip": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmConsultaPersona.cs",
-              "RelativeToolTip": "ClubDeportivo\\FrmConsultaPersona.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T22:58:59.296Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "FrmPagos.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmPagos.Designer.cs",
-              "RelativeDocumentMoniker": "ClubDeportivo\\FrmPagos.Designer.cs",
-              "ToolTip": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmPagos.Designer.cs",
-              "RelativeToolTip": "ClubDeportivo\\FrmPagos.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T22:58:35.099Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "FrmConsultaPersona.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmConsultaPersona.cs",
-              "RelativeDocumentMoniker": "ClubDeportivo\\FrmConsultaPersona.cs",
-              "ToolTip": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmConsultaPersona.cs [Dise\u00F1o]",
-              "RelativeToolTip": "ClubDeportivo\\FrmConsultaPersona.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-12T22:49:49.187Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "FrmLogin.cs",
-              "DocumentMoniker": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmLogin.cs",
-              "RelativeDocumentMoniker": "ClubDeportivo\\FrmLogin.cs",
-              "ToolTip": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmLogin.cs",
-              "RelativeToolTip": "ClubDeportivo\\FrmLogin.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAIwCwAAAAcAAAAAAAAAA==",
+              "Title": "FrmMenu.cs",
+              "DocumentMoniker": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\Formulario\\FrmMenu.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\Formulario\\FrmMenu.cs",
+              "ToolTip": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\Formulario\\FrmMenu.cs",
+              "RelativeToolTip": "ClubDeportivo\\Formulario\\FrmMenu.cs",
+              "ViewState": "AgIAAEgAAAAAAAAAAAA2wHcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T22:49:22.117Z",
+              "WhenOpened": "2025-06-19T02:10:28.325Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "FrmLogin.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmLogin.cs",
-              "RelativeDocumentMoniker": "ClubDeportivo\\FrmLogin.cs",
-              "ToolTip": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmLogin.cs [Dise\u00F1o]",
-              "RelativeToolTip": "ClubDeportivo\\FrmLogin.cs [Dise\u00F1o]",
+              "Title": "FrmMenu.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\Formulario\\FrmMenu.cs",
+              "RelativeDocumentMoniker": "ClubDeportivo\\Formulario\\FrmMenu.cs",
+              "ToolTip": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\Formulario\\FrmMenu.cs [Dise\u00F1o]",
+              "RelativeToolTip": "ClubDeportivo\\Formulario\\FrmMenu.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T22:49:20.033Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FrmModificarConexion.cs",
-              "DocumentMoniker": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmModificarConexion.cs",
-              "RelativeDocumentMoniker": "ClubDeportivo\\FrmModificarConexion.cs",
-              "ToolTip": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmModificarConexion.cs",
-              "RelativeToolTip": "ClubDeportivo\\FrmModificarConexion.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T22:49:01.541Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Conexion.cs",
-              "DocumentMoniker": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\Conexion.cs",
-              "RelativeDocumentMoniker": "ClubDeportivo\\Conexion.cs",
-              "ToolTip": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\Conexion.cs",
-              "RelativeToolTip": "ClubDeportivo\\Conexion.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAQwAoAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T22:48:47.9Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "FrmModificarConexion.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmModificarConexion.cs",
-              "RelativeDocumentMoniker": "ClubDeportivo\\FrmModificarConexion.cs",
-              "ToolTip": "C:\\Users\\Home\\Desktop\\Tecnicatura\\Desarrollo Sistemas orientado a objetos\\ClubDeportivo\\ClubDeportivo\\FrmModificarConexion.cs [Dise\u00F1o]",
-              "RelativeToolTip": "ClubDeportivo\\FrmModificarConexion.cs [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-14T22:40:18.719Z",
+              "WhenOpened": "2025-06-19T02:10:19.005Z",
               "EditorCaption": " [Dise\u00F1o]"
             }
           ]

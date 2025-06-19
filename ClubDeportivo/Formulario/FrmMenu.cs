@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ClubDeportivo.Datos;
 using MySql.Data.MySqlClient;
 
 namespace ClubDeportivo
@@ -107,6 +108,12 @@ namespace ClubDeportivo
         private void acercaDeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FrmAcercaDe form = new FrmAcercaDe();
+            form.ShowDialog(); // Modal
+        }
+
+        private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmAgregarNoSocio form = new FrmAgregarNoSocio();
             form.ShowDialog(); // Modal
         }
     }

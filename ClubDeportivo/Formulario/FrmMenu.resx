@@ -4821,43 +4821,31 @@
     <value>1</value>
   </data>
   <data name="agregarUnNuevoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>203, 22</value>
   </data>
   <data name="agregarUnNuevoSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Agregar un nuevo socio</value>
+    <value>Agregar nuevo Socio</value>
+  </data>
+  <data name="agregarToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>203, 22</value>
+  </data>
+  <data name="agregarToolStripMenuItem.Text" xml:space="preserve">
+    <value>Agregar nuevo No Socio</value>
   </data>
   <data name="informacionDeSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>200, 22</value>
+    <value>203, 22</value>
   </data>
   <data name="informacionDeSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Informacion de socio</value>
+    <value>Informacion de Cliente</value>
   </data>
   <data name="sociosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>53, 20</value>
+    <value>61, 20</value>
   </data>
   <data name="sociosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Socios</value>
-  </data>
-  <data name="agregarNoSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="agregarNoSocioToolStripMenuItem.Text" xml:space="preserve">
-    <value>Agregar No Socio</value>
-  </data>
-  <data name="informacionNoSociosToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>195, 22</value>
-  </data>
-  <data name="informacionNoSociosToolStripMenuItem.Text" xml:space="preserve">
-    <value>Informacion No Socios</value>
-  </data>
-  <data name="noToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>72, 20</value>
-  </data>
-  <data name="noToolStripMenuItem.Text" xml:space="preserve">
-    <value>No Socios</value>
+    <value>Clientes</value>
   </data>
   <data name="pagoDeCuotaSocioToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>146, 22</value>
+    <value>180, 22</value>
   </data>
   <data name="pagoDeCuotaSocioToolStripMenuItem.Text" xml:space="preserve">
     <value>Ingresar Pago</value>
@@ -6405,28 +6393,16 @@
   <data name="&gt;&gt;agregarUnNuevoSocioToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;agregarToolStripMenuItem.Name" xml:space="preserve">
+    <value>agregarToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;agregarToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;informacionDeSocioToolStripMenuItem.Name" xml:space="preserve">
     <value>informacionDeSocioToolStripMenuItem</value>
   </data>
   <data name="&gt;&gt;informacionDeSocioToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;noToolStripMenuItem.Name" xml:space="preserve">
-    <value>noToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;noToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;agregarNoSocioToolStripMenuItem.Name" xml:space="preserve">
-    <value>agregarNoSocioToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;agregarNoSocioToolStripMenuItem.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;informacionNoSociosToolStripMenuItem.Name" xml:space="preserve">
-    <value>informacionNoSociosToolStripMenuItem</value>
-  </data>
-  <data name="&gt;&gt;informacionNoSociosToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;pagosToolStripMenuItem.Name" xml:space="preserve">

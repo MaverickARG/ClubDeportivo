@@ -9,6 +9,7 @@ using System.Drawing.Imaging;
 using System.IO;
 using System.Windows.Forms;
 using QRCoder;
+using ClubDeportivo.Datos;
 
 namespace ClubDeportivo
 {

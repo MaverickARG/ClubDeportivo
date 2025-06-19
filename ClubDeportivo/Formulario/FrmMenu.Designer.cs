@@ -36,10 +36,8 @@
             pibLogo = new PictureBox();
             sociosToolStripMenuItem = new ToolStripMenuItem();
             agregarUnNuevoSocioToolStripMenuItem = new ToolStripMenuItem();
+            agregarToolStripMenuItem = new ToolStripMenuItem();
             informacionDeSocioToolStripMenuItem = new ToolStripMenuItem();
-            noToolStripMenuItem = new ToolStripMenuItem();
-            agregarNoSocioToolStripMenuItem = new ToolStripMenuItem();
-            informacionNoSociosToolStripMenuItem = new ToolStripMenuItem();
             pagosToolStripMenuItem = new ToolStripMenuItem();
             pagoDeCuotaSocioToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1 = new MenuStrip();
@@ -98,7 +96,7 @@
             // 
             // sociosToolStripMenuItem
             // 
-            sociosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarUnNuevoSocioToolStripMenuItem, informacionDeSocioToolStripMenuItem });
+            sociosToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarUnNuevoSocioToolStripMenuItem, agregarToolStripMenuItem, informacionDeSocioToolStripMenuItem });
             sociosToolStripMenuItem.Name = "sociosToolStripMenuItem";
             resources.ApplyResources(sociosToolStripMenuItem, "sociosToolStripMenuItem");
             // 
@@ -108,29 +106,17 @@
             resources.ApplyResources(agregarUnNuevoSocioToolStripMenuItem, "agregarUnNuevoSocioToolStripMenuItem");
             agregarUnNuevoSocioToolStripMenuItem.Click += agregarUnNuevoSocioToolStripMenuItem_Click;
             // 
+            // agregarToolStripMenuItem
+            // 
+            agregarToolStripMenuItem.Name = "agregarToolStripMenuItem";
+            resources.ApplyResources(agregarToolStripMenuItem, "agregarToolStripMenuItem");
+            agregarToolStripMenuItem.Click += agregarToolStripMenuItem_Click;
+            // 
             // informacionDeSocioToolStripMenuItem
             // 
             informacionDeSocioToolStripMenuItem.Name = "informacionDeSocioToolStripMenuItem";
             resources.ApplyResources(informacionDeSocioToolStripMenuItem, "informacionDeSocioToolStripMenuItem");
             informacionDeSocioToolStripMenuItem.Click += informacionDeSocioToolStripMenuItem_Click;
-            // 
-            // noToolStripMenuItem
-            // 
-            noToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { agregarNoSocioToolStripMenuItem, informacionNoSociosToolStripMenuItem });
-            noToolStripMenuItem.Name = "noToolStripMenuItem";
-            resources.ApplyResources(noToolStripMenuItem, "noToolStripMenuItem");
-            // 
-            // agregarNoSocioToolStripMenuItem
-            // 
-            agregarNoSocioToolStripMenuItem.Name = "agregarNoSocioToolStripMenuItem";
-            resources.ApplyResources(agregarNoSocioToolStripMenuItem, "agregarNoSocioToolStripMenuItem");
-            agregarNoSocioToolStripMenuItem.Click += agregarNoSocioToolStripMenuItem_Click;
-            // 
-            // informacionNoSociosToolStripMenuItem
-            // 
-            informacionNoSociosToolStripMenuItem.Name = "informacionNoSociosToolStripMenuItem";
-            resources.ApplyResources(informacionNoSociosToolStripMenuItem, "informacionNoSociosToolStripMenuItem");
-            informacionNoSociosToolStripMenuItem.Click += informacionNoSociosToolStripMenuItem_Click;
             // 
             // pagosToolStripMenuItem
             // 
@@ -146,7 +132,7 @@
             // 
             // menuStrip1
             // 
-            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, noToolStripMenuItem, pagosToolStripMenuItem, ayudaToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { sociosToolStripMenuItem, pagosToolStripMenuItem, ayudaToolStripMenuItem });
             resources.ApplyResources(menuStrip1, "menuStrip1");
             menuStrip1.Name = "menuStrip1";
             // 
@@ -205,9 +191,6 @@
         private ToolStripMenuItem sociosToolStripMenuItem;
         private ToolStripMenuItem agregarUnNuevoSocioToolStripMenuItem;
         private ToolStripMenuItem informacionDeSocioToolStripMenuItem;
-        private ToolStripMenuItem noToolStripMenuItem;
-        private ToolStripMenuItem agregarNoSocioToolStripMenuItem;
-        private ToolStripMenuItem informacionNoSociosToolStripMenuItem;
         private ToolStripMenuItem pagosToolStripMenuItem;
         private ToolStripMenuItem pagoDeCuotaSocioToolStripMenuItem;
         private MenuStrip menuStrip1;
@@ -215,5 +198,6 @@
         private ToolStripMenuItem ayudaToolStripMenuItem;
         private ToolStripMenuItem manualToolStripMenuItem;
         private ToolStripMenuItem acercaDeToolStripMenuItem;
+        private ToolStripMenuItem agregarToolStripMenuItem;
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using System;
 
-namespace ClubDeportivo
+namespace ClubDeportivo.Modelos
 {
     public class CuotaSocio
     {

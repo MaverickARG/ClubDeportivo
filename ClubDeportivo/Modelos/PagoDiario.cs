@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ClubDeportivo
+namespace ClubDeportivo.Modelos
 {
     public class PagoDiario
     {

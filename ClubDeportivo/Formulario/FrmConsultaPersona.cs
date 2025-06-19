@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using System.IO;
 using System.Drawing.Printing;
+using ClubDeportivo.Datos;
 
 namespace ClubDeportivo
 {
