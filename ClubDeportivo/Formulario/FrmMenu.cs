@@ -127,7 +127,7 @@ namespace ClubDeportivo
                 Process.Start(new ProcessStartInfo()
                 {
                     FileName = ruta,
-                    UseShellExecute = true // necesario para abrir PDF con visor predeterminado
+                    UseShellExecute = true 
                 });
             }
             catch (Exception ex)
