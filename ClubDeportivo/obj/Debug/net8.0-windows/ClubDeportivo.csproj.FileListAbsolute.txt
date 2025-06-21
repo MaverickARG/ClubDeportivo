@@ -168,7 +168,6 @@ C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDe
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmMenu.resources
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmModificarPersona.resources
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmPagos.resources
-C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmPagosSocios.resources
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.Properties.Resources.resources
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.FrmMenu.es-AR.resources
 C:\Users\Home\Desktop\Tecnicatura\Desarrollo Sistemas orientado a objetos\ClubDeportivo\ClubDeportivo\obj\Debug\net8.0-windows\ClubDeportivo.csproj.GenerateResource.cache

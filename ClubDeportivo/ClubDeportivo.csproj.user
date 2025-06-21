@@ -31,8 +31,5 @@
     <Compile Update="Formulario\FrmPagos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Formulario\FrmPagosSocios.cs">
-      <SubType>Form</SubType>
-    </Compile>
   </ItemGroup>
 </Project>
